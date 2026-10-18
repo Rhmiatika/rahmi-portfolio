@@ -145,7 +145,10 @@ Aturan untuk Phase 3:
 | **Backdrop Modal Sertifikat & Lightbox** | Menghapus semburat merah pada backdrop popup modal, diganti dengan blur netral gelap yang elegan (`bg-black/75 backdrop-blur-md`); tombol silang (✕) diubah menjadi putih bersih dengan hover merah menyala (`hover:bg-red-600 hover:text-white`). |
 | **Tech Stack Square Cards** | Kartu keahlian (`SkillLogo`) diubah menjadi rasio kotak 1:1 (`aspect-square`) dengan tata letak ikon dan nama skill yang rapi terpusat di tengah kartu. |
 | **Konsistensi Kata Ganti ("Aku")** | Mengubah seluruh kata ganti "saya" menjadi "aku" di seluruh komponen publik portofolio: "Tentang Saya" → "Tentang Aku", "Siapa Saya" → "Siapa Aku", "Hubungi Saya" → "Hubungi Aku", "Peran Saya" → "Peran Aku", dan "Saya siap berkontribusi" → "Aku siap berkontribusi". |
-| **Logo Tech Stack** | Placeholder logo SVG standar siap digunakan; penggantian logo definitif akan dilakukan langsung oleh pemilik. |
+| **Logo Tech Stack (Brand Resmi)** | 13 logo brand resmi disimpan lokal di `public/assets/logos/`. Sumber: vscode-icons via Iconify (Word/Excel/PPT), logos via Iconify (Google Drive, React, PHP, HTML5, CSS3), simple-icons+warna brand (Google Docs biru, Google Sheets hijau, Canva teal, KNIME kuning). CapCut dibuat sendiri — tidak tersedia di Simple Icons/Iconify. |
+| **CapCut logo** | ⚠️ Buatan sendiri (kotak hitam + segitiga play + garis cut). Jika logo resmi tersedia di Simple Icons di masa depan, ganti `/assets/logos/capcut.svg`. |
+| **Kartu Tech Stack Kompak** | Revisi pemilik: kartu diperkecil ke `w-24 h-24` (96px) di mobile dan `w-28 h-28` (112px) di sm+. flex-wrap justify-start gap-3, min 3 kartu per baris di 390px. Logo 40-44px object-contain. `motion-reduce:transition-none` aktif. |
+
 
 ---
 

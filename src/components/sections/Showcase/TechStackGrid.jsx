@@ -1,44 +1,57 @@
 // src/components/sections/Showcase/TechStackGrid.jsx
-// Grid logo per grup (Office & Workspace, Design & Video, Web, Data & Security)
-// Soft skills chips + language chips
+// Grid logo per grup — kartu persegi kompak ±96px mobile, ±112px desktop
+// flex-wrap rata tengah agar tidak ada ruang kosong besar; min 3 per baris di 390px
+// Hormati prefers-reduced-motion
 
 import { skillGroups, softSkills, languages } from "@/data/skills";
 import { useState } from "react";
+
+// Ukuran kartu tetap: 96px mobile, 112px ≥sm
+const CARD_SIZE = "w-24 h-24 sm:w-28 sm:h-28";
+const LOGO_SIZE = "w-10 h-10 sm:w-11 sm:h-11";
 
 function SkillLogo({ item }) {
   const [imgError, setImgError] = useState(false);
 
   return (
     <div
-      className="group aspect-square flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-xl cursor-default transition-all duration-200"
+      role="img"
+      aria-label={item.name}
+      title={item.name}
+      className={[
+        "group flex flex-col items-center justify-center gap-1.5 p-2 rounded-xl cursor-default",
+        "transition-transform duration-200 motion-reduce:transition-none",
+        CARD_SIZE,
+      ].join(" ")}
       style={{
         background: "var(--color-cream-50)",
-        border: "1px solid rgba(212,175,55,0.25)",
-        boxShadow: "0 2px 8px -2px rgba(128,0,0,0.06)",
+        border: "1px solid rgba(212,175,55,0.28)",
+        boxShadow: "0 2px 6px -2px rgba(128,0,0,0.07)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-3px)";
-        e.currentTarget.style.boxShadow = "0 12px 24px -6px rgba(128,0,0,0.16)";
-        e.currentTarget.style.borderColor = "rgba(212,175,55,0.6)";
+        e.currentTarget.style.transform = "translateY(-3px) scale(1.04)";
+        e.currentTarget.style.boxShadow = "0 10px 20px -6px rgba(128,0,0,0.18)";
+        e.currentTarget.style.borderColor = "rgba(212,175,55,0.65)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "";
-        e.currentTarget.style.boxShadow = "0 2px 8px -2px rgba(128,0,0,0.06)";
-        e.currentTarget.style.borderColor = "rgba(212,175,55,0.25)";
+        e.currentTarget.style.boxShadow = "0 2px 6px -2px rgba(128,0,0,0.07)";
+        e.currentTarget.style.borderColor = "rgba(212,175,55,0.28)";
       }}
     >
-      <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mb-1.5 transition-transform duration-200 group-hover:scale-110">
+      {/* Logo */}
+      <div className={`${LOGO_SIZE} flex items-center justify-center shrink-0`}>
         {!imgError ? (
           <img
             src={item.logo}
-            alt={item.name}
+            alt=""
+            aria-hidden="true"
             className="w-full h-full object-contain"
-            width="40"
-            height="40"
+            width="44"
+            height="44"
             onError={() => setImgError(true)}
           />
         ) : (
-          // Text fallback if logo missing
           <div
             className="w-full h-full rounded-lg flex items-center justify-center text-xs font-bold"
             style={{
@@ -50,9 +63,11 @@ function SkillLogo({ item }) {
           </div>
         )}
       </div>
+
+      {/* Label */}
       <span
-        className="text-[11px] sm:text-xs font-semibold text-center leading-tight line-clamp-2 px-1"
-        style={{ color: "var(--color-charcoal-800)" }}
+        className="text-[10px] sm:text-[11px] font-semibold text-center leading-tight line-clamp-2 w-full px-0.5"
+        style={{ color: "var(--color-charcoal-700)" }}
       >
         {item.name}
       </span>
@@ -62,11 +77,11 @@ function SkillLogo({ item }) {
 
 function GroupSection({ group }) {
   return (
-    <div className="mb-10">
-      {/* Group label */}
-      <div className="flex items-center gap-3 mb-5">
+    <div className="mb-8">
+      {/* Group label + garis */}
+      <div className="flex items-center gap-3 mb-4">
         <span
-          className="text-xs font-bold uppercase tracking-[0.18em]"
+          className="text-[11px] font-bold uppercase tracking-[0.18em] shrink-0"
           style={{ color: "var(--color-maroon-700)" }}
         >
           {group.label}
@@ -78,7 +93,8 @@ function GroupSection({ group }) {
         />
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-4">
+      {/* Flex-wrap rata tengah — kartu lebar tetap */}
+      <div className="flex flex-wrap justify-start gap-3">
         {group.items.map((item) => (
           <SkillLogo key={item.name} item={item} />
         ))}
@@ -101,10 +117,10 @@ export default function TechStackGrid() {
       ))}
 
       {/* Soft skills */}
-      <div className="mt-2 mb-8">
-        <div className="flex items-center gap-3 mb-5">
+      <div className="mt-2 mb-6">
+        <div className="flex items-center gap-3 mb-4">
           <span
-            className="text-xs font-bold uppercase tracking-[0.18em]"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] shrink-0"
             style={{ color: "var(--color-maroon-700)" }}
           >
             Soft Skills
@@ -119,7 +135,7 @@ export default function TechStackGrid() {
           {softSkills.map((skill) => (
             <span
               key={skill}
-              className="px-4 py-2 rounded-full text-sm font-semibold"
+              className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold"
               style={{
                 background: "var(--color-cream-50)",
                 border: "1px solid rgba(128,0,0,0.18)",
@@ -134,9 +150,9 @@ export default function TechStackGrid() {
 
       {/* Languages */}
       <div>
-        <div className="flex items-center gap-3 mb-5">
+        <div className="flex items-center gap-3 mb-4">
           <span
-            className="text-xs font-bold uppercase tracking-[0.18em]"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] shrink-0"
             style={{ color: "var(--color-maroon-700)" }}
           >
             Bahasa
@@ -147,24 +163,24 @@ export default function TechStackGrid() {
             aria-hidden="true"
           />
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2.5">
           {languages.map((lang) => (
             <div
               key={lang.name}
-              className="flex items-center gap-2 px-4 py-2 rounded-full"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full"
               style={{
                 background: "var(--color-cream-50)",
                 border: "1px solid rgba(212,175,55,0.35)",
               }}
             >
               <span
-                className="font-semibold text-sm"
+                className="font-semibold text-xs sm:text-sm"
                 style={{ color: "var(--color-charcoal-800)" }}
               >
                 {lang.name}
               </span>
               <span
-                className="text-xs font-bold px-2 py-0.5 rounded-full"
+                className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                 style={{
                   background: "var(--color-maroon-700)",
                   color: "var(--color-cream-100)",
