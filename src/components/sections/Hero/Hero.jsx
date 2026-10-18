@@ -22,13 +22,7 @@ const Lanyard = lazy(() =>
 // Skill pills — sesuai LinkedIn resmi
 const SKILLS = [
   "Administrative & Digital Archiving",
-  "Data Management",
-  "Teknik Informatika",
-  "Sistem Informasi",
-  "Microsoft Office",
-  "Google Workspace",
-  "Dokumentasi & Administrasi",
-  "Migrasi Data",
+  "Data Management"
 ];
 
 // Fallback jika WebGL tidak tersedia / mobile
@@ -44,9 +38,9 @@ function LanyardFallback() {
         <img
           src={profile.photoLanyard || profile.photoFormal || profile.photo}
           alt="Rahmi Atika"
-          width={240}
-          height={320}
-          className="w-52 sm:w-60 rounded-[var(--radius-card)] object-cover shadow-soft border-2 border-maroon-700/40"
+          width={180}
+          height={260}
+          className="w-44 sm:w-48 rounded-[var(--radius-card)] object-cover shadow-soft border-2 border-maroon-700/40"
           loading="eager"
         />
         {/* Name overlay bottom */}
@@ -193,10 +187,10 @@ export default function Hero() {
               strapImage={strapDataUrl || undefined}
               cardColor="#6B0000"
               strapColor="#3A0000"
-              strapWidth={0.50}
-              strapLength={0.28}
+              strapWidth={0.42}
+              strapLength={0.30}
               finish="glossy"
-              size={0.58}
+              size={0.46}
               anchor={0.72}
               gravity={0.95}
               breeze={0.2}
