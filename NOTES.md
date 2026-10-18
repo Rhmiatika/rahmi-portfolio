@@ -45,6 +45,7 @@
 | 2026-10-18 | Tech Stack: Logo CapCut diperbarui ke vektor resmi ByteDance (squircle hitam + ikon pita) |
 | 2026-10-18 | Layout: Margin/spacing antara About dan Portofolio diperkecil agar lebih proporsional |
 | 2026-10-18 | Mobile UX: Card Pengalaman (NFSCC) diperbaiki agar pill periode (2024–2025) & lokasi (Depok) konsisten berada di sisi kanan pada mobile |
+| 2026-10-18 | Responsive Split: Pemisahan tegas styling FHD (≥1400px: 60:40, font besar 6.25rem+, lanyard 0.46, padding murni 32px) dan Laptop HD (1024–1399px: 65:35, font 3.65rem, lanyard 0.41, padding 60px skala 15 via `.portfolio-container`) |
 
 ---
 

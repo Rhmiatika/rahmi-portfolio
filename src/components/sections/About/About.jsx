@@ -490,7 +490,7 @@ export default function About() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+      <div className="portfolio-container relative z-10">
 
         {/* ── Section Heading ── */}
         <Reveal>

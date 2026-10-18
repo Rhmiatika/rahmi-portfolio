@@ -71,7 +71,7 @@ export default function Showcase() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+      <div className="portfolio-container relative z-10">
         {/* Section Heading — matches About */}
         <SectionHeading
           eyebrow="Portofolio"

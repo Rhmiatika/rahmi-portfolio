@@ -57,3 +57,36 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Portfolio Responsive Container (HD vs FHD) ── */
+.portfolio-container {
+  width: 100%;
+  max-width: 80rem; /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem; /* 20px (mobile px-5) */
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .portfolio-container {
+    padding-left: 2rem; /* 32px (sm:px-8) */
+    padding-right: 2rem;
+  }
+}
+
+/* Laptop HD (1024px s/d 1399px): Padding diperbesar jadi lebih rapi & berjarak (skala 15 vs 10) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .portfolio-container {
+    padding-left: 3.75rem; /* 60px padding */
+    padding-right: 3.75rem;
+  }
+}
+
+/* Full HD & Desktop (>= 1400px): Murni semula kala (32px / 2rem / px-8) */
+@media (min-width: 1400px) {
+  .portfolio-container {
+    padding-left: 2rem; /* 32px murni */
+    padding-right: 2rem;
+  }
+}
