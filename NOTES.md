@@ -44,23 +44,46 @@
 
 | Aset | Path | Rencana Pemakaian |
 |---|---|---|
-| `rahmi-formal.webp` | `/assets/images/rahmi-formal.webp` | Foto formal studio (lanyard card atau About card) |
-| `rahmi-lanyard.webp` | `/assets/images/rahmi-lanyard.webp` | Foto potensial untuk tekstur kartu Lanyard |
-| `kegiatan-01..06.webp` | `/assets/kegiatan/` | **Opsional** Dome Gallery di About §2.3 — belum aktif; tunggu keputusan Rahmi |
+| `rahmi-formal.webp` | `/assets/images/rahmi-formal.webp` | **About / Profile Card** (lebih profesional dari kasual) |
+| `rahmi-lanyard.webp` | `/assets/images/rahmi-lanyard.webp` | Alternatif tekstur kartu Lanyard — Phase 3 |
+| `kegiatan-01..06.webp` | `/assets/kegiatan/` | **HOLD** — lihat kebijakan di bawah |
 | Gallery NFSCC HUB (9 gambar) | `/assets/projects/nfscc-hub/gallery-*.webp` | Galeri halaman detail `/projects/nfscc-hub` |
 | Gallery ATK Lamy (1 gambar) | `/assets/projects/atk-lamy/gallery-02.webp` | Galeri halaman detail `/projects/atk-lamy` |
 | Cover SDIT Ar-Rohim | `/assets/projects/sdit-ar-rohim/cover.webp` | Cover kartu proyek |
 
-**Foto yang memuat orang lain di latar:** `kegiatan-01` sampai `kegiatan-06` — **perlu konfirmasi Rahmi** sebelum ditampilkan di halaman publik.
+---
 
-**Usulan pemakaian foto profil (keputusan Rahmi):**
+## Kebijakan Education Placeholder (WAJIB DIBACA Phase 3)
 
-| Foto | Format | Usulan |
-|---|---|---|
-| `rahmi.webp` | Santai/kasual, 55 KB | **Hero** — foto utama (sudah dipilih Rahmi) |
-| `rahmi-formal.webp` | Formal studio, 29 KB | **Profile Card** di About — tampilan lebih profesional |
-| `rahmi-lanyard.webp` | Crop 600×600, 16 KB | Alternatif tekstur kartu Lanyard |
-| `og-image.jpg` | 1200×630 | Open Graph / share preview — sudah set di `<meta>` |
+> **`stt-nf.webp` dan `smk.webp` di `/assets/education/` adalah PLACEHOLDER gradient — BUKAN foto asli.**
+
+Aturan untuk Phase 3:
+- **Education Timeline:** tampilkan tanpa `<img>` jika foto asli belum ada. Gunakan ikon institusi atau warna latar saja.
+- **Dome Gallery STT-NF:** JANGAN diaktifkan dulu. Tunggu konfirmasi Rahmi soal foto kegiatan (lihat seksi kegiatan di bawah).
+- **Saat foto asli tersedia:** Rahmi taruh di `asset/` → AI proses → timpa file di `/assets/education/` → hapus `_note` placeholder.
+- **`smk.webp`:** hanya placeholder, belum ada foto asli SMK.
+
+---
+
+## Audit Foto Kegiatan (kegiatan-01..06) — HOLD
+
+> **Semua 6 foto memuat orang lain yang teridentifikasi jelas. JANGAN dipakai di Dome Gallery sebelum Rahmi konfirmasi.**
+
+| File | Deskripsi | Orang Lain Terlihat Jelas? | Status |
+|---|---|---|---|
+| `kegiatan-01.webp` | Foto bersama di ruang kelas/aula besar (sepertinya foto grup NFSCC besar) | **YA — puluhan orang** | HOLD |
+| `kegiatan-02.webp` | Anggota NFSCC berseragam di kelas, ada yang menatap kamera | **YA — wajah jelas** | HOLD |
+| `kegiatan-03.webp` | Foto grup besar aula, banyak peserta | **YA — banyak orang** | HOLD |
+| `kegiatan-04.webp` | Rapat NFSCC, beberapa orang dari belakang/samping | **YA — ada wajah terlihat** | HOLD |
+| `kegiatan-05.webp` | Satu orang presentasi di depan layar (orientasi miring) | **YA — satu orang jelas** | HOLD |
+| `kegiatan-06.webp` | Evaluasi/presentasi divisi, beberapa orang berdiri di depan | **YA — wajah jelas** | HOLD |
+
+**Aksi yang dibutuhkan dari Rahmi:**
+- [ ] Konfirmasi apakah foto kegiatan-01 s/d 06 BOLEH dipublikasikan di portofolio
+- [ ] Jika ya semua: Dome Gallery aktif dengan ke-6 foto tersebut
+- [ ] Jika tidak semua: pilih mana yang boleh, sisanya diganti foto lain atau Dome Gallery dinonaktifkan
+
+---
 
 ---
 
