@@ -479,7 +479,7 @@ export default function About() {
     <section
       id="about"
       className="relative pt-6 sm:pt-10 pb-20 sm:pb-28 overflow-hidden"
-      aria-label="Tentang Saya — Rahmi Atika"
+      aria-label="Tentang Aku — Rahmi Atika"
     >
       {/* Background decoration */}
       <div
@@ -495,8 +495,8 @@ export default function About() {
         {/* ── Section Heading ── */}
         <Reveal>
           <SectionHeading
-            eyebrow="Siapa Saya"
-            title="Tentang Saya"
+            eyebrow="Siapa Aku"
+            title="Tentang Aku"
           />
         </Reveal>
 

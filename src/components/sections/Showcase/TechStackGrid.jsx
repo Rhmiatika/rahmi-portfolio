@@ -10,45 +10,48 @@ function SkillLogo({ item }) {
 
   return (
     <div
-      className="group flex flex-col items-center gap-2 p-4 rounded-2xl cursor-default transition-all duration-200"
+      className="group aspect-square flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-xl cursor-default transition-all duration-200"
       style={{
         background: "var(--color-cream-50)",
         border: "1px solid rgba(212,175,55,0.25)",
+        boxShadow: "0 2px 8px -2px rgba(128,0,0,0.06)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-4px) scale(1.06)";
-        e.currentTarget.style.boxShadow = "0 16px 32px -8px rgba(128,0,0,0.18)";
+        e.currentTarget.style.transform = "translateY(-3px)";
+        e.currentTarget.style.boxShadow = "0 12px 24px -6px rgba(128,0,0,0.16)";
         e.currentTarget.style.borderColor = "rgba(212,175,55,0.6)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "";
-        e.currentTarget.style.boxShadow = "";
+        e.currentTarget.style.boxShadow = "0 2px 8px -2px rgba(128,0,0,0.06)";
         e.currentTarget.style.borderColor = "rgba(212,175,55,0.25)";
       }}
     >
-      {!imgError ? (
-        <img
-          src={item.logo}
-          alt={item.name}
-          className="w-10 h-10 object-contain"
-          width="40"
-          height="40"
-          onError={() => setImgError(true)}
-        />
-      ) : (
-        // Text fallback if logo missing
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold"
-          style={{
-            background: "var(--color-maroon-700)",
-            color: "var(--color-cream-100)",
-          }}
-        >
-          {item.name.slice(0, 2).toUpperCase()}
-        </div>
-      )}
+      <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mb-1.5 transition-transform duration-200 group-hover:scale-110">
+        {!imgError ? (
+          <img
+            src={item.logo}
+            alt={item.name}
+            className="w-full h-full object-contain"
+            width="40"
+            height="40"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          // Text fallback if logo missing
+          <div
+            className="w-full h-full rounded-lg flex items-center justify-center text-xs font-bold"
+            style={{
+              background: "var(--color-maroon-700)",
+              color: "var(--color-cream-100)",
+            }}
+          >
+            {item.name.slice(0, 2).toUpperCase()}
+          </div>
+        )}
+      </div>
       <span
-        className="text-xs font-semibold text-center leading-tight"
+        className="text-[11px] sm:text-xs font-semibold text-center leading-tight line-clamp-2 px-1"
         style={{ color: "var(--color-charcoal-800)" }}
       >
         {item.name}
@@ -75,7 +78,7 @@ function GroupSection({ group }) {
         />
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-4">
         {group.items.map((item) => (
           <SkillLogo key={item.name} item={item} />
         ))}

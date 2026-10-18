@@ -71,33 +71,26 @@ export default function CertificateModal({ certId, onClose, onNavigate }) {
   return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[90] flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-[90] flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-label={cert.title}
-      style={{ background: "rgba(74,0,0,0.65)", backdropFilter: "blur(6px)" }}
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
       <div
         className="relative w-full max-w-3xl rounded-2xl overflow-hidden flex flex-col max-h-[90dvh]"
         style={{
           background: "var(--color-cream-50)",
-          boxShadow: "0 32px 80px -16px rgba(74,0,0,0.45)",
+          boxShadow: "0 24px 64px -12px rgba(0,0,0,0.4)",
           animation: "modalIn 0.25s cubic-bezier(0.22,1,0.36,1) both",
         }}
       >
-        {/* Close button */}
+        {/* Close button — white button with red hover */}
         <button
           ref={closeBtnRef}
           onClick={onClose}
           aria-label="Tutup modal"
-          className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-maroon-700"
-          style={{
-            background: "rgba(128,0,0,0.1)",
-            color: "var(--color-maroon-700)",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(128,0,0,0.18)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(128,0,0,0.1)")}
+          className="absolute top-3 right-3 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-charcoal-800 shadow-md flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-200 cursor-pointer focus:outline-none"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />

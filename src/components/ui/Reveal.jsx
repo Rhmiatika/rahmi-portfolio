@@ -16,7 +16,7 @@ export default function Reveal({
   className = "",
   direction = "up",
   delay = 0,
-  threshold = 0.15,
+  threshold = 0.05,
 }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -28,7 +28,7 @@ export default function Reveal({
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
+      { threshold, rootMargin: "60px" }
     );
     obs.observe(el);
     return () => obs.disconnect();

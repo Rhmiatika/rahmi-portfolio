@@ -1,5 +1,5 @@
 // src/components/sections/Showcase/ProjectsGrid.jsx
-// Grid 5 proyek — klik → /projects/:slug
+// Grid 5 proyek — klik → /projects/:slug (Compact layout)
 
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
@@ -7,11 +7,11 @@ import { projects } from "@/data/projects";
 function TagChip({ tag }) {
   return (
     <span
-      className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full"
+      className="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full"
       style={{
-        background: "rgba(128,0,0,0.08)",
+        background: "rgba(128,0,0,0.06)",
         color: "var(--color-maroon-700)",
-        border: "1px solid rgba(128,0,0,0.15)",
+        border: "1px solid rgba(128,0,0,0.12)",
       }}
     >
       {tag}
@@ -27,24 +27,25 @@ function ProjectCard({ project, index }) {
     <Link
       to={`/projects/${project.slug}`}
       id={`project-card-${project.slug}`}
-      className="group block rounded-2xl overflow-hidden focus-visible:outline-2 focus-visible:outline-maroon-700"
+      className="group block rounded-xl overflow-hidden focus-visible:outline-2 focus-visible:outline-maroon-700 transition-all duration-200"
       style={{
         background: "var(--color-cream-50)",
-        border: "1px solid rgba(212,175,55,0.3)",
-        boxShadow: "0 8px 24px -8px rgba(128,0,0,0.12)",
-        transition: "transform 0.22s cubic-bezier(0.22,1,0.36,1), box-shadow 0.22s cubic-bezier(0.22,1,0.36,1)",
-        animationDelay: `${index * 60}ms`,
+        border: "1px solid rgba(212,175,55,0.25)",
+        boxShadow: "0 4px 16px -4px rgba(128,0,0,0.08)",
+        animationDelay: `${index * 50}ms`,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-4px)";
-        e.currentTarget.style.boxShadow = "0 20px 40px -12px rgba(128,0,0,0.22)";
+        e.currentTarget.style.transform = "translateY(-3px)";
+        e.currentTarget.style.boxShadow = "0 12px 28px -8px rgba(128,0,0,0.18)";
+        e.currentTarget.style.borderColor = "rgba(212,175,55,0.55)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "";
-        e.currentTarget.style.boxShadow = "0 8px 24px -8px rgba(128,0,0,0.12)";
+        e.currentTarget.style.boxShadow = "0 4px 16px -4px rgba(128,0,0,0.08)";
+        e.currentTarget.style.borderColor = "rgba(212,175,55,0.25)";
       }}
     >
-      {/* Cover image */}
+      {/* Cover image (compact aspect ratio) */}
       <div
         className="relative w-full overflow-hidden"
         style={{ aspectRatio: "16/9", background: "var(--color-cream-200)" }}
@@ -61,7 +62,7 @@ function ProjectCard({ project, index }) {
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <span
-              className="font-display font-bold text-5xl select-none"
+              className="font-bold text-4xl select-none"
               style={{ color: "rgba(128,0,0,0.08)" }}
               aria-hidden="true"
             >
@@ -71,7 +72,7 @@ function ProjectCard({ project, index }) {
         )}
         {/* Year badge */}
         <span
-          className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full"
+          className="absolute top-2.5 right-2.5 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full"
           style={{
             background: "rgba(128,0,0,0.85)",
             color: "var(--color-cream-100)",
@@ -82,28 +83,35 @@ function ProjectCard({ project, index }) {
         </span>
       </div>
 
-      {/* Content */}
-      <div className="p-5">
+      {/* Content — compact padding */}
+      <div className="p-3.5 sm:p-4">
         <h3
-          className="font-display font-bold text-base leading-snug mb-2 group-hover:text-maroon-700 transition-colors duration-200"
+          className="font-bold text-sm sm:text-base leading-snug mb-1 group-hover:text-maroon-700 transition-colors duration-200 line-clamp-1"
           style={{ color: "var(--color-charcoal-800)" }}
         >
           {project.title}
         </h3>
         <p
-          className="text-sm leading-relaxed mb-4 line-clamp-2"
-          style={{ color: "var(--color-charcoal-500)" }}
+          className="text-xs text-charcoal-500 leading-relaxed mb-2.5 line-clamp-2"
         >
           {project.summary}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1 mb-2">
           {project.tags.map((tag) => (
             <TagChip key={tag} tag={tag} />
           ))}
         </div>
 
-        {/* CTA arrow */}
-        <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold" style={{ color: "var(--color-maroon-700)" }}>
+        {/* CTA link */}
+        <div
+          className="mt-2.5 pt-2 flex items-center gap-1 text-[11px] sm:text-xs font-semibold"
+          style={{
+            color: "var(--color-maroon-700)",
+            borderTop: "1px solid rgba(212,175,55,0.15)",
+          }}
+        >
           Lihat detail
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +139,7 @@ export default function ProjectsGrid() {
       aria-labelledby="tab-projects"
       tabIndex={0}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {projects.map((project, i) => (
           <ProjectCard key={project.slug} project={project} index={i} />
         ))}
@@ -139,3 +147,4 @@ export default function ProjectsGrid() {
     </div>
   );
 }
+

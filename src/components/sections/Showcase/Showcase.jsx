@@ -3,13 +3,15 @@
 // Tab state managed via URL (?tab=projects|certificates|tech-stack) + useSearchParams
 
 import { useSearchParams } from "react-router-dom";
-import { Suspense, lazy, useRef, useEffect, useState } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import PillTabs from "./PillTabs";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
 
 // Lazy-load tab panels for code splitting
-const ProjectsGrid    = lazy(() => import("./ProjectsGrid"));
+const ProjectsGrid     = lazy(() => import("./ProjectsGrid"));
 const CertificatesGrid = lazy(() => import("./CertificatesGrid"));
-const TechStackGrid   = lazy(() => import("./TechStackGrid"));
+const TechStackGrid    = lazy(() => import("./TechStackGrid"));
 
 const VALID_TABS = ["projects", "certificates", "tech-stack"];
 
@@ -49,62 +51,35 @@ export default function Showcase() {
   const [searchParams, setSearchParams] = useSearchParams();
   const rawTab = searchParams.get("tab");
   const activeTab = VALID_TABS.includes(rawTab) ? rawTab : "projects";
-  const sectionRef = useRef(null);
 
   const handleTabChange = (id) => {
     setSearchParams({ tab: id }, { replace: true, preventScrollReset: true });
   };
 
-  // Scroll reveal using IntersectionObserver
-  const [revealed, setRevealed] = useState(false);
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setRevealed(true); obs.disconnect(); } },
-      { threshold: 0.05 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <section
       id="showcase"
-      ref={sectionRef}
-      className="py-20 md:py-28 px-5 sm:px-8"
-      style={{
-        background: "var(--color-cream-200)",
-        opacity: revealed ? 1 : 0,
-        transform: revealed ? "translateY(0)" : "translateY(24px)",
-        transition: "opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)",
-      }}
+      className="relative pt-6 sm:pt-10 pb-20 sm:pb-28 overflow-hidden"
+      aria-label="Portofolio — Rahmi Atika"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="mb-12">
-          <p
-            className="text-xs font-bold uppercase tracking-[0.2em] mb-3"
-            style={{ color: "var(--color-maroon-700)" }}
-          >
-            Portfolio
-          </p>
-          <h2
-            className="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-4"
-            style={{ color: "var(--color-charcoal-800)" }}
-          >
-            Karya & Keahlian
-          </h2>
-          {/* Gold accent line */}
-          <div
-            className="h-0.5 rounded-full mb-8"
-            style={{ width: "3rem", background: "var(--color-gold-500)" }}
-            aria-hidden="true"
-          />
-        </div>
+      {/* Background decoration — matches About section ambient flow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 90% 40%, rgba(180,20,20,0.04) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 10% 60%, rgba(212,175,55,0.05) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+        {/* Section Heading — matches About */}
+        <SectionHeading
+          eyebrow="Portofolio"
+          title="Karya & Keahlian"
+        />
 
         {/* PillTabs navigation */}
-        <div className="flex justify-center sm:justify-start mb-10">
+        <div className="flex justify-start mb-8 sm:mb-10">
           <PillTabs activeTab={activeTab} onTabChange={handleTabChange} />
         </div>
 
@@ -120,3 +95,4 @@ export default function Showcase() {
     </section>
   );
 }
+

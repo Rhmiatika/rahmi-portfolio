@@ -167,7 +167,7 @@ export default function Hero() {
                   onClick={scrollToContact}
                   aria-label="Scroll ke seksi kontak"
                 >
-                  Hubungi Saya
+                  Hubungi Aku
                 </FuseButton>
               </div>
             </Reveal>

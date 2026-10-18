@@ -21,7 +21,7 @@ function ContactStub({ show }) {
         </h2>
         <p className="text-cream-100/80 max-w-lg mx-auto mb-8 leading-relaxed">
           Sedang mencari tim administrasi, pengarsipan digital, atau data
-          management yang teliti, komunikatif, dan cepat belajar? Saya siap berkontribusi.
+          management yang teliti, komunikatif, dan cepat belajar? Aku siap berkontribusi.
         </p>
         <a
           href="https://wa.me/6281386426793"

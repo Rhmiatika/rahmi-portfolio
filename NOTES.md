@@ -131,6 +131,19 @@ Aturan untuk Phase 3:
 
 ---
 
+## Revisi Pemilik — Sesi Showcase & Standardisasi (2026-10-18)
+
+| Item | Revisi & Penyesuaian |
+|---|---|
+| **Keselarasan Tema & Judul Showcase** | Mengganti judul kustom Showcase dengan komponen standar `<SectionHeading eyebrow="Portofolio" title="Karya & Keahlian" />` agar font dan warna marun/gold identik 100% dengan section About & Hero; menghapus background kontras berlebih dan menyelaraskan gradien krem halus. |
+| **Kartu Proyek Lebih Kompak** | Padding kartu proyek diperkecil (`p-3.5 sm:p-4`), ukuran tipografi dan tag disesuaikan agar lebih ringkas, rasio thumbnail 16:10, dan gap grid diperketat (`gap-4 sm:gap-5`). |
+| **Backdrop Modal Sertifikat & Lightbox** | Menghapus semburat merah pada backdrop popup modal, diganti dengan blur netral gelap yang elegan (`bg-black/75 backdrop-blur-md`); tombol silang (✕) diubah menjadi putih bersih dengan hover merah menyala (`hover:bg-red-600 hover:text-white`). |
+| **Tech Stack Square Cards** | Kartu keahlian (`SkillLogo`) diubah menjadi rasio kotak 1:1 (`aspect-square`) dengan tata letak ikon dan nama skill yang rapi terpusat di tengah kartu. |
+| **Konsistensi Kata Ganti ("Aku")** | Mengubah seluruh kata ganti "saya" menjadi "aku" di seluruh komponen publik portofolio: "Tentang Saya" → "Tentang Aku", "Siapa Saya" → "Siapa Aku", "Hubungi Saya" → "Hubungi Aku", "Peran Saya" → "Peran Aku", dan "Saya siap berkontribusi" → "Aku siap berkontribusi". |
+| **Logo Tech Stack** | Placeholder logo SVG standar siap digunakan; penggantian logo definitif akan dilakukan langsung oleh pemilik. |
+
+---
+
 ---
 
 ## Phase 3.1/3.2 — Deviasi & Catatan Implementasi (2026-10-18)

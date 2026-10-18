@@ -29,8 +29,7 @@ function GalleryLightbox({ images, startIndex, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[90] flex items-center justify-center p-4"
-      style={{ background: "rgba(74,0,0,0.75)", backdropFilter: "blur(8px)" }}
+      className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div
@@ -70,11 +69,10 @@ function GalleryLightbox({ images, startIndex, onClose }) {
           </button>
         </div>
 
-        {/* Close */}
+        {/* Close — white button with red hover */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center"
-          style={{ background: "rgba(255,255,255,0.15)", color: "white" }}
+          className="absolute top-3 right-3 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-charcoal-800 shadow-md flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-200 cursor-pointer focus:outline-none"
           aria-label="Tutup lightbox"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
@@ -389,7 +387,7 @@ export default function ProjectDetail() {
                     className="font-display font-bold text-xl mb-3"
                     style={{ color: "var(--color-charcoal-800)" }}
                   >
-                    Peran Saya
+                    Peran Aku
                   </h2>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--color-charcoal-500)" }}>
                     {project.role}
