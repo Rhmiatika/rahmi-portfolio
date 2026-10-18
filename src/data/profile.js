@@ -24,7 +24,7 @@ export const profile = {
     email: "rahmiatika231@gmail.com",
     whatsapp: "https://wa.me/6281386426793",
     linkedin: "https://www.linkedin.com/in/rahmi-atika/",
-    cv: "/assets/cv/CV_Rahmi_Atika.pdf",
+    cv: "/assets/cv/CV_Rahmi_Atika_adm.pdf",
   },
   photo: "/assets/images/rahmi.webp",
   photoFormal: "/assets/images/rahmi-formal.webp",   // foto studio putih — untuk About card
