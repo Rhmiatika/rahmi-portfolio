@@ -153,3 +153,65 @@ export function useLanyardCard(photoUrl) {
   }, [photoUrl]);
   return dataUrl;
 }
+
+// ── Strap canvas: nama "RAHMI ATIKA" berulang di sepanjang tali ──────────
+// Lanyard paintStrap: gambar dirotate 90deg saat digambar di strap
+// Sehingga image harus landscape (wide x narrow) agar teks horizontal = vertikal di strap
+function buildStrapCanvas() {
+  const W = 512; // "along" direction — panjang tali
+  const H = 192; // "across" direction — lebar tali
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return null;
+
+  // Background maroon gradient
+  const bg = ctx.createLinearGradient(0, 0, H, 0);
+  bg.addColorStop(0, "#2A0000");
+  bg.addColorStop(0.5, "#4A0000");
+  bg.addColorStop(1, "#2A0000");
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Edge stripes gold
+  ctx.fillStyle = "rgba(201,168,76,0.5)";
+  ctx.fillRect(0, 8, W, 2);
+  ctx.fillRect(0, H - 10, W, 2);
+
+  // Diagonal pattern lines
+  ctx.save();
+  ctx.globalAlpha = 0.06;
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 1;
+  for (let i = 0; i < W + H; i += 16) {
+    ctx.beginPath();
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i - H, H);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // Text "RAHMI ATIKA" berulang
+  ctx.fillStyle = "rgba(245,237,214,0.55)";
+  ctx.font = "bold 18px Arial, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  const label = "RAHMI ATIKA";
+  const spacing = 140;
+  const count = Math.ceil(W / spacing) + 1;
+  for (let i = 0; i < count; i++) {
+    ctx.fillText(label, i * spacing + 30, H / 2);
+  }
+
+  return canvas;
+}
+
+export function useLanyardStrap() {
+  const [dataUrl, setDataUrl] = useState(null);
+  useEffect(() => {
+    const canvas = buildStrapCanvas();
+    if (canvas) setDataUrl(canvas.toDataURL("image/webp", 0.85));
+  }, []);
+  return dataUrl;
+}
