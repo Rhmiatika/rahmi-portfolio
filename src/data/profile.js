@@ -81,8 +81,15 @@ export const profile = {
       period: "2024–2025",
       location: "Depok",
       points: [
-        "Inisiator utama komunikasi eksternal dan kolaborasi strategis lintas organisasi kampus, institusi pendidikan, hingga industri (BNCC, Tax Center UINSSC, LINUXENIC Corp, dan TILC SV UGM) yang berhasil memperluas jangkauan organisasi serta meningkatkan engagement rate dan followers media sosial NFSCC secara signifikan.",
-        "Mengelola alur komunikasi publik melalui email resmi dan media sosial (korespondensi undangan antar UKM, penyusunan materi Q&A, hingga penulisan konten publikasi), serta berhasil mengawal keberhasilan operasional 8 program kerja nasional (4 workshop & 4 seminar cybersecurity) dan 1 kompetisi Capture The Flag (CTF) ASTRO.",
+        "Menginisiasi kolaborasi eksternal lintas kampus & industri (BNCC, LINUXENIC, TILC UGM), meningkatkan eksposur serta engagement organisasi.",
+        "Mengelola komunikasi publik & korespondensi resmi, sukses mengawal 8 program kerja nasional (cybersecurity) dan 1 kompetisi CTF ASTRO.",
+      ],
+      gallery: [
+        "/assets/kegiatan/nfscc-01.webp",
+        "/assets/kegiatan/nfscc-02.webp",
+        "/assets/kegiatan/nfscc-03.webp",
+        "/assets/kegiatan/nfscc-04.webp",
+        "/assets/kegiatan/nfscc-05.webp",
       ],
     },
     {
@@ -92,8 +99,8 @@ export const profile = {
       period: "Feb–Apr 2021",
       location: "Jakarta Pusat",
       points: [
-        "Mengelola dan melakukan entri 100–200 data pelanggan per hari secara presisi menggunakan template form terstandarisasi, yang berhasil memangkas waktu pemrosesan berkas dan mereduksi beban kerja operasional staf tetap.",
-        "Mengeksekusi proses migrasi data dari sistem lama ke sistem baru secara cermat dengan tingkat akurasi 100% tanpa ada data yang hilang atau rusak, serta berkoordinasi aktif memastikan seluruh data pelanggan tersimpan rapi dan terstruktur.",
+        "Mengelola entri 100–200 data pelanggan per hari secara presisi dengan form standar, memangkas waktu pemrosesan berkas operasional.",
+        "Mengeksekusi migrasi data ke sistem baru dengan akurasi 100% tanpa kehilangan data, serta menjaga keteraturan arsip pelanggan.",
       ],
     },
   ],

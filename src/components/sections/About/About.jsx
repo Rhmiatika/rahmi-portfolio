@@ -1,6 +1,6 @@
 // src/components/sections/About/About.jsx
 // PRD.md §2.3 — About Section
-// Komponen: SectionHeading, BlurText, CountUp, ProfileCard (foto), EducationTimeline, ExperienceCards
+// Komponen: SectionHeading, BlurText, CountUp, ProfileCard (foto), EducationTimeline, ExperienceCards, LightboxModal
 // Data: profile.js, certificates.json, projects.js
 // TIDAK memodifikasi Hero/Splash/Navbar
 
@@ -113,19 +113,83 @@ function StatCard({ stat }) {
   );
 }
 
+// ─── Unified LightboxModal ────────────────────────────────────────────────────
+function LightboxModal({ modal, onClose, onPrev, onNext }) {
+  if (!modal) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-maroon-950/85 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        className="relative max-w-2xl w-full bg-cream-50 rounded-2xl overflow-hidden border border-gold-500/30 shadow-2xl p-3 sm:p-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Tombol Tutup */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-maroon-900/80 text-cream-100 flex items-center justify-center hover:bg-maroon-800 transition-colors shadow focus:outline-none cursor-pointer"
+          aria-label="Tutup preview foto"
+        >
+          ✕
+        </button>
+
+        {/* Gambar Utama */}
+        <div className="relative flex items-center justify-center bg-maroon-950/10 rounded-xl overflow-hidden min-h-[220px]">
+          <img
+            src={modal.list[modal.index]}
+            alt={`${modal.title} ${modal.index + 1}`}
+            className="w-full h-auto max-h-[72vh] object-contain rounded-xl shadow"
+          />
+
+          {/* Tombol Navigasi Kiri / Kanan jika foto > 1 */}
+          {modal.list.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={onPrev}
+                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-maroon-900/75 text-cream-100 flex items-center justify-center hover:bg-maroon-800 transition-all shadow cursor-pointer focus:outline-none text-lg font-bold"
+                aria-label="Foto sebelumnya"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={onNext}
+                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-maroon-900/75 text-cream-100 flex items-center justify-center hover:bg-maroon-800 transition-all shadow cursor-pointer focus:outline-none text-lg font-bold"
+                aria-label="Foto berikutnya"
+              >
+                ›
+              </button>
+            </>
+          )}
+        </div>
+
+        {/* Footer info & pagination */}
+        <div className="pt-3 pb-1 flex items-center justify-between text-xs px-1">
+          <div>
+            <p className="font-bold text-maroon-700 sm:text-sm">{modal.title}</p>
+            {modal.subtitle && (
+              <p className="text-charcoal-500 text-[11px] sm:text-xs mt-0.5">{modal.subtitle}</p>
+            )}
+          </div>
+          {modal.list.length > 1 && (
+            <span className="text-[11px] font-bold text-gold-600 bg-gold-500/10 px-2.5 py-1 rounded-full border border-gold-500/25 whitespace-nowrap">
+              {modal.index + 1} / {modal.list.length}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── EducationTimeline ────────────────────────────────────────────────────────
-function EducationTimeline() {
-  const [activePhoto, setActivePhoto] = useState(null);
-
-  useEffect(() => {
-    if (!activePhoto) return;
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setActivePhoto(null);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activePhoto]);
-
+function EducationTimeline({ onOpenGallery }) {
   return (
     <div className="relative">
       {/* Garis timeline vertikal */}
@@ -188,28 +252,40 @@ function EducationTimeline() {
                 {/* Dokumentasi Wisuda & Kampus Asli */}
                 {edu.gallery?.length > 0 && (
                   <div className="mt-5 pt-4 border-t border-maroon-700/10">
-                    <p className="text-xs font-bold text-maroon-700 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-                      <svg
-                        className="w-3.5 h-3.5 text-gold-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      Dokumentasi Kelulusan
-                    </p>
+                    <div className="flex items-center justify-between mb-2.5">
+                      <p className="text-xs font-bold text-maroon-700 uppercase tracking-wider flex items-center gap-1.5">
+                        <svg
+                          className="w-3.5 h-3.5 text-gold-500"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                        Dokumentasi Kelulusan
+                      </p>
+                      <span className="text-[11px] font-medium text-charcoal-400">
+                        {edu.gallery.length} Foto
+                      </span>
+                    </div>
                     <div className="grid grid-cols-3 gap-2 sm:gap-3">
                       {edu.gallery.map((photoSrc, idx) => (
                         <button
                           key={idx}
                           type="button"
-                          onClick={() => setActivePhoto(photoSrc)}
+                          onClick={() =>
+                            onOpenGallery({
+                              list: edu.gallery,
+                              index: idx,
+                              title: `Dokumentasi Wisuda · ${profile.name}`,
+                              subtitle: `${edu.institution} · S1 Teknik Informatika`,
+                            })
+                          }
                           className="group relative rounded-xl overflow-hidden aspect-[3/4] border border-maroon-700/15 bg-cream-100 hover:border-gold-500 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 text-left focus:outline-none focus:ring-2 focus:ring-gold-500 cursor-pointer"
                           title="Klik untuk memperbesar foto wisuda"
                         >
@@ -246,46 +322,12 @@ function EducationTimeline() {
           </Reveal>
         ))}
       </div>
-
-      {/* Lightbox Modal Foto Wisuda */}
-      {activePhoto && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-maroon-950/80 backdrop-blur-sm animate-fade-in"
-          onClick={() => setActivePhoto(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="relative max-w-md w-full bg-cream-50 rounded-2xl overflow-hidden border border-gold-500/30 shadow-2xl p-3"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setActivePhoto(null)}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-maroon-900/80 text-cream-100 flex items-center justify-center hover:bg-maroon-800 transition-colors shadow focus:outline-none cursor-pointer"
-              aria-label="Tutup preview foto"
-            >
-              ✕
-            </button>
-            <img
-              src={activePhoto}
-              alt="Foto Wisuda Rahmi Atika"
-              className="w-full h-auto max-h-[75vh] object-contain rounded-xl mx-auto shadow"
-            />
-            <div className="pt-3 pb-1 text-center">
-              <p className="text-xs font-semibold text-charcoal-700">
-                Dokumentasi Kelulusan S1 Teknik Informatika · STT Terpadu Nurul Fikri
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
 
 // ─── ExperienceCards ──────────────────────────────────────────────────────────
-function ExperienceCards() {
+function ExperienceCards({ onOpenGallery }) {
   return (
     <div className="flex flex-col gap-4">
       {profile.experience.map((exp, i) => (
@@ -309,7 +351,9 @@ function ExperienceCards() {
                 )}
               </div>
             </div>
-            <ul className="space-y-2.5">
+
+            {/* Poin Pekerjaan — Singkat & On Point */}
+            <ul className="space-y-2">
               {exp.points.map((pt, j) => (
                 <li key={j} className="flex items-start gap-2.5 text-sm text-charcoal-700 leading-relaxed text-justify">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-maroon-700/70 flex-shrink-0" />
@@ -317,6 +361,75 @@ function ExperienceCards() {
                 </li>
               ))}
             </ul>
+
+            {/* Dokumentasi Kegiatan (jika tersedia, mis. NFSCC) */}
+            {exp.gallery?.length > 0 && (
+              <div className="mt-4 pt-3.5 border-t border-maroon-700/10">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs font-bold text-maroon-700 uppercase tracking-wider flex items-center gap-1.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-gold-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Dokumentasi Kegiatan
+                  </p>
+                  <span className="text-[11px] font-medium text-charcoal-400">
+                    {exp.gallery.length} Dokumentasi
+                  </span>
+                </div>
+                <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
+                  {exp.gallery.map((photoSrc, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() =>
+                        onOpenGallery({
+                          list: exp.gallery,
+                          index: idx,
+                          title: `Dokumentasi Kegiatan ${exp.org}`,
+                          subtitle: `${exp.role} · ${exp.period}`,
+                        })
+                      }
+                      className="group relative rounded-lg sm:rounded-xl overflow-hidden aspect-[4/3] border border-maroon-700/15 bg-cream-100 hover:border-gold-500 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-0.5 text-left focus:outline-none focus:ring-2 focus:ring-gold-500 cursor-pointer"
+                      title={`Lihat foto kegiatan ${idx + 1}`}
+                    >
+                      <img
+                        src={photoSrc}
+                        alt={`Dokumentasi ${exp.org} ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-maroon-950/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="p-1 rounded-full bg-cream-50/95 text-maroon-800 shadow">
+                          <svg
+                            className="w-3.5 h-3.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </Reveal>
       ))}
@@ -326,6 +439,36 @@ function ExperienceCards() {
 
 // ─── Main About Section ───────────────────────────────────────────────────────
 export default function About() {
+  const [galleryModal, setGalleryModal] = useState(null);
+
+  // Keyboard navigation untuk LightboxModal
+  useEffect(() => {
+    if (!galleryModal) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setGalleryModal(null);
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [galleryModal]);
+
+  const handlePrev = () => {
+    setGalleryModal((prev) => {
+      if (!prev) return null;
+      const nextIdx = (prev.index - 1 + prev.list.length) % prev.list.length;
+      return { ...prev, index: nextIdx };
+    });
+  };
+
+  const handleNext = () => {
+    setGalleryModal((prev) => {
+      if (!prev) return null;
+      const nextIdx = (prev.index + 1) % prev.list.length;
+      return { ...prev, index: nextIdx };
+    });
+  };
+
   return (
     <section
       id="about"
@@ -407,7 +550,7 @@ export default function About() {
                 </h2>
               </div>
             </Reveal>
-            <EducationTimeline />
+            <EducationTimeline onOpenGallery={setGalleryModal} />
           </div>
 
           {/* Pengalaman */}
@@ -422,11 +565,19 @@ export default function About() {
                 </h2>
               </div>
             </Reveal>
-            <ExperienceCards />
+            <ExperienceCards onOpenGallery={setGalleryModal} />
           </div>
         </div>
 
       </div>
+
+      {/* ── Unified Lightbox Modal (Wisuda & Kegiatan) ── */}
+      <LightboxModal
+        modal={galleryModal}
+        onClose={() => setGalleryModal(null)}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
     </section>
   );
 }
