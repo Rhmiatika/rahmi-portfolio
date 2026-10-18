@@ -6,19 +6,19 @@
 
 ## TODO — Perlu Input / Keputusan Rahmi
 
-- [x] **Foto profil:** ✅ `rahmi.webp` (55 KB), `rahmi-2/3.webp`, `og-image.jpg` (1200×630) — selesai Phase 2
-- [x] **CV:** ✅ `public/assets/cv/CV_Rahmi_Atika.pdf` tersalin (186 KB)
-- [x] **Model 3D:** ✅ `rahmi.glb` dikompres Draco → 496 KB (dari 6.1 MB, -92%)
-- [x] **Sertifikat 11/11:** ✅ cert-01..cert-11 + thumbs lengkap — selesai Phase 2 audit
-- [x] **cert-05:** ✅ Kuliah Umum Digital Transformation, 22 Feb 2024, No. 513/Sert/WK-1/STT-NF/II/2024 — gambar bersih
-- [x] **cert-07:** ✅ MySkill Short Class Data Visualization, 24 Apr 2024, No. 142843/EXL/LM/04/2024 — gambar bersih
-- [x] **URL LinkedIn:** ✅ `https://www.linkedin.com/in/rahmi-atika/` — sudah di `profile.js`
-- [ ] **Foto kartu Lanyard:** Perlu tekstur kartu maroon/cream — Phase 3 task
-- [ ] **Konten detail proyek:** Peran, hasil, screenshot, link demo/repo untuk 5 proyek — **diisi Rahmi** (PRD §8 item 2)
-- [ ] **Formspree/EmailJS:** Ditunda v1. Isi `VITE_FORMSPREE_ID` di Vercel env kapan saja.
-- [ ] **Suara UI (bell toggle):** Kode siap; file audio `.mp3` belum tersedia. Tombol disembunyikan hingga ada audio.
-- [ ] **Dome Gallery:** Ada foto kegiatan di `public/assets/kegiatan/` (6 foto) — **keputusan Rahmi**: pakai Dome Gallery atau Education Timeline saja?
-- [ ] **Deploy GitHub → Vercel:** Langkah di seksi "Git & Deploy" di bawah — dijalankan Rahmi
+- [x] **Foto profil Hero:** `rahmi.webp` (santai/kasual) — dikonfirmasi Rahmi
+- [x] **Foto About/Profile Card:** `rahmi-formal.webp` (studio, lebih profesional) — diputuskan AI, dikonfirmasi Rahmi
+- [x] **Foto kegiatan NFSCC:** OK tampil publik (kegiatan-01..06, aktivitas NFSCC) — dikonfirmasi Rahmi
+- [x] **Education Dome Gallery:** pakai kegiatan-01..06 untuk STT-NF sementara; foto kuliah/wisuda asli menyusul
+- [x] **Education placeholders:** `stt-nf.webp` dan `smk.webp` (maroon/cream gradient) tersedia di `/assets/education/`
+- [x] **GitHub remote:** `https://github.com/Rhmiatika/rahmi-portfolio.git` — tersambung
+- [ ] **Push ke GitHub:** jalankan `git push -u origin master` (atau sudah otomatis)
+- [ ] **Deploy Vercel:** import repo `Rhmiatika/rahmi-portfolio` di vercel.com (lihat langkah di bawah)
+- [ ] **Foto wisuda / foto kampus STT-NF:** taruh di `asset/` → proses ke `public/assets/education/stt-nf-real.webp` dan update `gallery[]` di `profile.js`
+- [ ] **Foto SMK (opsional):** taruh di `asset/` → proses ke `public/assets/education/smk-real.webp`
+- [ ] **Konten detail proyek:** peran, hasil, screenshot, link demo/repo untuk 5 proyek — **diisi Rahmi** (PRD §8 item 2)
+- [ ] **Formspree/EmailJS:** daftar akun → isi `VITE_FORMSPREE_ID` di Vercel env — opsional v1
+- [ ] **Foto kartu Lanyard:** tekstur kartu maroon/cream — Phase 3
 
 ---
 
@@ -26,14 +26,17 @@
 
 | Tanggal | Keputusan |
 |---|---|
-| 2026-10-18 | Foto 1 (`05.51.57.jpeg`) → `rahmi.webp` sebagai foto profil utama — dikonfirmasi Rahmi |
-| 2026-10-18 | Kontak v1: WhatsApp deep link + salin email. Formspree/EmailJS stub disiapkan untuk aktivasi mudah |
-| 2026-10-18 | CV: tombol Unduh aktif dengan path `/assets/cv/CV_Rahmi_Atika.pdf` |
-| 2026-10-18 | Proyek: data dari CV saja (judul, tahun, ringkasan, tag). Tidak ada klaim di luar CV |
-| 2026-10-18 | Model 3D: `rahmi.glb` Draco 496 KB sebagai placeholder hingga model Meshy final tersedia |
-| 2026-10-18 | Phase 2 audit: `canvas` di-uninstall; `sharp` tetap sebagai devDependency untuk pengolahan aset |
-| 2026-10-18 | cert-05 konfirmasi: isi = "Kuliah Umum Digital Transformation, 22 Feb 2024" — COCOK dengan JSON |
-| 2026-10-18 | Foto yg ada orang lain di latar: kegiatan-01 s/d kegiatan-06 — **keputusan Rahmi** apakah oke tampil di publik |
+| 2026-10-18 | Foto 1 (`05.51.57.jpeg`) → `rahmi.webp` sebagai foto profil Hero — dikonfirmasi Rahmi |
+| 2026-10-18 | Foto About/Profile Card: `rahmi-formal.webp` (foto studio, lebih profesional) — diputuskan bersama |
+| 2026-10-18 | Kontak v1: WhatsApp deep link + salin email. Formspree/EmailJS stub disiapkan |
+| 2026-10-18 | CV: tombol Unduh aktif `/assets/cv/CV_Rahmi_Atika.pdf` |
+| 2026-10-18 | Proyek: data dari CV saja. Tidak ada klaim di luar CV |
+| 2026-10-18 | Model 3D: `rahmi.glb` Draco 496 KB sebagai placeholder hingga model Meshy final |
+| 2026-10-18 | Phase 2 audit: `canvas` di-uninstall; `sharp` tetap devDependency |
+| 2026-10-18 | cert-05: "Kuliah Umum Digital Transformation, 22 Feb 2024" — COCOK dengan JSON |
+| 2026-10-18 | Foto kegiatan NFSCC: OK tampil publik (bukan foto pribadi sensitif) — konfirmasi Rahmi |
+| 2026-10-18 | Education: Dome Gallery aktif untuk STT-NF dengan kegiatan-01..06 sementara; SMK pakai Timeline |
+| 2026-10-18 | GitHub: `https://github.com/Rhmiatika/rahmi-portfolio.git` — remote tersambung |
 
 ---
 
