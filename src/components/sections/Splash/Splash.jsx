@@ -12,7 +12,7 @@ import SplitFlapText from "@/components/reactbits/SplitFlapText";
 const LINE1 = "WELCOME TO MY";
 const LINE2 = "PORTFOLIO";
 const LINE3 = "WEBSITE";
-const SUB_TEXT = "Rahmi Atika · Teknik Informatika";
+const SUB_TEXT = "Rahmi Atika · Fresh Graduate · Teknik Informatika";
 const MIN_MS = 3200;
 const MAX_MS = 6500;
 

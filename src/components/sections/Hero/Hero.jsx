@@ -27,6 +27,11 @@ const SKILLS = [
 
 // Fallback jika WebGL tidak tersedia / mobile
 function LanyardFallback() {
+  const photo =
+    profile.photoLanyard ||
+    profile.photoFormal ||
+    profile.photo;
+
   return (
     <div className="flex items-center justify-center w-full h-full pt-6">
       <div className="relative">
@@ -35,18 +40,23 @@ function LanyardFallback() {
           className="absolute left-1/2 -translate-x-1/2 -top-12 w-7 rounded-t-full border-x border-gold-500/40"
           style={{ height: "52px", background: "linear-gradient(to bottom, #260000, #4A0000)" }}
         />
-        <img
-          src={profile.photoLanyard || profile.photoFormal || profile.photo}
-          alt="Rahmi Atika"
-          width={180}
-          height={260}
-          className="w-44 sm:w-48 rounded-[var(--radius-card)] object-cover shadow-soft border-2 border-maroon-700/40"
-          loading="eager"
-        />
-        {/* Name overlay bottom */}
-        <div className="absolute bottom-0 left-0 right-0 bg-maroon-700/95 rounded-b-[var(--radius-card)] py-3 px-4 border-t border-gold-500/30">
-          <p className="text-cream-50 font-display font-bold text-sm text-center">Rahmi Atika, S.Kom.</p>
-          <p className="text-gold-300 text-xs text-center mt-0.5">Administrative & Digital Archiving Specialist</p>
+        {/* Card dengan border marun dan foto full */}
+        <div className="relative w-48 sm:w-56 aspect-[1/1.4] rounded-[18px] overflow-hidden border-[3px] border-[#750000] shadow-soft bg-white">
+          <img
+            src={photo}
+            alt={profile.name}
+            className="w-full h-full object-cover object-top"
+            loading="eager"
+          />
+          {/* Kiri bawah: pill badge marun + subtitle */}
+          <div className="absolute left-3.5 bottom-3.5 flex flex-col items-start gap-1">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#750000] text-white font-bold text-xs shadow-sm">
+              Rahmi Atika, S. Kom.
+            </span>
+            <span className="text-[10px] font-bold text-[#750000] tracking-tight ml-1">
+              Fresh Graduate Teknik Informatika
+            </span>
+          </div>
         </div>
       </div>
     </div>
