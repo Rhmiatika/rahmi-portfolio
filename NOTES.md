@@ -18,6 +18,11 @@
 - [ ] **Foto SMK (opsional):** taruh di `asset/` → proses ke `public/assets/education/smk-real.webp`
 - [ ] **Konten detail proyek:** peran, hasil, screenshot, link demo/repo untuk 5 proyek — **diisi Rahmi** (PRD §8 item 2)
 - [ ] **Formspree/EmailJS:** daftar akun → isi `VITE_FORMSPREE_ID` di Vercel env — opsional v1
+- [ ] **[PERLU KEPUTUSAN] skills.js — item tidak ada di CV/LinkedIn:**
+  - `InShot` (grup Design & Video) — tidak disebutkan di CV. Hapus atau tambahkan ke CV?
+  - `FTK Imager` & `Autopsy` (grup Data & Security) — ada di kurikulum TI tapi tidak disebutkan eksplisit di CV/LinkedIn. Tampilkan atau sembunyikan?
+- [ ] **[PERLU KEPUTUSAN] LinkedIn di Footer:** `profile.contact.linkedin` sudah terisi `https://www.linkedin.com/in/rahmi-atika/` → LinkedIn **tampil** di footer. Jika ingin disembunyikan, hapus nilai atau ganti ke `""` di `profile.js`.
+
 - [ ] **Foto kartu Lanyard:** tekstur kartu maroon/cream — Phase 3
 
 ---
@@ -110,8 +115,8 @@ Aturan untuk Phase 3:
 | `tilted card` | **TiltedCard** | ✅ Custom — CSS 3D tilt mengikuti kursor mouse (`perspective(600px)` + rotateX/Y), hover scale, smooth reset transition | Hover scale CSS |
 | `pill nav` | **PillTabs** | ✅ Custom — controlled navigation tersinkronisasi dengan URL search params `?tab=...`, ARIA tablist/tab/tabpanel, keyboard focus | Custom tab component |
 | `dome gallery` | — | Dinonaktifkan — menunggu foto asli dari Rahmi (HOLD, lihat seksi foto kegiatan) | Education Timeline (default) |
-| `specular button` | — | ⏳ Diverifikasi Phase 3.5 | Custom button CSS |
-| `call chip` | — | ⏳ Diverifikasi Phase 4 | Fixed button custom |
+| `specular button` | **SpecularButton** | ✅ Custom fallback — specular highlight radial-gradient bergerak mengikuti kursor, ripple on click, tampilan cream/gold di atas maroon, min-h 52px | Custom CSS mousemove |
+| `call chip` | **CallChip** | ✅ Custom fallback — FAB fixed bottom-right, buka ContactModal via UIContext, sembunyi saat #contact terlihat (IntersectionObserver), safe-area-inset-bottom iOS, 390px aman | Custom IntersectionObserver |
 | `rubber segment` | **RubberSegment** | ✅ Custom — elastic spring indicator (`cubic-bezier(0.34, 1.56, 0.64, 1)`) pada PillTabs bergerak mulus mengikuti tab aktif | motion layout spring |
 | `bell toggle` | — | ⏳ Diverifikasi Phase 4 | Custom toggle |
 

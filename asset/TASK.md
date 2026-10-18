@@ -238,12 +238,17 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 - [x] **Tech Stack:** grid logo per grup (PRD §2.4) dengan hover scale-up + tooltip/label; chip soft skills & bahasa.
 - [x] Transisi antar tab dengan lazy loading (`React.lazy` + `Suspense`) & animasi fade-slide.
 
-### 3.5 Contact
-- [ ] Blok maroon dengan copy final (PRD §2.5) + `specular button` "Mulai Percakapan".
-- [ ] `ContactModal`: form Nama, Email, Instansi (opsional), Pesan; validasi; honeypot; state *submitting*.
-- [ ] Aksi **Kirim via Email** (Formspree/EmailJS) dan **Lanjut ke WhatsApp** (`wa.me/6281386426793?text=…` via `utils/whatsapp.js`, gunakan `encodeURIComponent`).
-- [ ] `swipe toast`: sukses, gagal, "Email disalin ✓".
-- [ ] Footer: LinkedIn, Email, WhatsApp, © 2026.
+### 3.5 Contact ✅ (2026-10-18)
+- [x] Blok maroon dengan copy final (PRD §2.5) + `SpecularButton` (custom fallback) "Mulai Percakapan" → buka ContactModal.
+- [x] `ContactModal`: form Nama, Email, Instansi (opsional), Pesan; validasi bahasa Indonesia; honeypot tersembunyi; state *submitting*; Esc/backdrop/✕/focus trap/scroll lock dari Modal dasar.
+- [x] Tombol "Lanjut ke WhatsApp" — `wa.me/6281386426793?text=…` via `utils/whatsapp.js` (template "aku"), toast "Membuka WhatsApp…".
+- [x] Tombol "Kirim via Email" — hanya tampil jika `VITE_FORMSPREE_ID` terisi; kode siap diaktifkan; tidak ada secret di klien.
+- [x] Microcopy salin email (`clipboard.writeText` + fallback select + toast "Email disalin ✓").
+- [x] `SwipeToast`: sukses, gagal, "Email disalin ✓" — sudah ada di GlobalLayer.
+- [x] Footer: Email (salin), WhatsApp (link wa.me), LinkedIn (hanya tampil karena URL valid di profile.js), © 2026. Nomor telepon tidak tampil sebagai teks.
+- [x] `CallChip` (custom fallback) — fixed bottom-right, buka ContactModal, sembunyi saat #contact terlihat, safe-area-inset-bottom.
+- [x] `ContactModal` dipicu dari 3 tempat: Hero (scroll ke #contact → SpecularButton), tombol Contact, CallChip — state `contactOpen` di UIContext.
+- [x] `npm run build` bersih (exit 0), 68 modules, chunk awal index.js 343 kB (gzip 104 kB).
 
 ## Phase 4 — Micro-Interactions & Finalisasi
 

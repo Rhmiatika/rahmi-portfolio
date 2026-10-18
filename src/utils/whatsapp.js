@@ -1,6 +1,6 @@
 // src/utils/whatsapp.js
 // PRD §2.5: buka wa.me dengan pesan terenkode
-// Template: "Halo Rahmi, saya {nama} dari {instansi}. {pesan}"
+// Template: "Halo Rahmi, aku {nama} dari {instansi}. {pesan}"
 
 const WA_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "6281386426793";
 
@@ -10,7 +10,7 @@ const WA_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "6281386426793";
  */
 export function buildWhatsappUrl({ nama = "", instansi = "", pesan = "" }) {
   const from = instansi ? ` dari ${instansi}` : "";
-  const text = `Halo Rahmi, saya ${nama}${from}. ${pesan}`.trim();
+  const text = `Halo Rahmi, aku ${nama}${from}. ${pesan}`.trim();
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 

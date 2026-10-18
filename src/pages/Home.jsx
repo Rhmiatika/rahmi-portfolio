@@ -1,69 +1,21 @@
 // src/pages/Home.jsx
-// Halaman utama: Splash → Hero → About → Showcase → Contact
-// Phase 3.1 ✓ | Phase 3.2 ✓ | Phase 3.3 ✓ (About) | Phase 3.4 ✓ (Showcase)
+// Halaman utama: Splash → Hero → About → Showcase → Contact + Footer
+// Phase 3.1 ✓ | Phase 3.2 ✓ | Phase 3.3 ✓ (About) | Phase 3.4 ✓ (Showcase) | Phase 3.5 ✓ (Contact)
 
 import { useState } from "react";
-import { useToast } from "@/context/ToastContext";
 import { useUI } from "@/context/UIContext";
 import Splash from "@/components/sections/Splash/Splash";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero/Hero";
 import About from "@/components/sections/About/About";
 import Showcase from "@/components/sections/Showcase/Showcase";
-
-function ContactStub({ show }) {
-  return (
-    <section id="contact" className="py-24 px-5 sm:px-8 bg-maroon-700 text-cream-100">
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-gold-300 mb-3">Let's work together</p>
-        <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream-100 mb-5">
-          Mari bangun alur kerja yang lebih rapi, bersama.
-        </h2>
-        <p className="text-cream-100/80 max-w-lg mx-auto mb-8 leading-relaxed">
-          Sedang mencari tim administrasi, pengarsipan digital, atau data
-          management yang teliti, komunikatif, dan cepat belajar? Aku siap berkontribusi.
-        </p>
-        <a
-          href="https://wa.me/6281386426793"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            inline-flex items-center gap-2 px-8 py-3.5 min-h-[52px]
-            border-2 border-cream-100 text-cream-100 rounded-lg
-            font-semibold text-base transition-all duration-200
-            hover:bg-cream-100 hover:text-maroon-700 active:scale-[0.97]
-          "
-        >
-          Mulai Percakapan
-        </a>
-        <p className="mt-5 text-cream-100/60 text-sm">
-          Atau{" "}
-          <button
-            className="underline hover:text-cream-100 transition-colors"
-            onClick={() => {
-              navigator.clipboard.writeText("rahmiatika231@gmail.com");
-              show({ type: "success", message: "Email disalin ✓" });
-            }}
-          >
-            salin email rahmiatika231@gmail.com
-          </button>
-        </p>
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-cream-100/10 flex flex-wrap items-center justify-center gap-6 text-cream-100/50 text-sm">
-          <a href="https://www.linkedin.com/in/rahmi-atika/" target="_blank" rel="noopener noreferrer" className="hover:text-cream-100 transition-colors">LinkedIn</a>
-          <a href="mailto:rahmiatika231@gmail.com" className="hover:text-cream-100 transition-colors">Email</a>
-          <a href="https://wa.me/6281386426793" target="_blank" rel="noopener noreferrer" className="hover:text-cream-100 transition-colors">WhatsApp</a>
-          <span>© 2026 Rahmi Atika</span>
-        </div>
-      </div>
-    </section>
-  );
-}
+import Contact from "@/components/sections/Contact/Contact";
+import ContactModal from "@/components/sections/Contact/ContactModal";
+import CallChip from "@/components/reactbits/CallChip";
 
 // ─────────────────────────────────────────────────────────────────────────────
 export default function Home() {
-  const { show } = useToast();
-  const { introDone, setIntroDone } = useUI();
+  const { setIntroDone } = useUI();
 
   // Cek sessionStorage saat mount, atau paksa tampil jika ?splash=1
   const [splashVisible, setSplashVisible] = useState(
@@ -90,8 +42,14 @@ export default function Home() {
         <Hero />
         <About />
         <Showcase />
-        <ContactStub show={show} />
+        <Contact />
       </main>
+
+      {/* Modal kontak — dipicu dari Hero, Contact, dan CallChip */}
+      <ContactModal />
+
+      {/* CallChip — FAB fixed bottom-right, sembunyi saat #contact terlihat */}
+      <CallChip />
     </>
   );
 }
