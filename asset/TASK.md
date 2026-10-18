@@ -179,33 +179,29 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 
 ## Phase 1 — Inisialisasi & Setup Proyek
 
-- [ ] Buat proyek Vite + React (§2.1), jalankan `npm run dev` → halaman default tampil.
-- [ ] Pasang Tailwind v4 + alias `@` (§2.2); uji dengan satu `div` ber-kelas `bg-maroon-700`.
-- [ ] Pasang dependensi animasi/3D/routing (§2.3).
-- [ ] Buat struktur folder (§1) — folder kosong cukup diberi `.gitkeep`.
-- [ ] Siapkan `react-router-dom`: `BrowserRouter` di `main.jsx`; rute `/`, `/projects/:slug`, `*` (404).
-- [ ] Buat `vercel.json` (§2.7) dan `.env.example`.
-- [ ] Tambah `index.html`: `lang="id"`, title, meta description, Open Graph, favicon, preconnect Google Fonts (Playfair Display + Inter).
-- [ ] `git init` → commit pertama → push ke repositori GitHub (jalur deploy paling aman).
-- [ ] **Smoke test deploy:** import repo di Vercel (Framework: Vite, Build: `npm run build`, Output: `dist`) → pastikan halaman kosong ter-deploy sebelum lanjut.
+- [x] Buat proyek Vite + React (§2.1), jalankan `npm run dev` → halaman default tampil.
+- [x] Pasang Tailwind v4 + alias `@` (§2.2); uji dengan satu `div` ber-kelas `bg-maroon-700`.
+- [x] Pasang dependensi animasi/3D/routing (§2.3).
+- [x] Buat struktur folder (§1) — folder kosong cukup diberi `.gitkeep`.
+- [x] Siapkan `react-router-dom`: `BrowserRouter` di `main.jsx`; rute `/`, `/projects/:slug`, `*` (404).
+- [x] Buat `vercel.json` (§2.7) dan `.env.example`.
+- [x] Tambah `index.html`: `lang="id"`, title, meta description, Open Graph, favicon, preconnect Google Fonts (Playfair Display + Inter).
+- [ ] `git init` → commit pertama → **push ke GitHub** (langkah ini dijalankan Rahmi — perintah ada di NOTES.md)
+- [ ] **Smoke test deploy:** import repo di Vercel — dijalankan Rahmi setelah push (lihat NOTES.md)
 
 **Selesai bila:** `npm run build` sukses dan URL Vercel menampilkan aplikasi dasar.
 
 ## Phase 2 — Aset, Warna & Lapisan Global
 
-- [ ] Masukkan token warna & font (`@theme`) dari `STYLING.md` §1–2.
-- [ ] **Data:** salin `gemini-code-….json` → `src/data/certificates.json`; tambahkan field `thumb`, `image`, `description` (PRD §4). Buat `projects.js`, `skills.js`, `profile.js` (nama, headline, kontak, teks About dari CV).
-- [ ] **Aset gambar:** ekspor 11 sertifikat → WebP (maks ±1600 px sisi panjang) + thumbnail ±600 px; simpan sesuai §1.
-- [ ] **Tugas eksternal — Model 3D:**
-  1. Di [meshy.ai](https://www.meshy.ai) pilih **Image to 3D**, unggah `Meshy_AI_IsolatedFullBodyCharacter.png`.
-  2. Pilih hasil terbaik → **Export `.glb`** (aktifkan tekstur/PBR).
-  3. Kompres (§2.6) → target **< 3 MB** → simpan `public/assets/models/rahmi.glb`.
-  4. Uji cepat di `gltf-viewer` (mis. gltf-viewer.donmccurdy.com) sebelum dipakai.
-- [ ] **Tugas eksternal — Kartu Lanyard:** siapkan `card.glb` + `lanyard.png` dari repo/halaman React Bits Lanyard. Untuk menampilkan foto/nama Rahmi di kartu, ganti **tekstur kartu** (via Blender, atau ganti tekstur material di glTF) memakai desain maroon/cream. *Jika terlalu rumit, mulai dengan kartu default dan ganti tekstur belakangan.*
-- [ ] Salin CV → `public/assets/cv/CV_Rahmi_Atika.pdf`.
-- [ ] Pasang `GlobalLayer`: `Radient` (background, `fixed -z-10`), `TargetCursor` (hanya `pointer: fine`).
-- [ ] Buat `UIContext`, `ToastContext` + hook `useMediaQuery`, `useReducedMotion`, `useScrollLock`, `useCanUse3D`.
-- [ ] Buat komponen dasar `ui/`: `Button`, `Modal` (portal, scroll lock, focus trap, Esc), `SectionHeading`, `Reveal` (wrapper `AnimatedContent`).
+- [x] Masukkan token warna & font (`@theme`) dari `STYLING.md` §1–2.
+- [x] **Data:** `certificates.json` (11 item + thumb/image), `projects.js` (5 proyek + cover/gallery), `skills.js`, `profile.js` + `src/utils/` (cn, formatDate, whatsapp, validators).
+- [x] **Aset gambar:** 11 sertifikat → WebP (cert-01..cert-11) + thumbs; crop bersih cert-05 & cert-07.
+- [ ] **Tugas eksternal — Model 3D:** placeholder `rahmi.glb` (496 KB Draco) sudah ada. Model Meshy final → ganti saat selesai.
+- [ ] **Tugas eksternal — Kartu Lanyard:** `card.glb` + `lanyard.png` — ambil dari React Bits di Phase 3.
+- [x] Salin CV → `public/assets/cv/CV_Rahmi_Atika.pdf` (186 KB).
+- [x] Pasang `GlobalLayer`: `Radient` + `TargetCursor` di `App.jsx`.
+- [x] Buat `UIContext`, `ToastContext` + hooks `useMediaQuery`, `useReducedMotion`, `useScrollLock`, `useCanUse3D`.
+- [x] Buat komponen dasar `ui/`: `Button`, `Modal` (portal, scroll lock, focus trap, Esc), `SectionHeading`, `Reveal`.
 
 **Selesai bila:** background maroon-cream bergerak lambat, cursor target aktif di desktop, toast bisa dipicu dari tombol uji.
 
