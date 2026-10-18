@@ -103,13 +103,13 @@ Aturan untuk Phase 3:
 | `rotating text` | **RotatingText** (dikonfirmasi via reactbits.dev) | ✅ Implemented — `motion/react` AnimatePresence slide-up | `motion` AnimatePresence |
 | `fuse button` | **FuseButton** (dikonfirmasi via reactbits.dev) | ✅ Custom fallback — ripple effect, primer maroon + outline, min-h 48px | Custom button CSS |
 | `lanyard` | **Lanyard** (dikonfirmasi via reactbits.dev) | ✅ **Source asli dari registry JSON** (pure Three.js, 47 KB) — `frontImage` prop untuk foto, no external GLB needed | Foto statis (`LanyardFallback`) |
-| `blur text` | — | ⏳ Diverifikasi Phase 3.3 | `motion` whileInView |
-| `count up` | — | ⏳ Diverifikasi Phase 3.3 | Custom hook |
-| `model viewer` | — | ⏳ Diverifikasi Phase 3.3 | Gambar statis |
-| `profile card` | — | ⏳ Diverifikasi Phase 3.3 | Kartu CSS biasa |
+| `blur text` | **BlurText** | ✅ Custom — kata per kata blur-fade, IntersectionObserver once, reduced-motion. reactbits.dev hanya punya CLI. | Custom IntersectionObserver |
+| `count up` | **CountUp** | ✅ Custom — ease-out-quad, viewport trigger once, decimals, suffix support | Custom hook |
+| `model viewer` | — | ⏳ Ditunda ke Phase 4 — foto formal statis dipakai di ProfileCard About. **Revisi pemilik** | Foto statis `rahmi-formal.webp` |
+| `profile card` | **ProfileCard** | ✅ Custom — foto formal 3:4, overlay gradient maroon, badge, border tipis | CSS custom |
 | `tilted card` | — | ⏳ Diverifikasi Phase 3.4 | Hover scale CSS |
 | `pill nav` | — | ⏳ Diverifikasi Phase 3.4 | Custom tab component |
-| `dome gallery` | — | ⏳ Diverifikasi Phase 3.3 | Education Timeline (default) |
+| `dome gallery` | — | Dinonaktifkan — menunggu foto asli dari Rahmi (HOLD, lihat seksi foto kegiatan) | Education Timeline (default) |
 | `specular button` | — | ⏳ Diverifikasi Phase 3.5 | Custom button CSS |
 | `call chip` | — | ⏳ Diverifikasi Phase 4 | Fixed button custom |
 | `rubber segment` | — | ⏳ Diverifikasi Phase 3.4 | motion layout spring |

@@ -222,13 +222,14 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 - [x] Kolom kanan: `Lanyard` (pure Three.js, 47 KB) — `React.lazy` + `Suspense` + `IntersectionObserver`, mount saat terlihat; mobile/low-end → `LanyardFallback` (foto statis) via `useCanUse3D` ✅.
 - [x] Navbar — logo "RA", anchor links `#about #showcase #contact`, mobile hamburger, bell slot placeholder ✅.
 
-### 3.3 About
-- [ ] Judul + paragraf `blur text` (teks dari `profile.js`).
-- [ ] `Stats` dengan `count up` (IPK 3.88, 11 sertifikat, 5 proyek, 8 proker) — nilai sertifikat/proyek dihitung dari `.length`.
-- [ ] `profile card` + `model viewer` (`/assets/models/rahmi.glb`): auto-rotate, zoom off, lazy + viewport-only.
-- [ ] `animated scroll` untuk transisi lanyard → profile card (fallback: parallax ringan).
-- [ ] `EducationTimeline` (STTNF & SMKN 19 Jakarta) — **opsional** `dome gallery` bila ada foto.
-- [ ] `ExperienceCards` (NFSCC Humas, Telkom PKL).
+### 3.3 About ✅ (2026-10-18)
+- [x] Judul `SectionHeading` + paragraf `BlurText` (teks dari `profile.js` — kata per kata, trigger viewport) ✅.
+- [x] `Stats` dengan `CountUp` (IPK 3.88/2 desimal, 11 sertifikat dari `certificates.length`, 5 proyek dari `projects.length`, 8 proker NFSCC, 100% Telkom statis) ✅.
+- [x] `ProfileCard` (foto formal `rahmi-formal.webp`, overlay gradient, badge Open to Opportunities) — ModelViewer GLB placeholder ditunda ke Phase 4 (revisi pemilik: foto statis, dicatat NOTES.md) ✅.
+- [x] Transisi: `Reveal` (fade+slide) per elemen — parallax/animated scroll ringan tanpa modifikasi Hero ✅.
+- [x] `EducationTimeline` tanpa foto (STT-NF & SMKN 19 Jakarta, mata kuliah relevan, judul skripsi) ✅.
+- [x] `ExperienceCards` (NFSCC Humas 2024–2025, Telkom PKL Feb–Apr 2021, maks 2 poin per kartu dari CV) ✅.
+- [x] `npm run build` bersih (exit 0), tidak ada `null`/`undefined`/`[cite` di UI ✅.
 
 ### 3.4 Portfolio Showcase
 - [ ] `PillTabs` dari `pill nav` (controlled) + `rubber segment`; state tab di URL (`useSearchParams`, PRD §3.2); keyboard & ARIA tab.

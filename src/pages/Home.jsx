@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
-// Halaman utama: Splash → Hero → [About stub] → [Showcase stub] → Contact stub
-// Phase 3.1 + 3.2 complete; About/Showcase/Contact dibangun Phase 3.3+
+// Halaman utama: Splash → Hero → About → [Showcase stub] → Contact
+// Phase 3.1 ✓ | Phase 3.2 ✓ | Phase 3.3 ✓ (About) | Phase 3.4 stub
 
 import { useEffect, useState } from "react";
 import { useToast } from "@/context/ToastContext";
@@ -8,15 +8,9 @@ import { useUI } from "@/context/UIContext";
 import Splash from "@/components/sections/Splash/Splash";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero/Hero";
+import About from "@/components/sections/About/About";
 
 // ── Placeholder stubs untuk seksi berikutnya ─────────────────────────────────
-function AboutStub() {
-  return (
-    <section id="about" className="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
-      <p className="text-charcoal-500 text-sm italic">[About — Phase 3.3]</p>
-    </section>
-  );
-}
 
 function ShowcaseStub() {
   return (
@@ -103,7 +97,7 @@ export default function Home() {
       {/* Main content */}
       <main id="home" className="min-h-screen">
         <Hero />
-        <AboutStub />
+        <About />
         <ShowcaseStub />
         <ContactStub show={show} />
       </main>
