@@ -80,9 +80,11 @@ export default function Home() {
   const { show } = useToast();
   const { introDone, setIntroDone } = useUI();
 
-  // Cek sessionStorage saat mount
+  // Cek sessionStorage saat mount, atau paksa tampil jika ?splash=1
   const [splashVisible, setSplashVisible] = useState(
-    () => sessionStorage.getItem("introSeen") !== "1"
+    () =>
+      new URLSearchParams(window.location.search).has("splash") ||
+      sessionStorage.getItem("introSeen") !== "1"
   );
 
   const handleIntroDone = () => {

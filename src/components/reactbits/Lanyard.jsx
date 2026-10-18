@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
@@ -924,7 +924,8 @@ const Lanyard = ({
       foilUniforms.foilKey.value.set(-2.5, 4, 6).normalize().transformDirection(camera.matrixWorldInverse);
       foilUniforms.foilFill.value.set(3, -1, 4).normalize().transformDirection(camera.matrixWorldInverse);
       foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
-      const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
+      const anchorRatio = typeof s.anchor === 'number' ? s.anchor : (ANCHORS[s.anchor] ?? 0.5);
+      const anchorX = (anchorRatio - 0.5) * viewWidth;
       const anchorY = viewHeight / 2 + 0.2;
       const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
       const hangTop = cardTop + (layout.hangY - layout.height / 2);
@@ -1224,16 +1225,40 @@ const Lanyard = ({
       if (press && event.type === 'pointerup' && performance.now() - press.time < 450) flip(press.point);
       press = null;
       canvas.releasePointerCapture?.(event.pointerId);
+      hovering = !!pickCard();
       setCursor(hovering && event.pointerType !== 'touch' ? 'grab' : '');
+      if (!hovering) {
+        canvas.style.pointerEvents = 'none';
+      }
       start();
+    };
+
+    const onWindowPointerMove = event => {
+      if (!settingsRef.current.interactive || !alive || !canvas) return;
+      if (sim.grab) return;
+      toPointer(event);
+      const hit = pickCard();
+      hovering = !!hit;
+      if (hovering) {
+        canvas.style.pointerEvents = 'auto';
+        setCursor('grab');
+      } else {
+        canvas.style.pointerEvents = 'none';
+        setCursor('');
+      }
     };
 
     const onTouchStart = event => {
       if (!settingsRef.current.interactive || event.touches.length !== 1) return;
       toPointer(event.touches[0]);
-      if (pickCard()) event.preventDefault();
+      if (pickCard()) {
+        canvas.style.pointerEvents = 'auto';
+        event.preventDefault();
+      }
     };
 
+    canvas.style.pointerEvents = 'none';
+    window.addEventListener('pointermove', onWindowPointerMove);
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerup', onPointerUp);
@@ -1272,6 +1297,7 @@ const Lanyard = ({
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('pointermove', onWindowPointerMove);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup', onPointerUp);
@@ -1288,7 +1314,7 @@ const Lanyard = ({
   }, []);
 
   return (
-    <div ref={containerRef} className={`relative w-full h-full overflow-hidden ${className}`.trim()} style={style} />
+    <div ref={containerRef} className={`relative w-full h-full ${className}`.trim()} style={{ ...style, overflow: 'visible' }} />
   );
 };
 

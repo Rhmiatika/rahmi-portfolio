@@ -41,22 +41,25 @@ function FlapChar({ target, delay = 0, duration = 150, onDone }) {
     <span
       className={`
         inline-flex items-center justify-center
-        w-[0.65em] h-[1.2em]
+        min-w-[0.92em] h-[1.36em] px-1
         bg-cream-50 text-maroon-700
         font-display font-bold
-        border border-gold-500/30 rounded-sm mx-[1px]
+        border border-gold-500/40 rounded-[3px] mx-[1.5px]
+        shadow-[0_2px_4px_rgba(0,0,0,0.06)]
         relative overflow-hidden
-        select-none
+        select-none box-border
         ${flipping ? "animate-[flapFlip_0.08s_ease-in-out]" : ""}
       `}
       style={{ fontSize: "inherit" }}
     >
       {/* Garis tengah emas */}
       <span
-        className="absolute left-0 right-0 top-1/2 h-px bg-gold-500/50 pointer-events-none"
+        className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1px] bg-gold-500/40 pointer-events-none z-20"
         aria-hidden="true"
       />
-      {display === " " ? "\u00A0" : display}
+      <span className="relative z-10 block leading-none text-center">
+        {display === " " ? "\u00A0" : display}
+      </span>
     </span>
   );
 }

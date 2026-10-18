@@ -1,7 +1,7 @@
 // src/components/sections/Hero/Hero.jsx
 // PRD.md §2.2 — dua kolom (mobile bertumpuk)
 // Teks dari src/data/profile.js — TIDAK hard-code
-// Lanyard: React.lazy + Suspense + IntersectionObserver + useCanUse3D fallback
+// Lanyard: Full-bleed canvas across entire hero section (z-20), tidak terpotong saat ditarik ke kiri
 
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { profile } from "@/data/profile";
@@ -19,16 +19,16 @@ const Lanyard = lazy(() =>
   }))
 );
 
-// Skill pills — konkret, dari CV
+// Skill pills — sesuai LinkedIn resmi
 const SKILLS = [
-  "Pengarsipan Digital",
-  "Manajemen Data",
+  "Administrative & Digital Archiving",
+  "Data Management",
+  "Teknik Informatika",
+  "Sistem Informasi",
   "Microsoft Office",
   "Google Workspace",
-  "Administrasi Operasional",
-  "Sistem Informasi",
-  "ReactJS",
-  "Digital Forensik",
+  "Dokumentasi & Administrasi",
+  "Migrasi Data",
 ];
 
 // Fallback jika WebGL tidak tersedia / mobile
@@ -38,11 +38,11 @@ function LanyardFallback() {
       <div className="relative">
         {/* Strap simulasi */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 -top-12 w-7 rounded-t-full"
-          style={{ height: "52px", background: "linear-gradient(to bottom, #3A0000, #5A0000)" }}
+          className="absolute left-1/2 -translate-x-1/2 -top-12 w-7 rounded-t-full border-x border-gold-500/40"
+          style={{ height: "52px", background: "linear-gradient(to bottom, #260000, #4A0000)" }}
         />
         <img
-          src={profile.photoFormal ?? profile.photo}
+          src={profile.photoLanyard || profile.photoFormal || profile.photo}
           alt="Rahmi Atika"
           width={240}
           height={320}
@@ -50,9 +50,9 @@ function LanyardFallback() {
           loading="eager"
         />
         {/* Name overlay bottom */}
-        <div className="absolute bottom-0 left-0 right-0 bg-maroon-700/90 rounded-b-[var(--radius-card)] py-3 px-4">
+        <div className="absolute bottom-0 left-0 right-0 bg-maroon-700/95 rounded-b-[var(--radius-card)] py-3 px-4 border-t border-gold-500/30">
           <p className="text-cream-50 font-display font-bold text-sm text-center">Rahmi Atika, S.Kom.</p>
-          <p className="text-gold-300 text-xs text-center mt-0.5">Digital Archiving · Data Management</p>
+          <p className="text-gold-300 text-xs text-center mt-0.5">Administrative & Digital Archiving Specialist</p>
         </div>
       </div>
     </div>
@@ -71,7 +71,9 @@ export default function Hero() {
     const el = lanyardRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setLanyardVisible(true); },
+      ([entry]) => {
+        if (entry.isIntersecting) setLanyardVisible(true);
+      },
       { threshold: 0.05 }
     );
     io.observe(el);
@@ -92,8 +94,8 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-10 md:py-12">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-          {/* ── Kolom Kiri: Teks ────────────────────────────── */}
-          <div className="order-2 lg:order-1 flex flex-col items-start">
+          {/* ── Kolom Kiri: Teks (z-10) ─────────────────────── */}
+          <div className="order-2 lg:order-1 flex flex-col items-start relative z-10">
             <Reveal>
               {/* Available for work badge */}
               <div className="mb-4">
@@ -123,7 +125,7 @@ export default function Hero() {
                 S.Kom. · Fresh Graduate Teknik Informatika
               </p>
 
-              {/* Skills pills — konkret dan dijabarkan */}
+              {/* Skills pills — LinkedIn-aligned */}
               <div className="flex flex-wrap gap-2 mb-5">
                 {SKILLS.map((skill) => (
                   <span
@@ -167,45 +169,43 @@ export default function Hero() {
             </Reveal>
           </div>
 
-          {/* ── Kolom Kanan: Lanyard ─────────────────────────── */}
-          {/* overflow-visible: card tidak terpotong, tali dari atas */}
+          {/* ── Kolom Kanan: Layout Spacer / Mobile Fallback ─── */}
           <div
             ref={lanyardRef}
-            className="order-1 lg:order-2 relative"
-            style={{ height: isMobile ? "380px" : "580px" }}
+            className="order-1 lg:order-2 relative h-[380px] lg:h-[580px] flex items-center justify-center pointer-events-none"
           >
-            {can3D && !isMobile ? (
-              <Suspense fallback={<LanyardFallback />}>
-                {lanyardVisible ? (
-                  <div
-                    className="absolute inset-0"
-                    style={{ overflow: "visible" }}
-                  >
-                    <Lanyard
-                      frontImage={cardDataUrl || profile.photoLanyard}
-                      strapImage={strapDataUrl || undefined}
-                      cardColor="#6B0000"
-                      strapColor="#3A0000"
-                      strapWidth={0.50}
-                      strapLength={0.28}
-                      finish="glossy"
-                      size={0.58}
-                      gravity={0.95}
-                      breeze={0.2}
-                      className="w-full h-full"
-                      style={{ width: "100%", height: "100%", overflow: "visible" }}
-                    />
-                  </div>
-                ) : (
-                  <LanyardFallback />
-                )}
-              </Suspense>
-            ) : (
-              <LanyardFallback />
-            )}
+            {/* Fallback untuk mobile atau perangkat non-WebGL */}
+            {(!can3D || isMobile) && <LanyardFallback />}
           </div>
         </div>
       </div>
+
+      {/* ── Desktop 3D Lanyard: Full-bleed canvas across entire section ── */}
+      {/* Canvas membentang ke seluruh hero section (z-20) sehingga lanyard bebas ditarik ke kiri (ke atas nama Rahmi Atika) tanpa terpotong batas kolom */}
+      {can3D && !isMobile && lanyardVisible && (
+        <div
+          className="absolute top-0 left-0 right-0 -bottom-48 z-20 pointer-events-none"
+          style={{ overflow: "visible" }}
+        >
+          <Suspense fallback={null}>
+            <Lanyard
+              frontImage={cardDataUrl || profile.photoLanyard}
+              strapImage={strapDataUrl || undefined}
+              cardColor="#6B0000"
+              strapColor="#3A0000"
+              strapWidth={0.50}
+              strapLength={0.28}
+              finish="glossy"
+              size={0.58}
+              anchor={0.72}
+              gravity={0.95}
+              breeze={0.2}
+              className="w-full h-full"
+              style={{ width: "100%", height: "100%", overflow: "visible" }}
+            />
+          </Suspense>
+        </div>
+      )}
 
       {/* Scroll hint */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-charcoal-500/50">
