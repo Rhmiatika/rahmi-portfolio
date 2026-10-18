@@ -19,9 +19,8 @@ export const skillGroups = [
     id: "design",
     label: "Design & Video",
     items: [
-      { name: "Canva",   logo: "/assets/logos/canva.svg" },
-      { name: "CapCut",  logo: "/assets/logos/capcut.svg" },
-      { name: "InShot",  logo: "/assets/logos/inshot.svg" },
+      { name: "Canva",  logo: "/assets/logos/canva.svg" },
+      { name: "CapCut", logo: "/assets/logos/capcut.svg" },
     ],
   },
   {
@@ -36,11 +35,9 @@ export const skillGroups = [
   },
   {
     id: "data",
-    label: "Data & Security",
+    label: "Analisis Data",
     items: [
-      { name: "KNIME",       logo: "/assets/logos/knime.svg" },
-      { name: "FTK Imager",  logo: "/assets/logos/ftk.svg" },
-      { name: "Autopsy",     logo: "/assets/logos/autopsy.svg" },
+      { name: "KNIME", logo: "/assets/logos/knime.svg" },
     ],
   },
 ];
