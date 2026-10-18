@@ -42,6 +42,9 @@
 | 2026-10-18 | Foto kegiatan NFSCC: OK tampil publik (bukan foto pribadi sensitif) — konfirmasi Rahmi |
 | 2026-10-18 | Education: Dome Gallery aktif untuk STT-NF dengan kegiatan-01..06 sementara; SMK pakai Timeline |
 | 2026-10-18 | GitHub: `https://github.com/Rhmiatika/rahmi-portfolio.git` — remote tersambung |
+| 2026-10-18 | Tech Stack: Logo CapCut diperbarui ke vektor resmi ByteDance (squircle hitam + ikon pita) |
+| 2026-10-18 | Layout: Margin/spacing antara About dan Portofolio diperkecil agar lebih proporsional |
+| 2026-10-18 | Mobile UX: Card Pengalaman (NFSCC) diperbaiki agar pill periode (2024–2025) & lokasi (Depok) konsisten berada di sisi kanan pada mobile |
 
 ---
 

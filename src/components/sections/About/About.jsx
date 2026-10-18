@@ -333,19 +333,19 @@ function ExperienceCards({ onOpenGallery }) {
       {profile.experience.map((exp, i) => (
         <Reveal key={exp.id} delay={i * 120} direction="up">
           <div className="bg-cream-50 rounded-2xl p-5 sm:p-6 border border-maroon-700/10 shadow-soft hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-            <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-              <div>
-                <h3 className="font-display text-maroon-700 font-bold text-base leading-tight">
+            <div className="flex items-start justify-between gap-3 mb-3">
+              <div className="min-w-0 flex-1">
+                <h3 className="font-display text-maroon-700 font-bold text-sm sm:text-base leading-tight">
                   {exp.org}
                 </h3>
-                <p className="text-charcoal-800 font-semibold text-sm mt-0.5">{exp.role}</p>
+                <p className="text-charcoal-800 font-semibold text-xs sm:text-sm mt-0.5">{exp.role}</p>
               </div>
-              <div className="text-right flex flex-col items-end gap-1">
-                <span className="text-xs font-bold text-gold-500 bg-gold-500/10 px-2.5 py-0.5 rounded-full border border-gold-500/25 whitespace-nowrap">
+              <div className="flex-shrink-0 text-right flex flex-col items-end gap-1">
+                <span className="text-[11px] sm:text-xs font-bold text-gold-500 bg-gold-500/10 px-2 sm:px-2.5 py-0.5 rounded-full border border-gold-500/25 whitespace-nowrap">
                   {exp.period}
                 </span>
                 {exp.location && (
-                  <span className="text-[11px] text-charcoal-500 font-medium">
+                  <span className="text-[10px] sm:text-[11px] text-charcoal-500 font-medium">
                     {exp.location}
                   </span>
                 )}
@@ -478,7 +478,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-6 sm:pt-10 pb-20 sm:pb-28 overflow-hidden"
+      className="relative pt-6 sm:pt-10 pb-10 sm:pb-14 overflow-hidden"
       aria-label="Tentang Aku — Rahmi Atika"
     >
       {/* Background decoration */}
