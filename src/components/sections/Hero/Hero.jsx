@@ -117,11 +117,11 @@ export default function Hero() {
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText, diperbesar proporsional untuk 60% column */}
+              {/* Nama — StrokeText, diperbesar signifikan agar tengah tidak terasa kosong */}
               <StrokeText
                 text={profile.name}
                 as="h1"
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-[5.5rem] xl:text-[6.25rem] leading-[0.95] tracking-tight"
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7.75rem] 2xl:text-[8.5rem] leading-[0.92] tracking-tight"
               />
 
               {/* Gelar — diperbesar & warna bronze-gold tegas (tidak bias) */}
@@ -129,20 +129,20 @@ export default function Hero() {
                 S.Kom. · Fresh Graduate Teknik Informatika
               </p>
 
-              {/* Skills pills — diperbesar */}
+              {/* Skills pills — warna teks maroon (text-maroon-700) */}
               <div className="flex flex-wrap gap-2.5 mb-6">
                 {SKILLS.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center px-4 py-2 rounded-full text-sm sm:text-base font-semibold bg-maroon-100 text-maroon-800 border border-maroon-700/30 shadow-xs"
+                    className="inline-flex items-center px-4 py-2 rounded-full text-sm sm:text-base font-semibold bg-maroon-100 text-maroon-700 border border-maroon-700/30 shadow-xs"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
 
-              {/* Deskripsi profesional */}
-              <p className="text-base sm:text-lg font-sans text-charcoal-500 max-w-xl leading-relaxed mb-6">
+              {/* Deskripsi profesional — text-justify */}
+              <p className="text-base sm:text-lg font-sans text-charcoal-500 max-w-xl lg:max-w-2xl leading-relaxed text-justify mb-6">
                 Berfokus pada pengarsipan digital, administrasi data, dan
                 manajemen operasional. Tertarik pada pengembangan sistem
                 informasi yang terstruktur dan solusi digitalisasi dokumen
