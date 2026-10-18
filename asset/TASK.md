@@ -186,8 +186,8 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 - [x] Siapkan `react-router-dom`: `BrowserRouter` di `main.jsx`; rute `/`, `/projects/:slug`, `*` (404).
 - [x] Buat `vercel.json` (§2.7) dan `.env.example`.
 - [x] Tambah `index.html`: `lang="id"`, title, meta description, Open Graph, favicon, preconnect Google Fonts (Playfair Display + Inter).
-- [ ] `git init` → commit pertama → **push ke GitHub** (langkah ini dijalankan Rahmi — perintah ada di NOTES.md)
-- [ ] **Smoke test deploy:** import repo di Vercel — dijalankan Rahmi setelah push (lihat NOTES.md)
+- [x] `git init` → commit pertama → **push ke GitHub** ✅ (berhasil 2026-10-18, 263 objects, 71.43 MiB)
+- [ ] **Smoke test deploy:** import repo di Vercel — belum dilakukan Rahmi (lihat NOTES.md)
 
 **Selesai bila:** `npm run build` sukses dan URL Vercel menampilkan aplikasi dasar.
 
@@ -208,17 +208,19 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 ## Phase 3 — Pengembangan Seksi (sesuai flow)
 
 ### 3.1 Opening / Splash
-- [ ] `Splash.jsx` — overlay `fixed inset-0 z-[100]` dengan `split flap text` ("Welcome to my portfolio website"), sub-baris, tagline, garis progres emas, tombol **Lewati** (copy: PRD §2.1).
-- [ ] Timeline ±4 s; **bukan** `window.scrollTo` — setelah selesai: fade-out lalu `setIntroDone(true)`, lepas scroll lock.
-- [ ] Preload aset: `useGLTF.preload("/assets/models/rahmi.glb")`; splash menunggu min. 3 s dan maks. 6 s.
-- [ ] `sessionStorage.introSeen` agar tidak mengulang; versi `reduced-motion`.
+- [x] `Splash.jsx` — overlay `fixed inset-0 z-[100]` dengan `SplitFlapText` ("Welcome to my portfolio website"), sub-baris, tagline, garis progres emas, tombol **Lewati** ✅.
+- [x] Timeline ±4 s; fade-out → `setIntroDone(true)`, lepas scroll lock (useScrollLock) ✅.
+- [x] Preload via `<link rel="preload">` untuk rahmi.glb; min 3 s, maks 6 s ✅.
+- [x] `sessionStorage.introSeen` agar tidak mengulang; versi `reduced-motion` (teks statis + fade 1.5 s) ✅.
+- [x] Skip dengan tombol Lewati, Esc, atau Enter ✅.
 
 ### 3.2 Header / Hero
-- [ ] Layout dua kolom (`grid lg:grid-cols-2`), mobile bertumpuk.
-- [ ] Nama → `stroke text`; role → `rotating text` (3 role); value statement + chip bukti (IPK 3.88 · NFSCC HUB · PKL Telkom Indonesia).
-- [ ] Tombol **Unduh CV** (`fuse button`, `<a href="/assets/cv/CV_Rahmi_Atika.pdf" download>`) dan **Hubungi Saya** (`fuse button` outline → scroll ke `#contact`).
-- [ ] Kolom kanan: `lanyard` — `React.lazy` + `Suspense` (skeleton), mount hanya saat terlihat; mobile/low-end → gambar statis.
-- [ ] Navbar (logo, anchor link, `bell toggle`).
+- [x] Layout dua kolom (`grid lg:grid-cols-2`), mobile bertumpuk (order-1/order-2) ✅.
+- [x] Nama → `StrokeText`; role → `RotatingText` (3 role, interval 2.5 s) ✅.
+- [x] Eyebrow "Halo, saya", headline LinkedIn dari `profile.js`, value statement, chip bukti (IPK 3.88 · NFSCC HUB · PKL Telkom Indonesia) ✅.
+- [x] Tombol **Unduh CV** (`FuseButton`, download) dan **Hubungi Saya** (`FuseButton` outline → scroll ke `#contact`) ✅.
+- [x] Kolom kanan: `Lanyard` (pure Three.js, 47 KB) — `React.lazy` + `Suspense` + `IntersectionObserver`, mount saat terlihat; mobile/low-end → `LanyardFallback` (foto statis) via `useCanUse3D` ✅.
+- [x] Navbar — logo "RA", anchor links `#about #showcase #contact`, mobile hamburger, bell slot placeholder ✅.
 
 ### 3.3 About
 - [ ] Judul + paragraf `blur text` (teks dari `profile.js`).

@@ -12,7 +12,7 @@
 - [x] **Education Dome Gallery:** pakai kegiatan-01..06 untuk STT-NF sementara; foto kuliah/wisuda asli menyusul
 - [x] **Education placeholders:** `stt-nf.webp` dan `smk.webp` (maroon/cream gradient) tersedia di `/assets/education/`
 - [x] **GitHub remote:** `https://github.com/Rhmiatika/rahmi-portfolio.git` — tersambung
-- [ ] **Push ke GitHub:** jalankan `git push -u origin master` (atau sudah otomatis)
+- [x] **Push ke GitHub:** BERHASIL 2026-10-18, 263 objects, 71.43 MiB ✅
 - [ ] **Deploy Vercel:** import repo `Rhmiatika/rahmi-portfolio` di vercel.com (lihat langkah di bawah)
 - [ ] **Foto wisuda / foto kampus STT-NF:** taruh di `asset/` → proses ke `public/assets/education/stt-nf-real.webp` dan update `gallery[]` di `profile.js`
 - [ ] **Foto SMK (opsional):** taruh di `asset/` → proses ke `public/assets/education/smk-real.webp`
@@ -98,22 +98,39 @@ Aturan untuk Phase 3:
 | `animated content` | AnimatedContent | ✅ File ada di `reactbits/AnimatedContent.jsx` | — |
 | `radient` | Radient | ✅ File ada di `reactbits/Radient.jsx` | — |
 | `swipe toast` | SwipeToast | ✅ File ada di `reactbits/SwipeToast.jsx` | — |
-| `split flap text` | — | ⏳ Diverifikasi Phase 3 | Animasi custom CSS |
-| `stroke text` | — | ⏳ Diverifikasi Phase 3 | CSS `text-stroke` |
-| `rotating text` | — | ⏳ Diverifikasi Phase 3 | `motion` AnimatePresence |
-| `blur text` | — | ⏳ Diverifikasi Phase 3 | `motion` whileInView |
-| `count up` | — | ⏳ Diverifikasi Phase 3 | Custom hook |
-| `lanyard` | — | ⏳ Diverifikasi Phase 3 | Gambar statis |
-| `model viewer` | — | ⏳ Diverifikasi Phase 3 | Gambar statis |
-| `profile card` | — | ⏳ Diverifikasi Phase 3 | Kartu CSS biasa |
-| `tilted card` | — | ⏳ Diverifikasi Phase 3 | Hover scale CSS |
-| `pill nav` | — | ⏳ Diverifikasi Phase 3 | Custom tab component |
-| `dome gallery` | — | ⏳ Diverifikasi Phase 3 | Education Timeline (default) |
-| `specular button` | — | ⏳ Diverifikasi Phase 3 | Custom button CSS |
-| `fuse button` | — | ⏳ Diverifikasi Phase 3 | Custom button CSS |
-| `call chip` | — | ⏳ Diverifikasi Phase 3 | Fixed button custom |
-| `rubber segment` | — | ⏳ Diverifikasi Phase 3 | motion layout spring |
-| `bell toggle` | — | ⏳ Diverifikasi Phase 3 | Custom toggle |
+| `split flap text` | **SplitFlapText** (dikonfirmasi via reactbits.dev) | ✅ Custom fallback — CATATAN: reactbits.dev hanya CLI/shadcn; dibuat custom berkualitas tinggi (flip board papan cream, teks maroon, garis gold) | Custom CSS flip animation |
+| `stroke text` | **StrokeText** (dikonfirmasi via reactbits.dev) | ✅ Custom fallback — CSS `-webkit-text-stroke`, fill animate on load/hover | CSS `text-stroke` |
+| `rotating text` | **RotatingText** (dikonfirmasi via reactbits.dev) | ✅ Implemented — `motion/react` AnimatePresence slide-up | `motion` AnimatePresence |
+| `fuse button` | **FuseButton** (dikonfirmasi via reactbits.dev) | ✅ Custom fallback — ripple effect, primer maroon + outline, min-h 48px | Custom button CSS |
+| `lanyard` | **Lanyard** (dikonfirmasi via reactbits.dev) | ✅ **Source asli dari registry JSON** (pure Three.js, 47 KB) — `frontImage` prop untuk foto, no external GLB needed | Foto statis (`LanyardFallback`) |
+| `blur text` | — | ⏳ Diverifikasi Phase 3.3 | `motion` whileInView |
+| `count up` | — | ⏳ Diverifikasi Phase 3.3 | Custom hook |
+| `model viewer` | — | ⏳ Diverifikasi Phase 3.3 | Gambar statis |
+| `profile card` | — | ⏳ Diverifikasi Phase 3.3 | Kartu CSS biasa |
+| `tilted card` | — | ⏳ Diverifikasi Phase 3.4 | Hover scale CSS |
+| `pill nav` | — | ⏳ Diverifikasi Phase 3.4 | Custom tab component |
+| `dome gallery` | — | ⏳ Diverifikasi Phase 3.3 | Education Timeline (default) |
+| `specular button` | — | ⏳ Diverifikasi Phase 3.5 | Custom button CSS |
+| `call chip` | — | ⏳ Diverifikasi Phase 4 | Fixed button custom |
+| `rubber segment` | — | ⏳ Diverifikasi Phase 3.4 | motion layout spring |
+| `bell toggle` | — | ⏳ Diverifikasi Phase 4 | Custom toggle |
+
+---
+
+## Phase 3.1/3.2 — Deviasi & Catatan Implementasi (2026-10-18)
+
+| Item | Deviasi / Catatan |
+|---|---|
+| **SplitFlapText** | reactbits.dev hanya punya CLI (shadcn), tidak bisa di-fetch HTML source. Dibuat custom high-fidelity: papan cream-50, teks maroon, garis tengah gold, stagger per karakter. CLI install (`npx shadcn`) gagal karena network timeout. Dicatat di NOTES.md per instruksi STYLING.md §3 |
+| **StrokeText** | reactbits.dev: nama sama, source tidak bisa di-extract. Custom: `-webkit-text-stroke` 2px maroon, fill transparan → maroon setelah 600ms load + hover. `paintOrder: stroke fill` agar teks tidak terpotong |
+| **RotatingText** | Custom dengan `motion/react` AnimatePresence slide-up (y: 100%→0%→-100%), interval 2.5s, aria-live polite |
+| **FuseButton** | Custom: ripple (fuse spark) via DOM injection on click, primer maroon/cream, outline maroon, `min-h-[44px]/[52px]`, mendukung `as` prop untuk `<a>` tag |
+| **Lanyard** | **SOURCE ASLI dari reactbits.dev registry JSON** (`Lanyard-JS-TW.json`, 47 KB, pure Three.js). Tidak butuh `card.glb`/`lanyard.png` eksternal — geometri dan tekstur di-generate procedurally. `frontImage` prop diisi `/assets/images/rahmi-lanyard.webp` |
+| **Lanyard card.glb/lanyard.png** | Tidak dibutuhkan (Lanyard pure Three.js). `public/assets/lanyard/` hanya berisi `.gitkeep`. Dicatat sebagai R2 sudah resolved |
+| **Tekstur kartu Lanyard kustom** | `frontImage={profile.photoLanyard}` diset ke `rahmi-lanyard.webp`. **TODO**: crop 600×600 portrait agar terlihat bagus di kartu. Saat ini foto penuh |
+| **Preload GLB** | Menggunakan `<link rel="preload" as="fetch">` bukan `useGLTF.preload` (Lanyard tidak pakai @react-three/fiber). Preload dilakukan di `useEffect` Splash |
+| **Dome Gallery (Education)** | Dinonaktifkan di Phase 3.2. Menunggu foto asli wisuda/kampus dari Rahmi dan konfirmasi foto kegiatan |
+| **Three.js shader warning** | Console menampilkan standard Three.js WebGL shader precision warnings — bukan error aplikasi, tidak perlu ditangani |
 
 ---
 
@@ -148,8 +165,11 @@ git push -u origin master
 | # | Risiko | Status |
 |---|---|---|
 | R1 | GLB karakter model final (Meshy) | ⏳ Placeholder `rahmi.glb` sudah ada; ganti saat model Meshy selesai |
-| R2 | `card.glb` + `lanyard.png` belum ada | ⏳ Ambil dari repo React Bits di Phase 3 |
-| R3 | Nama komponen React Bits berbeda | ⏳ Verifikasi saat Phase 3 coding per-komponen |
+| R2 | `card.glb` + `lanyard.png` | ✅ **Resolved** — Lanyard pure Three.js, tidak butuh aset eksternal |
+| R3 | Nama komponen React Bits berbeda | ✅ Diverifikasi semua Phase 3.1/3.2 (lihat tabel di atas) |
 | R4 | LinkedIn URL sudah diisi | ✅ `https://www.linkedin.com/in/rahmi-atika/` |
 | R5 | CV PDF tersedia | ✅ 186 KB di `/assets/cv/CV_Rahmi_Atika.pdf` |
 | R6 | Form email (Formspree/EmailJS) | ⏳ Stub sudah siap; aktifkan saat Rahmi daftar akun |
+| R7 | Lanyard chunk 587 KB (gzip 151 KB) | ✅ Sudah di-split via `React.lazy` — dimuat saat kolom kanan terlihat |
+| R8 | Tekstur foto Lanyard kustom | ⏳ `rahmi-lanyard.webp` belum di-crop 600×600 — tampil foto penuh sementara |
+

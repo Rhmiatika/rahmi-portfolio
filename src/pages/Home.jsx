@@ -1,109 +1,60 @@
 // src/pages/Home.jsx
-// Halaman utama: Hero → About → Showcase → Contact
-// Stub sementara — komponen seksi dibangun di Phase 3
+// Halaman utama: Splash → Hero → [About stub] → [Showcase stub] → Contact stub
+// Phase 3.1 + 3.2 complete; About/Showcase/Contact dibangun Phase 3.3+
 
+import { useEffect, useState } from "react";
 import { useToast } from "@/context/ToastContext";
-import Button from "@/components/ui/Button";
-import SectionHeading from "@/components/ui/SectionHeading";
-import AnimatedContent from "@/components/reactbits/AnimatedContent";
+import { useUI } from "@/context/UIContext";
+import Splash from "@/components/sections/Splash/Splash";
+import Navbar from "@/components/layout/Navbar";
+import Hero from "@/components/sections/Hero/Hero";
 
-export default function Home() {
-  const { show } = useToast();
-
+// ── Placeholder stubs untuk seksi berikutnya ─────────────────────────────────
+function AboutStub() {
   return (
-    <main id="home" className="min-h-screen">
-      {/* ── Hero stub ─────────────────────────────────────────── */}
-      <section
-        id="hero"
-        className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
-      >
-        <AnimatedContent delay={100}>
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
-            Halo, saya
-          </p>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-maroon mb-4 leading-tight">
-            Rahmi Atika
-          </h1>
-          <p className="text-maroon/70 text-lg md:text-xl mb-8 max-w-xl">
-            Fresh Graduate Teknik Informatika · Digital Archiving Specialist · Data Management
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              as="a"
-              href="/assets/cv/CV_Rahmi_Atika.pdf"
-              download
-              variant="primary"
-              size="lg"
-            >
-              Unduh CV
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Hubungi Saya
-            </Button>
-          </div>
-        </AnimatedContent>
+    <section id="about" className="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+      <p className="text-charcoal-500 text-sm italic">[About — Phase 3.3]</p>
+    </section>
+  );
+}
 
-        {/* ── Tombol uji toast (SEMENTARA — hapus setelah Phase 3) ── */}
-        <div className="mt-12 flex gap-3 flex-wrap justify-center">
-          <button
-            id="test-toast-success"
-            onClick={() => show({ type: "success", message: "Email disalin ✓" })}
-            className="text-xs px-3 py-1 rounded-full border border-green-500 text-green-700 hover:bg-green-50"
-          >
-            [DEV] Toast sukses
-          </button>
-          <button
-            id="test-toast-error"
-            onClick={() => show({ type: "error", message: "Gagal mengirim. Coba lagi atau hubungi lewat WhatsApp." })}
-            className="text-xs px-3 py-1 rounded-full border border-red-500 text-red-700 hover:bg-red-50"
-          >
-            [DEV] Toast error
-          </button>
-          <button
-            id="test-toast-info"
-            onClick={() => show({ type: "info", message: "Pesan terkirim. Terima kasih!" })}
-            className="text-xs px-3 py-1 rounded-full border border-gold text-gold hover:bg-yellow-50"
-          >
-            [DEV] Toast info
-          </button>
-        </div>
-        {/* ── END tombol uji toast ── */}
-      </section>
+function ShowcaseStub() {
+  return (
+    <section id="showcase" className="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+      <p className="text-charcoal-500 text-sm italic">[Showcase — Phase 3.4]</p>
+    </section>
+  );
+}
 
-      {/* ── Contact stub ──────────────────────────────────────── */}
-      <section
-        id="contact"
-        className="py-24 px-6 bg-maroon text-cream text-center"
-      >
-        <SectionHeading
-          eyebrow="Let's work together"
-          title="Mari bangun alur kerja yang lebih rapi, bersama."
-          center
-          className="[&_h2]:text-cream [&_p]:text-cream/70"
-        />
-        <p className="text-cream/80 max-w-lg mx-auto mb-8">
+function ContactStub({ show }) {
+  return (
+    <section id="contact" className="py-24 px-5 sm:px-8 bg-maroon-700 text-cream-100">
+      <div className="max-w-7xl mx-auto text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-gold-300 mb-3">Let's work together</p>
+        <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream-100 mb-5">
+          Mari bangun alur kerja yang lebih rapi, bersama.
+        </h2>
+        <p className="text-cream-100/80 max-w-lg mx-auto mb-8 leading-relaxed">
           Sedang mencari tim administrasi, pengarsipan digital, atau data
-          management yang teliti? Saya siap berkontribusi.
+          management yang teliti, komunikatif, dan cepat belajar? Saya siap berkontribusi.
         </p>
-        <Button
-          as="a"
+        <a
           href="https://wa.me/6281386426793"
           target="_blank"
           rel="noopener noreferrer"
-          variant="outline"
-          size="lg"
-          className="border-cream text-cream hover:bg-cream hover:text-maroon"
+          className="
+            inline-flex items-center gap-2 px-8 py-3.5 min-h-[52px]
+            border-2 border-cream-100 text-cream-100 rounded-lg
+            font-semibold text-base transition-all duration-200
+            hover:bg-cream-100 hover:text-maroon-700 active:scale-[0.97]
+          "
         >
-          Mulai Percakapan via WhatsApp
-        </Button>
-        <p className="mt-4 text-cream/60 text-sm">
+          Mulai Percakapan
+        </a>
+        <p className="mt-5 text-cream-100/60 text-sm">
           Atau{" "}
           <button
-            className="underline hover:text-cream transition-colors"
+            className="underline hover:text-cream-100 transition-colors"
             onClick={() => {
               navigator.clipboard.writeText("rahmiatika231@gmail.com");
               show({ type: "success", message: "Email disalin ✓" });
@@ -112,7 +63,48 @@ export default function Home() {
             salin email rahmiatika231@gmail.com
           </button>
         </p>
-      </section>
-    </main>
+        {/* Footer */}
+        <div className="mt-16 pt-8 border-t border-cream-100/10 flex flex-wrap items-center justify-center gap-6 text-cream-100/50 text-sm">
+          <a href="https://www.linkedin.com/in/rahmi-atika/" target="_blank" rel="noopener noreferrer" className="hover:text-cream-100 transition-colors">LinkedIn</a>
+          <a href="mailto:rahmiatika231@gmail.com" className="hover:text-cream-100 transition-colors">Email</a>
+          <a href="https://wa.me/6281386426793" target="_blank" rel="noopener noreferrer" className="hover:text-cream-100 transition-colors">WhatsApp</a>
+          <span>© 2026 Rahmi Atika</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+export default function Home() {
+  const { show } = useToast();
+  const { introDone, setIntroDone } = useUI();
+
+  // Cek sessionStorage saat mount
+  const [splashVisible, setSplashVisible] = useState(
+    () => sessionStorage.getItem("introSeen") !== "1"
+  );
+
+  const handleIntroDone = () => {
+    setSplashVisible(false);
+    setIntroDone(true);
+  };
+
+  return (
+    <>
+      {/* Splash — hanya jika belum pernah dilihat sesi ini */}
+      {splashVisible && <Splash onDone={handleIntroDone} />}
+
+      {/* Navbar — selalu tampil (di atas Hero) */}
+      <Navbar />
+
+      {/* Main content */}
+      <main id="home" className="min-h-screen">
+        <Hero />
+        <AboutStub />
+        <ShowcaseStub />
+        <ContactStub show={show} />
+      </main>
+    </>
   );
 }
