@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Maroon ── */
+  --color-maroon-900: #4a0000;
+  --color-maroon-700: #800000;
+  --color-maroon-600: #9a1b1b;
+  --color-maroon-100: #f3dada;
+
+  /* ── Cream ── */
+  --color-cream-50:  #fffef2;
+  --color-cream-100: #fffdd0;
+  --color-cream-200: #f5f5dc;
+
+  /* ── Gold ── */
+  --color-gold-500: #d4af37;
+  --color-gold-300: #e8cf7a;
+
+  /* ── Charcoal ── */
+  --color-charcoal-800: #333333;
+  --color-charcoal-500: #6b6b6b;
+
+  /* ── Typography ── */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ── Tokens ── */
+  --radius-card:  1.25rem;
+  --shadow-soft:  0 10px 30px -12px rgb(128 0 0 / 0.25);
+  --ease-smooth:  cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Base ── */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-cream-200);
+  color: var(--color-charcoal-800);
+  font-family: var(--font-sans);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
