@@ -66,7 +66,7 @@ function LanyardFallback() {
 export default function Hero() {
   const can3D = useCanUse3D();
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const isLargeScreen = useMediaQuery("(min-width: 1536px)");
+  const isFHD = useMediaQuery("(min-width: 1800px)");
   const lanyardRef = useRef(null);
   const [lanyardVisible, setLanyardVisible] = useState(false);
   const cardDataUrl = useLanyardCard(profile.photoLanyard);
@@ -96,15 +96,15 @@ export default function Hero() {
       style={{ minHeight: "calc(100vh - 0px)" }}
       aria-label="Hero — Rahmi Atika"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full pt-2 md:pt-3 pb-8 md:pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10 items-center">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full pt-2 md:pt-3 min-[1800px]:pt-4 pb-8 md:pb-10 min-[1800px]:pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10 min-[1800px]:gap-12 items-center">
 
           {/* ── Kolom Kiri: Teks (z-10) — 60% (col-span-3) ── */}
-          <div className="order-2 lg:order-1 lg:col-span-3 flex flex-col items-start relative z-10 lg:-mt-3">
+          <div className="order-2 lg:order-1 lg:col-span-3 flex flex-col items-start relative z-10 lg:-mt-3 min-[1800px]:lg:-mt-5">
             <Reveal>
               {/* Available for work badge */}
-              <div className="mb-3 sm:mb-4">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border-[1.5px] border-[#9E6700] bg-amber-500/10 text-maroon-900 text-xs sm:text-sm font-bold tracking-wide shadow-xs">
+              <div className="mb-3 sm:mb-4 min-[1800px]:mb-4">
+                <span className="inline-flex items-center gap-2 min-[1800px]:gap-2.5 px-3.5 min-[1800px]:px-4 py-1.5 rounded-full border-[1.5px] border-[#9E6700] bg-amber-500/10 text-maroon-900 text-xs sm:text-sm font-bold tracking-wide shadow-xs">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B8860B] opacity-75" />
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#9E6700]" />
@@ -114,28 +114,28 @@ export default function Hero() {
               </div>
 
               {/* Eyebrow */}
-              <p className="text-sm sm:text-base md:text-lg font-sans font-bold uppercase tracking-[0.22em] text-maroon-700/85 mb-1.5 sm:mb-2">
+              <p className="text-sm sm:text-base md:text-lg min-[1800px]:text-xl font-sans font-bold uppercase tracking-[0.22em] text-maroon-700/85 mb-1.5 sm:mb-2 min-[1800px]:mb-2">
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText, ukuran proporsional di laptop 720p/768p dan monitor besar */}
+              {/* Nama — StrokeText: proporsional di HD laptop (1280–1600px), skala penuh di FHD (1920px+) */}
               <StrokeText
                 text={profile.name}
                 as="h1"
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.85rem] xl:text-[4.65rem] 2xl:text-[5.85rem] leading-[0.98] tracking-[0.03em]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.85rem] xl:text-[4.65rem] min-[1800px]:text-[6.25rem] min-[1920px]:text-[6.85rem] leading-[0.98] tracking-[0.03em]"
               />
 
               {/* Gelar */}
-              <p className="text-base sm:text-lg md:text-xl lg:text-[1.3rem] xl:text-[1.45rem] font-display text-[#8A5306] font-bold mt-2 mb-3 sm:mb-4 tracking-tight">
+              <p className="text-base sm:text-lg md:text-xl lg:text-[1.3rem] xl:text-[1.45rem] min-[1800px]:text-[1.65rem] font-display text-[#8A5306] font-bold mt-2 min-[1800px]:mt-2.5 mb-3 sm:mb-4 min-[1800px]:mb-5 tracking-tight">
                 S.Kom. · Fresh Graduate Teknik Informatika
               </p>
 
               {/* Skills pills */}
-              <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-3.5 sm:mb-4">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-3.5 sm:mb-4 min-[1800px]:mb-6">
                 {SKILLS.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-maroon-100 text-maroon-700 border border-maroon-700/30 shadow-xs"
+                    className="inline-flex items-center px-3 sm:px-3.5 min-[1800px]:px-4 py-1.5 min-[1800px]:py-2 rounded-full text-xs sm:text-sm min-[1800px]:text-base font-semibold bg-maroon-100 text-maroon-700 border border-maroon-700/30 shadow-xs"
                   >
                     {skill}
                   </span>
@@ -143,7 +143,7 @@ export default function Hero() {
               </div>
 
               {/* Deskripsi profesional — text-justify */}
-              <p className="text-sm sm:text-base lg:text-[0.95rem] xl:text-base font-sans text-charcoal-500 max-w-xl lg:max-w-2xl leading-relaxed text-justify mb-5 sm:mb-6">
+              <p className="text-sm sm:text-base lg:text-[0.95rem] xl:text-base min-[1800px]:text-lg font-sans text-charcoal-500 max-w-xl lg:max-w-2xl leading-relaxed text-justify mb-5 sm:mb-6 min-[1800px]:mb-6">
                 Berfokus pada pengarsipan digital, administrasi data, dan
                 manajemen operasional. Tertarik pada pengembangan sistem
                 informasi yang terstruktur dan solusi digitalisasi dokumen
@@ -177,7 +177,7 @@ export default function Hero() {
           {/* ── Kolom Kanan: Layout Spacer / Mobile Fallback — 40% (col-span-2) ─── */}
           <div
             ref={lanyardRef}
-            className="order-1 lg:order-2 lg:col-span-2 relative h-[320px] sm:h-[360px] lg:h-[430px] xl:h-[480px] 2xl:h-[550px] flex items-center justify-center pointer-events-none"
+            className="order-1 lg:order-2 lg:col-span-2 relative h-[320px] sm:h-[360px] lg:h-[430px] xl:h-[480px] min-[1800px]:h-[580px] flex items-center justify-center pointer-events-none"
           >
             {/* Fallback untuk mobile atau perangkat non-WebGL */}
             {(!can3D || isMobile) && <LanyardFallback />}
@@ -189,7 +189,7 @@ export default function Hero() {
       {/* Canvas membentang ke seluruh hero section (z-20) sehingga lanyard bebas ditarik ke kiri (ke atas nama Rahmi Atika) tanpa terpotong batas kolom */}
       {can3D && !isMobile && lanyardVisible && (
         <div
-          className="absolute top-0 left-0 right-0 -bottom-24 xl:-bottom-32 2xl:-bottom-44 z-20 pointer-events-none"
+          className="absolute top-0 left-0 right-0 -bottom-24 xl:-bottom-32 min-[1800px]:-bottom-48 z-20 pointer-events-none"
           style={{ overflow: "visible" }}
         >
           <Suspense fallback={null}>
@@ -198,10 +198,10 @@ export default function Hero() {
               strapImage={strapDataUrl || undefined}
               cardColor="#6B0000"
               strapColor="#3A0000"
-              strapWidth={0.38}
-              strapLength={0.24}
+              strapWidth={isFHD ? 0.42 : 0.38}
+              strapLength={isFHD ? 0.30 : 0.24}
               finish="glossy"
-              size={isLargeScreen ? 0.38 : 0.32}
+              size={isFHD ? 0.41 : 0.32}
               anchor={0.78}
               gravity={0.95}
               breeze={0.2}
