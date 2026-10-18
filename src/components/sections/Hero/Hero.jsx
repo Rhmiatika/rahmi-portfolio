@@ -41,7 +41,7 @@ function LanyardFallback() {
           style={{ height: "52px", background: "linear-gradient(to bottom, #260000, #4A0000)" }}
         />
         {/* Card dengan border marun dan foto full (rasio 3:4) */}
-        <div className="relative w-48 sm:w-56 aspect-[3/4] rounded-[18px] overflow-hidden border-[3px] border-[#750000] shadow-soft bg-white">
+        <div className="relative w-44 sm:w-52 aspect-[3/4] rounded-[18px] overflow-hidden border-[3px] border-[#750000] shadow-soft bg-white">
           <img
             src={photo}
             alt={profile.name}
@@ -117,11 +117,11 @@ export default function Hero() {
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText, diperbesar signifikan agar tengah tidak terasa kosong */}
+              {/* Nama — StrokeText, ukuran disesuaikan proporsional dengan letter-spacing elegan */}
               <StrokeText
                 text={profile.name}
                 as="h1"
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7.75rem] 2xl:text-[8.5rem] leading-[0.92] tracking-tight"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem] 2xl:text-[6.85rem] leading-[0.98] tracking-[0.035em]"
               />
 
               {/* Gelar — diperbesar & warna bronze-gold tegas (tidak bias) */}
@@ -200,7 +200,7 @@ export default function Hero() {
               strapWidth={0.42}
               strapLength={0.30}
               finish="glossy"
-              size={0.46}
+              size={0.41}
               anchor={0.78}
               gravity={0.95}
               breeze={0.2}
