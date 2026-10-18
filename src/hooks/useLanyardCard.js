@@ -22,7 +22,7 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 function buildCardCanvas(photoImg) {
-  const W = 1024;
+  const W = 1080;
   const H = 1440;
   const canvas = document.createElement("canvas");
   canvas.width = W;
@@ -38,30 +38,12 @@ function buildCardCanvas(photoImg) {
   roundRect(ctx, 0, 0, W, H, cardRadius);
   ctx.clip();
 
-  ctx.fillStyle = "#F8F8F8";
+  ctx.fillStyle = "#FFFFFF";
   ctx.fillRect(0, 0, W, H);
 
-  // ── 2. Foto Full Card (Cover fit, framing pas kepala & hijab) ─────────
+  // ── 2. Foto Full Card (Foto utuh 100%, tidak terpotong) ───────────────
   if (photoImg && photoImg.width > 0 && photoImg.height > 0) {
-    const imgW = photoImg.width;
-    const imgH = photoImg.height;
-    const imgAspect = imgW / imgH;
-    const targetAspect = W / H;
-
-    let sx = 0,
-      sy = 0,
-      sw = imgW,
-      sh = imgH;
-    if (imgAspect > targetAspect) {
-      sw = imgH * targetAspect;
-      sx = (imgW - sw) / 2;
-    } else {
-      sh = imgW / targetAspect;
-      // Posisi pas agar kepala & hijab terlihat utuh di atas
-      sy = Math.max(0, (imgH - sh) * 0.05);
-    }
-
-    ctx.drawImage(photoImg, sx, sy, sw, sh, 0, 0, W, H);
+    ctx.drawImage(photoImg, 0, 0, W, H);
   }
 
   // ── 3. Border Marun Mengelilingi Kartu ────────────────────────────────
@@ -91,7 +73,7 @@ function buildCardCanvas(photoImg) {
   const pillH = 82;
   const pillR = pillH / 2;
   const pillX = 64;
-  const pillY = H - 190;
+  const pillY = H - 240;
 
   // Gambar capsule pill marun
   ctx.save();
@@ -109,11 +91,16 @@ function buildCardCanvas(photoImg) {
 
   // ── 5. Teks di Bawah Pill: "Fresh Graduate Teknik Informatika" ────────
   ctx.save();
-  ctx.fillStyle = "#750000";
   ctx.font = 'bold 36px "Inter", system-ui, -apple-system, sans-serif';
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
-  ctx.fillText("Fresh Graduate Teknik Informatika", pillX + 6, pillY + pillH + 52);
+  // Stroke putih tipis agar kontras sempurna di atas blazer hitam
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
+  ctx.lineWidth = 6;
+  ctx.lineJoin = "round";
+  ctx.strokeText("Fresh Graduate Teknik Informatika", pillX + 6, pillY + pillH + 54);
+  ctx.fillStyle = "#750000";
+  ctx.fillText("Fresh Graduate Teknik Informatika", pillX + 6, pillY + pillH + 54);
   ctx.restore();
 
   ctx.restore(); // Restore outer clip

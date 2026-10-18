@@ -29,7 +29,7 @@ export const profile = {
   },
   photo: "/assets/images/rahmi.webp",
   photoFormal: "/assets/images/rahmi-formal.webp",   // foto studio putih — untuk About card
-  photoLanyard: "/assets/images/rahmi-lanyard.webp", // crop 600×600 — untuk Lanyard card
+  photoLanyard: "/assets/images/foto-lanyard.webp",  // foto formal lanyard dari asset/foto lanyard.jpeg
 
 
   education: [

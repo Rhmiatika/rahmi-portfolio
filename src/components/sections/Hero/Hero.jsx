@@ -40,8 +40,8 @@ function LanyardFallback() {
           className="absolute left-1/2 -translate-x-1/2 -top-12 w-7 rounded-t-full border-x border-gold-500/40"
           style={{ height: "52px", background: "linear-gradient(to bottom, #260000, #4A0000)" }}
         />
-        {/* Card dengan border marun dan foto full */}
-        <div className="relative w-48 sm:w-56 aspect-[1/1.4] rounded-[18px] overflow-hidden border-[3px] border-[#750000] shadow-soft bg-white">
+        {/* Card dengan border marun dan foto full (rasio 3:4) */}
+        <div className="relative w-48 sm:w-56 aspect-[3/4] rounded-[18px] overflow-hidden border-[3px] border-[#750000] shadow-soft bg-white">
           <img
             src={photo}
             alt={profile.name}
@@ -53,7 +53,7 @@ function LanyardFallback() {
             <span className="inline-block px-3 py-1 rounded-full bg-[#750000] text-white font-bold text-xs shadow-sm">
               Rahmi Atika, S. Kom.
             </span>
-            <span className="text-[10px] font-bold text-[#750000] tracking-tight ml-1">
+            <span className="text-[10px] font-bold text-[#750000] tracking-tight ml-1 [text-shadow:_0_1px_3px_rgba(255,255,255,1)]">
               Fresh Graduate Teknik Informatika
             </span>
           </div>

@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const CARD_SIZES = {
-  portrait: [1.6, 2.25],
-  landscape: [2.25, 1.6]
+  portrait: [1.62, 2.16],
+  landscape: [2.16, 1.62]
 };
 const ANCHORS = { left: 0.27, center: 0.5, right: 0.73 };
 const THICKNESS = 0.018;
