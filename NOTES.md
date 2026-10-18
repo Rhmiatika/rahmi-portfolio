@@ -129,7 +129,7 @@ Aturan untuk Phase 3:
 | **Lanyard card.glb/lanyard.png** | Tidak dibutuhkan (Lanyard pure Three.js). `public/assets/lanyard/` hanya berisi `.gitkeep`. Dicatat sebagai R2 sudah resolved |
 | **Tekstur kartu Lanyard kustom** | `frontImage={profile.photoLanyard}` diset ke `rahmi-lanyard.webp`. **TODO**: crop 600×600 portrait agar terlihat bagus di kartu. Saat ini foto penuh |
 | **Preload GLB** | Menggunakan `<link rel="preload" as="fetch">` bukan `useGLTF.preload` (Lanyard tidak pakai @react-three/fiber). Preload dilakukan di `useEffect` Splash |
-| **Dome Gallery (Education)** | Dinonaktifkan di Phase 3.2. Menunggu foto asli wisuda/kampus dari Rahmi dan konfirmasi foto kegiatan |
+| **Foto Wisuda (Education)** | 3 foto asli dari `asset/foto kuliah wisuda/` berhasil dikonversi ke WebP di `public/assets/education/` dan ditampilkan di kartu STT Nurul Fikri dengan lightbox preview interaktif |
 | **Three.js shader warning** | Console menampilkan standard Three.js WebGL shader precision warnings — bukan error aplikasi, tidak perlu ditangani |
 
 ---

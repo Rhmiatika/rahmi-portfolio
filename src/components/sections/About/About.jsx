@@ -4,7 +4,7 @@
 // Data: profile.js, certificates.json, projects.js
 // TIDAK memodifikasi Hero/Splash/Navbar
 
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { profile } from "@/data/profile";
 import certificates from "@/data/certificates.json";
 import { projects } from "@/data/projects";
@@ -43,17 +43,9 @@ const STATS = [
     id: "proker",
     value: profile.stats.proker,
     decimals: 0,
-    label: "Program Kerja Nasional (NFSCC)",
+    label: "Program Kerja Nasional NFSCC",
     suffix: "",
     static: false,
-  },
-  {
-    id: "accuracy",
-    value: profile.stats.dataAccuracy,
-    decimals: 0,
-    label: "Akurasi Migrasi Data (Telkom)",
-    suffix: "%",
-    static: true, // tampilkan statis, bukan count-up
   },
 ];
 
@@ -94,16 +86,6 @@ function ProfileCard() {
           </p>
         </div>
       </div>
-      {/* Badge bawah kartu */}
-      <div className="mt-4 flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-700/10 border border-maroon-700/20">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-maroon-600 opacity-60" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-maroon-700" />
-        </span>
-        <span className="text-maroon-700 text-xs font-bold tracking-wide">
-          Open to Opportunities
-        </span>
-      </div>
     </div>
   );
 }
@@ -132,8 +114,18 @@ function StatCard({ stat }) {
 }
 
 // ─── EducationTimeline ────────────────────────────────────────────────────────
-// Tanpa foto (tidak ada placeholder images per PRD §2.3)
 function EducationTimeline() {
+  const [activePhoto, setActivePhoto] = useState(null);
+
+  useEffect(() => {
+    if (!activePhoto) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setActivePhoto(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activePhoto]);
+
   return (
     <div className="relative">
       {/* Garis timeline vertikal */}
@@ -192,11 +184,102 @@ function EducationTimeline() {
                     ))}
                   </div>
                 )}
+
+                {/* Dokumentasi Wisuda & Kampus Asli */}
+                {edu.gallery?.length > 0 && (
+                  <div className="mt-5 pt-4 border-t border-maroon-700/10">
+                    <p className="text-xs font-bold text-maroon-700 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+                      <svg
+                        className="w-3.5 h-3.5 text-gold-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      Dokumentasi Kelulusan
+                    </p>
+                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                      {edu.gallery.map((photoSrc, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setActivePhoto(photoSrc)}
+                          className="group relative rounded-xl overflow-hidden aspect-[3/4] border border-maroon-700/15 bg-cream-100 hover:border-gold-500 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 text-left focus:outline-none focus:ring-2 focus:ring-gold-500 cursor-pointer"
+                          title="Klik untuk memperbesar foto wisuda"
+                        >
+                          <img
+                            src={photoSrc}
+                            alt={`Dokumentasi Wisuda ${profile.name} ${idx + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-maroon-950/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span className="p-1.5 rounded-full bg-cream-50/95 text-maroon-800 shadow">
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </Reveal>
         ))}
       </div>
+
+      {/* Lightbox Modal Foto Wisuda */}
+      {activePhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-maroon-950/80 backdrop-blur-sm animate-fade-in"
+          onClick={() => setActivePhoto(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative max-w-md w-full bg-cream-50 rounded-2xl overflow-hidden border border-gold-500/30 shadow-2xl p-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setActivePhoto(null)}
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-maroon-900/80 text-cream-100 flex items-center justify-center hover:bg-maroon-800 transition-colors shadow focus:outline-none cursor-pointer"
+              aria-label="Tutup preview foto"
+            >
+              ✕
+            </button>
+            <img
+              src={activePhoto}
+              alt="Foto Wisuda Rahmi Atika"
+              className="w-full h-auto max-h-[75vh] object-contain rounded-xl mx-auto shadow"
+            />
+            <div className="pt-3 pb-1 text-center">
+              <p className="text-xs font-semibold text-charcoal-700">
+                Dokumentasi Kelulusan S1 Teknik Informatika · STT Terpadu Nurul Fikri
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -213,17 +296,24 @@ function ExperienceCards() {
                 <h3 className="font-display text-maroon-700 font-bold text-base leading-tight">
                   {exp.org}
                 </h3>
-                <p className="text-charcoal-800 font-semibold text-sm">{exp.role}</p>
+                <p className="text-charcoal-800 font-semibold text-sm mt-0.5">{exp.role}</p>
               </div>
-              <span className="text-xs font-bold text-gold-500 bg-gold-500/10 px-2.5 py-0.5 rounded-full border border-gold-500/25 whitespace-nowrap">
-                {exp.period}
-              </span>
+              <div className="text-right flex flex-col items-end gap-1">
+                <span className="text-xs font-bold text-gold-500 bg-gold-500/10 px-2.5 py-0.5 rounded-full border border-gold-500/25 whitespace-nowrap">
+                  {exp.period}
+                </span>
+                {exp.location && (
+                  <span className="text-[11px] text-charcoal-500 font-medium">
+                    {exp.location}
+                  </span>
+                )}
+              </div>
             </div>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2.5">
               {exp.points.map((pt, j) => (
-                <li key={j} className="flex items-start gap-2 text-sm text-charcoal-500">
-                  <span className="mt-1 w-1.5 h-1.5 rounded-full bg-maroon-700/60 flex-shrink-0" />
-                  {pt}
+                <li key={j} className="flex items-start gap-2.5 text-sm text-charcoal-700 leading-relaxed text-justify">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-maroon-700/70 flex-shrink-0" />
+                  <span className="flex-1">{pt}</span>
                 </li>
               ))}
             </ul>
@@ -278,13 +368,13 @@ export default function About() {
                 text={profile.bio}
                 as="p"
                 stepMs={45}
-                className="text-base sm:text-lg text-charcoal-800 leading-relaxed max-w-prose"
+                className="text-base sm:text-lg text-charcoal-800 leading-relaxed text-justify"
               />
             </Reveal>
 
-            {/* Stats grid */}
+            {/* Stats grid (4 card) */}
             <Reveal delay={100}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                 {STATS.map((stat) => (
                   <StatCard key={stat.id} stat={stat} />
                 ))}

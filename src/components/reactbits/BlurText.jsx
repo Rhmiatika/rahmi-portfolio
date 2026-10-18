@@ -45,21 +45,22 @@ export default function BlurText({
   return (
     <Tag ref={ref} className={className} aria-label={text}>
       {words.map((word, i) => (
-        <span
-          key={i}
-          aria-hidden="true"
-          style={{
-            display: "inline-block",
-            opacity: visible ? 1 : 0,
-            filter: visible ? "blur(0px)" : "blur(8px)",
-            transform: visible ? "translateY(0)" : "translateY(10px)",
-            transition: reduced
-              ? "none"
-              : `opacity 0.5s ease ${delay + i * stepMs}ms, filter 0.5s ease ${delay + i * stepMs}ms, transform 0.5s ease ${delay + i * stepMs}ms`,
-            marginRight: "0.3em",
-          }}
-        >
-          {word}
+        <span key={i} className="inline">
+          <span
+            aria-hidden="true"
+            style={{
+              display: "inline-block",
+              opacity: visible ? 1 : 0,
+              filter: visible ? "blur(0px)" : "blur(8px)",
+              transform: visible ? "translateY(0)" : "translateY(10px)",
+              transition: reduced
+                ? "none"
+                : `opacity 0.5s ease ${delay + i * stepMs}ms, filter 0.5s ease ${delay + i * stepMs}ms, transform 0.5s ease ${delay + i * stepMs}ms`,
+            }}
+          >
+            {word}
+          </span>
+          {i < words.length - 1 ? " " : ""}
         </span>
       ))}
     </Tag>

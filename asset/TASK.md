@@ -223,13 +223,13 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 - [x] Navbar — logo "RA", anchor links `#about #showcase #contact`, mobile hamburger, bell slot placeholder ✅.
 
 ### 3.3 About ✅ (2026-10-18)
-- [x] Judul `SectionHeading` + paragraf `BlurText` (teks dari `profile.js` — kata per kata, trigger viewport) ✅.
-- [x] `Stats` dengan `CountUp` (IPK 3.88/2 desimal, 11 sertifikat dari `certificates.length`, 5 proyek dari `projects.length`, 8 proker NFSCC, 100% Telkom statis) ✅.
-- [x] `ProfileCard` (foto formal `rahmi-formal.webp`, overlay gradient, badge Open to Opportunities) — ModelViewer GLB placeholder ditunda ke Phase 4 (revisi pemilik: foto statis, dicatat NOTES.md) ✅.
+- [x] Judul `SectionHeading` + paragraf `BlurText` (teks bio dari `profile.js` dengan `text-justify`) ✅.
+- [x] `Stats` 4 kartu dengan `CountUp` (IPK 3.88, 11 sertifikat, 5 proyek, 8 Program Kerja Nasional NFSCC) — 100% migrasi data di-takeout sesuai arahan ✅.
+- [x] `ProfileCard` (foto formal `rahmi-formal.webp`, overlay gradient, badge "Open to Opportunities" dihapus) ✅.
 - [x] Transisi: `Reveal` (fade+slide) per elemen — parallax/animated scroll ringan tanpa modifikasi Hero ✅.
-- [x] `EducationTimeline` tanpa foto (STT-NF & SMKN 19 Jakarta, mata kuliah relevan, judul skripsi) ✅.
-- [x] `ExperienceCards` (NFSCC Humas 2024–2025, Telkom PKL Feb–Apr 2021, maks 2 poin per kartu dari CV) ✅.
-- [x] `npm run build` bersih (exit 0), tidak ada `null`/`undefined`/`[cite` di UI ✅.
+- [x] `EducationTimeline` dengan dokumentasi foto wisuda asli dari `asset/foto kuliah wisuda/` (STT-NF & SMKN 19 Jakarta, mata kuliah relevan, judul skripsi, modal lightbox preview) ✅.
+- [x] `ExperienceCards` disesuaikan penuh dengan CV resmi (NFSCC Humas 2024–2025 Depok, Telkom PKL Feb–Apr 2021 Jakarta Pusat, 2 poin terukur per kartu) ✅.
+- [x] `npm run build` bersih (exit 0), tidak ada error konsol/build ✅.
 
 ### 3.4 Portfolio Showcase
 - [ ] `PillTabs` dari `pill nav` (controlled) + `rubber segment`; state tab di URL (`useSearchParams`, PRD §3.2); keyboard & ARIA tab.

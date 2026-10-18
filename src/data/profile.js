@@ -51,16 +51,12 @@ export const profile = {
         "Integrasi Sistem",
         "Etika Profesi",
       ],
-      // foto placeholder — ganti dengan foto wisuda/kampus asli nanti
-      photo: "/assets/education/stt-nf.webp",
-      // dome gallery: foto kegiatan NFSCC — Rahmi akan tambah foto kuliah/wisuda
+      // Foto wisuda asli dari asset/foto kuliah wisuda
+      photo: "/assets/education/wisuda-01.webp",
       gallery: [
-        "/assets/kegiatan/kegiatan-01.webp",
-        "/assets/kegiatan/kegiatan-02.webp",
-        "/assets/kegiatan/kegiatan-03.webp",
-        "/assets/kegiatan/kegiatan-04.webp",
-        "/assets/kegiatan/kegiatan-05.webp",
-        "/assets/kegiatan/kegiatan-06.webp",
+        "/assets/education/wisuda-01.webp",
+        "/assets/education/wisuda-02.webp",
+        "/assets/education/wisuda-03.webp",
       ],
     },
     {
@@ -72,31 +68,32 @@ export const profile = {
       location: "Jakarta Pusat",
       thesis: null,
       courses: [],
-      // foto placeholder — ganti dengan foto SMK asli nanti
       photo: "/assets/education/smk.webp",
-      gallery: [], // TODO: Rahmi tambah foto SMK nanti
+      gallery: [],
     },
   ],
 
   experience: [
     {
       id: "nfscc",
-      org: "NFSCC",
-      role: "Humas",
+      org: "Nurul Fikri Student CyberSecurity Community (NFSCC)",
+      role: "Humas (Hubungan Masyarakat)",
       period: "2024–2025",
+      location: "Depok",
       points: [
-        "Mengelola komunikasi eksternal dan internal komunitas keamanan siber kampus.",
-        "Mengarsipkan dokumen kegiatan dan laporan operasional secara digital.",
+        "Inisiator utama komunikasi eksternal dan kolaborasi strategis lintas organisasi kampus, institusi pendidikan, hingga industri (BNCC, Tax Center UINSSC, LINUXENIC Corp, dan TILC SV UGM) yang berhasil memperluas jangkauan organisasi serta meningkatkan engagement rate dan followers media sosial NFSCC secara signifikan.",
+        "Mengelola alur komunikasi publik melalui email resmi dan media sosial (korespondensi undangan antar UKM, penyusunan materi Q&A, hingga penulisan konten publikasi), serta berhasil mengawal keberhasilan operasional 8 program kerja nasional (4 workshop & 4 seminar cybersecurity) dan 1 kompetisi Capture The Flag (CTF) ASTRO.",
       ],
     },
     {
       id: "telkom",
-      org: "Telkom Indonesia",
-      role: "PKL — Access Data & Management",
+      org: "Telkom Indonesia (PKL)",
+      role: "Access Data & Management",
       period: "Feb–Apr 2021",
+      location: "Jakarta Pusat",
       points: [
-        "Mengelola administrasi data pelanggan harian dengan akurasi tinggi.",
-        "Melakukan migrasi data dengan tingkat akurasi 100%.",
+        "Mengelola dan melakukan entri 100–200 data pelanggan per hari secara presisi menggunakan template form terstandarisasi, yang berhasil memangkas waktu pemrosesan berkas dan mereduksi beban kerja operasional staf tetap.",
+        "Mengeksekusi proses migrasi data dari sistem lama ke sistem baru secara cermat dengan tingkat akurasi 100% tanpa ada data yang hilang atau rusak, serta berkoordinasi aktif memastikan seluruh data pelanggan tersimpan rapi dan terstruktur.",
       ],
     },
   ],
