@@ -53,7 +53,7 @@ function LanyardFallback() {
             <span className="inline-block px-3 py-1 rounded-full bg-[#750000] text-white font-bold text-xs shadow-sm">
               Rahmi Atika, S. Kom.
             </span>
-            <span className="text-[10px] font-bold text-[#750000] tracking-tight ml-1 [text-shadow:_0_1px_3px_rgba(255,255,255,1)]">
+            <span className="text-[10px] font-bold text-white tracking-tight ml-1 [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)]">
               Fresh Graduate Teknik Informatika
             </span>
           </div>
@@ -95,54 +95,54 @@ export default function Hero() {
       style={{ minHeight: "calc(100vh - 0px)" }}
       aria-label="Hero — Rahmi Atika"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-10 md:py-12">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full pt-2 md:pt-4 pb-10 md:pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
 
-          {/* ── Kolom Kiri: Teks (z-10) ─────────────────────── */}
-          <div className="order-2 lg:order-1 flex flex-col items-start relative z-10">
+          {/* ── Kolom Kiri: Teks (z-10) — 60% (col-span-3), margin atas dikurangi ── */}
+          <div className="order-2 lg:order-1 lg:col-span-3 flex flex-col items-start relative z-10 lg:-mt-5">
             <Reveal>
-              {/* Available for work badge */}
+              {/* Available for work badge — border tegas & kontras */}
               <div className="mb-4">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-500/60 bg-gold-500/10 text-maroon-700 text-xs font-semibold tracking-wide">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-500 opacity-70" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-500" />
+                <span className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border-[1.5px] border-[#9E6700] bg-amber-500/10 text-maroon-900 text-xs sm:text-sm font-bold tracking-wide shadow-xs">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B8860B] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#9E6700]" />
                   </span>
                   Available for Work
                 </span>
               </div>
 
-              {/* Eyebrow */}
-              <p className="text-sm font-sans font-semibold uppercase tracking-[0.22em] text-maroon-700/70 mb-1">
+              {/* Eyebrow — diperbesar */}
+              <p className="text-base sm:text-lg md:text-xl font-sans font-bold uppercase tracking-[0.22em] text-maroon-700/85 mb-2">
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText, diperbesar */}
+              {/* Nama — StrokeText, diperbesar proporsional untuk 60% column */}
               <StrokeText
                 text={profile.name}
                 as="h1"
-                className="text-6xl sm:text-7xl md:text-8xl leading-none"
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-[5.5rem] xl:text-[6.25rem] leading-[0.95] tracking-tight"
               />
 
-              {/* Gelar */}
-              <p className="text-base sm:text-lg font-display text-gold-500 font-semibold mt-2 mb-4">
+              {/* Gelar — diperbesar & warna bronze-gold tegas (tidak bias) */}
+              <p className="text-xl sm:text-2xl md:text-[1.65rem] font-display text-[#8A5306] font-bold mt-2.5 mb-5 tracking-tight">
                 S.Kom. · Fresh Graduate Teknik Informatika
               </p>
 
-              {/* Skills pills — LinkedIn-aligned */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              {/* Skills pills — diperbesar */}
+              <div className="flex flex-wrap gap-2.5 mb-6">
                 {SKILLS.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-maroon-100 text-maroon-700 border border-maroon-700/20"
+                    className="inline-flex items-center px-4 py-2 rounded-full text-sm sm:text-base font-semibold bg-maroon-100 text-maroon-800 border border-maroon-700/30 shadow-xs"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
 
-              {/* Deskripsi profesional — tanpa dash */}
-              <p className="text-base sm:text-lg font-sans text-charcoal-500 max-w-lg leading-relaxed mb-6">
+              {/* Deskripsi profesional */}
+              <p className="text-base sm:text-lg font-sans text-charcoal-500 max-w-xl leading-relaxed mb-6">
                 Berfokus pada pengarsipan digital, administrasi data, dan
                 manajemen operasional. Tertarik pada pengembangan sistem
                 informasi yang terstruktur dan solusi digitalisasi dokumen
@@ -173,10 +173,10 @@ export default function Hero() {
             </Reveal>
           </div>
 
-          {/* ── Kolom Kanan: Layout Spacer / Mobile Fallback ─── */}
+          {/* ── Kolom Kanan: Layout Spacer / Mobile Fallback — 40% (col-span-2) ─── */}
           <div
             ref={lanyardRef}
-            className="order-1 lg:order-2 relative h-[380px] lg:h-[580px] flex items-center justify-center pointer-events-none"
+            className="order-1 lg:order-2 lg:col-span-2 relative h-[380px] lg:h-[580px] flex items-center justify-center pointer-events-none"
           >
             {/* Fallback untuk mobile atau perangkat non-WebGL */}
             {(!can3D || isMobile) && <LanyardFallback />}
@@ -201,7 +201,7 @@ export default function Hero() {
               strapLength={0.30}
               finish="glossy"
               size={0.46}
-              anchor={0.72}
+              anchor={0.78}
               gravity={0.95}
               breeze={0.2}
               className="w-full h-full"

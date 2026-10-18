@@ -94,12 +94,12 @@ function buildCardCanvas(photoImg) {
   ctx.font = 'bold 36px "Inter", system-ui, -apple-system, sans-serif';
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
-  // Stroke putih tipis agar kontras sempurna di atas blazer hitam
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
-  ctx.lineWidth = 6;
-  ctx.lineJoin = "round";
-  ctx.strokeText("Fresh Graduate Teknik Informatika", pillX + 6, pillY + pillH + 54);
-  ctx.fillStyle = "#750000";
+  // Drop shadow halus agar teks putih tampil kontras, tajam, dan elegan di atas blazer hitam
+  ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 2;
+  ctx.fillStyle = "#FFFFFF";
   ctx.fillText("Fresh Graduate Teknik Informatika", pillX + 6, pillY + pillH + 54);
   ctx.restore();
 
