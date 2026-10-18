@@ -231,12 +231,12 @@ VITE_CONTACT_EMAIL=rahmiatika231@gmail.com
 - [x] `ExperienceCards` disesuaikan penuh dengan CV resmi (NFSCC Humas 2024–2025 Depok, Telkom PKL Feb–Apr 2021 Jakarta Pusat, 2 poin terukur per kartu) ✅.
 - [x] `npm run build` bersih (exit 0), tidak ada error konsol/build ✅.
 
-### 3.4 Portfolio Showcase
-- [ ] `PillTabs` dari `pill nav` (controlled) + `rubber segment`; state tab di URL (`useSearchParams`, PRD §3.2); keyboard & ARIA tab.
-- [ ] **Projects:** grid 5 kartu dari `projects.js`; klik → `/projects/:slug`. Buat `ProjectDetail.jsx` (tombol kembali ke `/?tab=projects#showcase`, "Proyek berikutnya", 404 bila slug tak valid).
-- [ ] **Certificates:** grid `tilted card` dari `certificates.json` (urut terbaru; `date: null` ditangani); chip filter kategori; `CertificateModal` (PRD §3.3: portal, scroll lock, Esc, backdrop, ✕, ‹ ›, focus trap).
-- [ ] **Tech Stack:** grid logo per grup (PRD §2.4) dengan hover scale-up + tooltip; chip soft skills & bahasa.
-- [ ] Transisi antar tab dengan `AnimatePresence`.
+### 3.4 Portfolio Showcase ✅ (2026-10-18)
+- [x] `PillTabs` dari `pill nav` (controlled) + `rubber segment`; state tab di URL (`useSearchParams`, PRD §3.2); keyboard & ARIA tab (`tablist`, `tab`, `tabpanel`).
+- [x] **Projects:** grid 5 kartu dari `projects.js`; klik → `/projects/:slug`. Buat `ProjectDetail.jsx` (tombol kembali ke `/?tab=projects#showcase`, "Proyek berikutnya", galeri screenshot + lightbox, 404 bila slug tak valid).
+- [x] **Certificates:** grid `tilted card` dari `certificates.json` (urut terbaru; `date: null` ditangani); chip filter kategori; `CertificateModal` (PRD §3.3: portal, scroll lock, Esc, backdrop, ✕, ‹ ›, keyboard arrows, focus trap).
+- [x] **Tech Stack:** grid logo per grup (PRD §2.4) dengan hover scale-up + tooltip/label; chip soft skills & bahasa.
+- [x] Transisi antar tab dengan lazy loading (`React.lazy` + `Suspense`) & animasi fade-slide.
 
 ### 3.5 Contact
 - [ ] Blok maroon dengan copy final (PRD §2.5) + `specular button` "Mulai Percakapan".

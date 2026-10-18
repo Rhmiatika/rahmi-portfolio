@@ -107,13 +107,29 @@ Aturan untuk Phase 3:
 | `count up` | **CountUp** | ✅ Custom — ease-out-quad, viewport trigger once, decimals, suffix support | Custom hook |
 | `model viewer` | — | ⏳ Ditunda ke Phase 4 — foto formal statis dipakai di ProfileCard About. **Revisi pemilik** | Foto statis `rahmi-formal.webp` |
 | `profile card` | **ProfileCard** | ✅ Custom — foto formal 3:4, overlay gradient maroon, badge, border tipis | CSS custom |
-| `tilted card` | — | ⏳ Diverifikasi Phase 3.4 | Hover scale CSS |
-| `pill nav` | — | ⏳ Diverifikasi Phase 3.4 | Custom tab component |
+| `tilted card` | **TiltedCard** | ✅ Custom — CSS 3D tilt mengikuti kursor mouse (`perspective(600px)` + rotateX/Y), hover scale, smooth reset transition | Hover scale CSS |
+| `pill nav` | **PillTabs** | ✅ Custom — controlled navigation tersinkronisasi dengan URL search params `?tab=...`, ARIA tablist/tab/tabpanel, keyboard focus | Custom tab component |
 | `dome gallery` | — | Dinonaktifkan — menunggu foto asli dari Rahmi (HOLD, lihat seksi foto kegiatan) | Education Timeline (default) |
 | `specular button` | — | ⏳ Diverifikasi Phase 3.5 | Custom button CSS |
 | `call chip` | — | ⏳ Diverifikasi Phase 4 | Fixed button custom |
-| `rubber segment` | — | ⏳ Diverifikasi Phase 3.4 | motion layout spring |
+| `rubber segment` | **RubberSegment** | ✅ Custom — elastic spring indicator (`cubic-bezier(0.34, 1.56, 0.64, 1)`) pada PillTabs bergerak mulus mengikuti tab aktif | motion layout spring |
 | `bell toggle` | — | ⏳ Diverifikasi Phase 4 | Custom toggle |
+
+---
+
+## Phase 3.4 — Deviasi & Catatan Implementasi (2026-10-18)
+
+| Item | Deviasi / Catatan |
+|---|---|
+| **PillTabs & URL Sync** | Controlled tab navigation (`Projects`, `Certificates`, `Tech Stack`) dengan URL search params `?tab=projects\|certificates\|tech-stack`. `useSearchParams` dengan `{ replace: true, preventScrollReset: true }` menjaga histori browser tetap bersih |
+| **RubberSegment Indicator** | Transisi indikator tab menggunakan kalkulasi `getBoundingClientRect` dinamis dengan easing kurva elastis spring maroon (`cubic-bezier(0.34, 1.56, 0.64, 1)`) |
+| **Code Splitting (Lazy Tabs)** | `ProjectsGrid`, `CertificatesGrid`, dan `TechStackGrid` di-lazy load terpisah via `React.lazy` + `Suspense`, menjaga bundle awal tetap kecil (< 10 kB total chunk) |
+| **TiltedCard (Certificates)** | Dibuat dengan CSS 3D matrix transform kalkulasi real-time kursor mouse (-0.5 s/d 0.5 X/Y) memberikan efek kedalaman interaktif tanpa menambah library berat |
+| **CertificateModal (Portal & A11y)** | Render via `createPortal` ke `document.body`, mendukung keyboard navigation (`Escape` untuk tutup, `ArrowLeft`/`ArrowRight` untuk prev/next sertifikat), focus trap, scroll lock, dan backdrop click dismiss |
+| **ProjectDetail & Galeri** | Halaman `/projects/:slug` dilengkapi dengan tombol kembali ke `/?tab=projects#showcase`, cover proyek, galeri screenshot dengan interaksi lightbox modal navigasi, peran, hasil, link demo/repo, dan tautan otomatis ke proyek berikutnya |
+| **Tech Stack & Logo SVGs** | 16 logo SVG resmi/standar (MS Office, Google Workspace, Canva, CapCut, HTML/CSS/PHP/React, FTK Imager, Autopsy, KNIME) dibuat di `public/assets/logos/` lengkap dengan fallback initial badge jika ada kegagalan load |
+
+---
 
 ---
 
