@@ -362,7 +362,7 @@ function ExperienceCards({ onOpenGallery }) {
               ))}
             </ul>
 
-            {/* Dokumentasi Kegiatan (jika tersedia, mis. NFSCC) */}
+            {/* Dokumentasi (Kegiatan NFSCC atau PKL Telkom) */}
             {exp.gallery?.length > 0 && (
               <div className="mt-4 pt-3.5 border-t border-maroon-700/10">
                 <div className="flex items-center justify-between mb-2">
@@ -380,13 +380,19 @@ function ExperienceCards({ onOpenGallery }) {
                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                       />
                     </svg>
-                    Dokumentasi Kegiatan
+                    {exp.galleryLabel || "Dokumentasi"}
                   </p>
                   <span className="text-[11px] font-medium text-charcoal-400">
                     {exp.gallery.length} Dokumentasi
                   </span>
                 </div>
-                <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
+                <div
+                  className={`grid gap-1.5 sm:gap-2 ${
+                    exp.gallery.length === 4
+                      ? "grid-cols-4"
+                      : "grid-cols-5"
+                  }`}
+                >
                   {exp.gallery.map((photoSrc, idx) => (
                     <button
                       key={idx}
@@ -395,16 +401,16 @@ function ExperienceCards({ onOpenGallery }) {
                         onOpenGallery({
                           list: exp.gallery,
                           index: idx,
-                          title: `Dokumentasi Kegiatan ${exp.org}`,
+                          title: `${exp.galleryLabel || "Dokumentasi"} · ${exp.org}`,
                           subtitle: `${exp.role} · ${exp.period}`,
                         })
                       }
                       className="group relative rounded-lg sm:rounded-xl overflow-hidden aspect-[4/3] border border-maroon-700/15 bg-cream-100 hover:border-gold-500 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-0.5 text-left focus:outline-none focus:ring-2 focus:ring-gold-500 cursor-pointer"
-                      title={`Lihat foto kegiatan ${idx + 1}`}
+                      title={`Lihat foto ${idx + 1}`}
                     >
                       <img
                         src={photoSrc}
-                        alt={`Dokumentasi ${exp.org} ${idx + 1}`}
+                        alt={`${exp.galleryLabel || "Dokumentasi"} ${exp.org} ${idx + 1}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
@@ -472,7 +478,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-20 sm:py-28 overflow-hidden"
+      className="relative pt-6 sm:pt-10 pb-20 sm:pb-28 overflow-hidden"
       aria-label="Tentang Saya — Rahmi Atika"
     >
       {/* Background decoration */}

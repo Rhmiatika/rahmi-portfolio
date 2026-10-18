@@ -131,6 +131,8 @@ Aturan untuk Phase 3:
 | **Preload GLB** | Menggunakan `<link rel="preload" as="fetch">` bukan `useGLTF.preload` (Lanyard tidak pakai @react-three/fiber). Preload dilakukan di `useEffect` Splash |
 | **Foto Wisuda (Education)** | 3 foto asli dari `asset/foto kuliah wisuda/` berhasil dikonversi ke WebP di `public/assets/education/` dan ditampilkan di kartu STT Nurul Fikri dengan lightbox preview interaktif |
 | **Foto Kegiatan (NFSCC)** | 5 foto asli dari `asset/Kegiatan-20261018T005847Z-1-001/` dikonversi ke WebP di `public/assets/kegiatan/` (`nfscc-01` s.d. `nfscc-05`) dan ditampilkan di kartu NFSCC dengan galeri interaktif + LightboxModal navigasi prev/next |
+| **Foto PKL (Telkom)** | 4 foto asli dari `asset/kegiatan telkom/` dikonversi ke WebP di `public/assets/telkom/` (`telkom-01` s.d. `telkom-04`) dan ditampilkan di kartu Telkom Indonesia dengan label "Dokumentasi PKL" + LightboxModal navigasi prev/next |
+| **Spacing Section About** | Padding atas pada `#about` dikurangi dari `py-20 sm:py-28` menjadi `pt-6 sm:pt-10 pb-20 sm:pb-28` agar judul "Siapa Saya / Tentang Saya" lebih dekat ke Hero section |
 | **Three.js shader warning** | Console menampilkan standard Three.js WebGL shader precision warnings — bukan error aplikasi, tidak perlu ditangani |
 
 ---

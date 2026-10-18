@@ -84,6 +84,7 @@ export const profile = {
         "Menginisiasi kolaborasi eksternal lintas kampus & industri (BNCC, LINUXENIC, TILC UGM), meningkatkan eksposur serta engagement organisasi.",
         "Mengelola komunikasi publik & korespondensi resmi, sukses mengawal 8 program kerja nasional (cybersecurity) dan 1 kompetisi CTF ASTRO.",
       ],
+      galleryLabel: "Dokumentasi Kegiatan",
       gallery: [
         "/assets/kegiatan/nfscc-01.webp",
         "/assets/kegiatan/nfscc-02.webp",
@@ -101,6 +102,13 @@ export const profile = {
       points: [
         "Mengelola entri 100–200 data pelanggan per hari secara presisi dengan form standar, memangkas waktu pemrosesan berkas operasional.",
         "Mengeksekusi migrasi data ke sistem baru dengan akurasi 100% tanpa kehilangan data, serta menjaga keteraturan arsip pelanggan.",
+      ],
+      galleryLabel: "Dokumentasi PKL",
+      gallery: [
+        "/assets/telkom/telkom-01.webp",
+        "/assets/telkom/telkom-02.webp",
+        "/assets/telkom/telkom-03.webp",
+        "/assets/telkom/telkom-04.webp",
       ],
     },
   ],
