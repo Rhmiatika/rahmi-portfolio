@@ -55,10 +55,9 @@
     "date": "2024-02-22",
     "credentialId": "513/Sert/WK-1/STT-NF/II/2024",
     "category": "Seminar",
-    "thumb": null,
-    "image": null,
-    "description": "",
-    "_note": "IMAGE_TODO: PDF cert-05 adalah vektor murni, tidak bisa diekstrak otomatis. Buka PDF di browser, print/export halaman ke PNG, simpan sebagai cert-05.webp."
+    "thumb": "/assets/certificates/thumbs/cert-05.webp",
+    "image": "/assets/certificates/cert-05.webp",
+    "description": ""
   },
   {
     "id": 6,
@@ -80,10 +79,9 @@
     "date": "2024-04-24",
     "credentialId": "142843/EXL/LM/04/2024",
     "category": "Data Analytics",
-    "thumb": null,
-    "image": null,
-    "description": "",
-    "_note": "IMAGE_TODO: PDF cert-07 embedded image salah (LinkedIn badge). Perlu ekspor manual cert-07.webp dari file PDF asli."
+    "thumb": "/assets/certificates/thumbs/cert-07.webp",
+    "image": "/assets/certificates/cert-07.webp",
+    "description": ""
   },
   {
     "id": 8,

@@ -24,10 +24,13 @@ export const profile = {
   contact: {
     email: "rahmiatika231@gmail.com",
     whatsapp: "https://wa.me/6281386426793",
-    linkedin: "", // TODO: isi URL profil LinkedIn
+    linkedin: "https://www.linkedin.com/in/rahmi-atika/",
     cv: "/assets/cv/CV_Rahmi_Atika.pdf",
   },
   photo: "/assets/images/rahmi.webp",
+  photoFormal: "/assets/images/rahmi-formal.webp",   // foto studio putih — untuk About card
+  photoLanyard: "/assets/images/rahmi-lanyard.webp", // crop 600×600 — untuk Lanyard card
+
 
   education: [
     {

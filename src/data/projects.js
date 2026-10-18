@@ -11,7 +11,17 @@ export const projects = [
       "Sistem informasi manajemen terintegrasi berbasis React untuk mendigitalisasi pengarsipan, keuangan, proker, dan penyuratan organisasi.",
     tags: ["React", "Dashboard", "Arsip Digital"],
     cover: "/assets/projects/nfscc-hub/cover.webp",
-    gallery: [],
+    gallery: [
+      "/assets/projects/nfscc-hub/gallery-01.webp", // dashboard
+      "/assets/projects/nfscc-hub/gallery-02.webp", // arsip
+      "/assets/projects/nfscc-hub/gallery-03.webp", // keuangan
+      "/assets/projects/nfscc-hub/gallery-04.webp", // kegiatan
+      "/assets/projects/nfscc-hub/gallery-05.webp", // periode
+      "/assets/projects/nfscc-hub/gallery-06.webp", // presensi
+      "/assets/projects/nfscc-hub/gallery-07.webp", // proker
+      "/assets/projects/nfscc-hub/gallery-08.webp", // template surat
+      "/assets/projects/nfscc-hub/gallery-09.webp", // anggota
+    ],
     role: "",    // TODO: diisi Rahmi
     result: "",  // TODO: diisi Rahmi
     links: { demo: "", repo: "" },
@@ -50,7 +60,7 @@ export const projects = [
       "Situs e-commerce Alat Tulis Kantor berbasis PHP dengan antarmuka responsif.",
     tags: ["PHP", "E-Commerce"],
     cover: "/assets/projects/atk-lamy/cover.webp",
-    gallery: [],
+    gallery: ["/assets/projects/atk-lamy/gallery-02.webp"],
     role: "",
     result: "",
     links: { demo: "", repo: "" },
@@ -69,3 +79,5 @@ export const projects = [
     links: { demo: "", repo: "" },
   },
 ];
+
+
