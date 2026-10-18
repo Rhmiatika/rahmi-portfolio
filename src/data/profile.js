@@ -51,6 +51,17 @@ export const profile = {
         "Integrasi Sistem",
         "Etika Profesi",
       ],
+      // foto placeholder — ganti dengan foto wisuda/kampus asli nanti
+      photo: "/assets/education/stt-nf.webp",
+      // dome gallery: foto kegiatan NFSCC — Rahmi akan tambah foto kuliah/wisuda
+      gallery: [
+        "/assets/kegiatan/kegiatan-01.webp",
+        "/assets/kegiatan/kegiatan-02.webp",
+        "/assets/kegiatan/kegiatan-03.webp",
+        "/assets/kegiatan/kegiatan-04.webp",
+        "/assets/kegiatan/kegiatan-05.webp",
+        "/assets/kegiatan/kegiatan-06.webp",
+      ],
     },
     {
       id: "smkn19",
@@ -61,6 +72,9 @@ export const profile = {
       location: "Jakarta Pusat",
       thesis: null,
       courses: [],
+      // foto placeholder — ganti dengan foto SMK asli nanti
+      photo: "/assets/education/smk.webp",
+      gallery: [], // TODO: Rahmi tambah foto SMK nanti
     },
   ],
 
