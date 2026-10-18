@@ -20,13 +20,22 @@
   --color-charcoal-800: #333333;
   --color-charcoal-500: #6b6b6b;
 
+  /* ── Aliases (shorthand) ── */
+  --color-maroon:       #6B1A2A;
+  --color-maroon-light: #9a3a4a;
+  --color-cream:        #F5F5DC;
+  --color-cream-light:  #fffef2;
+  --color-gold:         #C9A84C;
+  --color-gold-light:   #e8cf7a;
+  --color-charcoal:     #333333;
+
   /* ── Typography ── */
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* ── Tokens ── */
   --radius-card:  1.25rem;
-  --shadow-soft:  0 10px 30px -12px rgb(128 0 0 / 0.25);
+  --shadow-soft:  0 10px 30px -12px rgb(107 26 42 / 0.25);
   --ease-smooth:  cubic-bezier(0.22, 1, 0.36, 1);
 }
 

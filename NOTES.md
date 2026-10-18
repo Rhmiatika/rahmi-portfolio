@@ -6,13 +6,18 @@
 
 ## TODO — Perlu Input Rahmi
 
-- [ ] **Foto profil:** Konfirmasi apakah menggunakan `WhatsApp Image 2026-10-18 at 05.51.57.jpeg` (Foto 1 — rekomendasi) atau foto lain. Setelah dikonfirmasi, simpan sebagai `public/assets/images/rahmi.webp`.
-- [ ] **URL LinkedIn:** Isi placeholder `https://linkedin.com/in/rahmiatika` di `src/data/profile.js`.
-- [ ] **CV:** Taruh file `CV_Rahmi_Atika.pdf` di `public/assets/cv/`. Tombol "Unduh CV" sudah mengarah ke path yang benar.
-- [ ] **Pemetaan sertifikat:** 11 file di `asset/sertif/` perlu dicocokkan ke 11 item `certificates.json` (3 PDF harus dikonversi ke WebP dulu). Dilakukan di Phase 2.
-- [ ] **Konten detail proyek:** Peran, hasil, screenshot, link demo/repo untuk 5 proyek. Jangan mengarang — diisi Rahmi.
-- [ ] **Formspree/EmailJS:** Ditunda. Kode sudah disiapkan. Isi `VITE_FORMSPREE_ID` di Vercel Environment Variables kapan saja.
-- [ ] **Suara UI (bell toggle):** File suara belum tersedia. Toggle tetap berfungsi secara visual; suara diaktifkan saat file tersedia.
+- [x] **Foto profil:** ✅ rahmi.webp (55KB), rahmi-2/3.webp, og-image.jpg (1200×630) — selesai Phase 2
+- [x] **CV:** ✅ `public/assets/cv/CV_Rahmi_Atika.pdf` tersalin (186 KB)
+- [x] **Model 3D:** ✅ `rahmi.glb` dikompres Draco → 508 KB (dari 6.1 MB, -92%)
+- [x] **Sertifikat 9/11:** ✅ cert-01..11 (kecuali 05, 07) + thumbs — selesai Phase 2
+- [ ] **cert-05 IMAGE:** PDF vektor murni → Rahmi perlu screenshot manual → `public/assets/certificates/cert-05.webp`
+- [ ] **cert-07 IMAGE:** PDF embedded image salah (LinkedIn badge) → Rahmi perlu screenshot → `cert-07.webp`
+- [ ] **URL LinkedIn:** Isi di `src/data/profile.js` baris `linkedin: ""`
+- [ ] **Konten detail proyek:** Peran, hasil, screenshot, link demo/repo untuk 5 proyek — diisi Rahmi
+- [ ] **Formspree/EmailJS:** Ditunda v1. Isi `VITE_FORMSPREE_ID` di Vercel env kapan saja.
+- [ ] **Suara UI (bell toggle):** Kode siap; file audio belum tersedia.
+- [ ] **Foto kartu Lanyard:** Perlu tekstur kartu khusus — Phase 3 task
+- [ ] **Dome Gallery:** Ada foto kampus/kegiatan? Jika tidak → Education Timeline (default sudah di PRD)
 
 ---
 
