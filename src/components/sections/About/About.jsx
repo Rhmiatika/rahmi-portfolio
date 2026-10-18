@@ -355,7 +355,7 @@ function ExperienceCards({ onOpenGallery }) {
             {/* Poin Pekerjaan — Singkat & On Point */}
             <ul className="space-y-2">
               {exp.points.map((pt, j) => (
-                <li key={j} className="flex items-start gap-2.5 text-sm text-charcoal-700 leading-relaxed text-justify">
+                <li key={j} className="flex items-start gap-2.5 text-xs sm:text-sm lg:text-[0.84rem] min-[1400px]:text-sm text-charcoal-700 leading-relaxed text-justify">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-maroon-700/70 flex-shrink-0" />
                   <span className="flex-1">{pt}</span>
                 </li>
@@ -517,7 +517,7 @@ export default function About() {
                 text={profile.bio}
                 as="p"
                 stepMs={45}
-                className="text-base sm:text-lg text-charcoal-800 leading-relaxed text-justify"
+                className="text-xs sm:text-sm lg:text-[0.88rem] min-[1400px]:text-[1.05rem] text-charcoal-800 leading-relaxed text-justify"
               />
             </Reveal>
 

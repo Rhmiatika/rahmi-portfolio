@@ -124,11 +124,11 @@ export default function Hero() {
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText: proporsional di HD laptop (3.65rem), skala besar murni di FHD (6.25rem+) */}
+              {/* Nama — StrokeText: proporsional di HD laptop (3.65rem), skala besar murni di FHD diperbesar sedikit (6.75rem+) */}
               <StrokeText
                 text={profile.name}
                 as="h1"
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[3.65rem] min-[1400px]:text-[6.25rem] min-[1600px]:text-[6.85rem] leading-[0.98] tracking-[0.035em]"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-[3.65rem] min-[1400px]:text-[6.75rem] min-[1600px]:text-[7.35rem] leading-[0.98] tracking-[0.035em]"
               />
 
               {/* Gelar */}
@@ -148,8 +148,8 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Deskripsi profesional — text-justify */}
-              <p className="text-xs sm:text-sm lg:text-[0.88rem] min-[1400px]:text-lg font-sans text-charcoal-500 max-w-lg min-[1400px]:max-w-2xl leading-relaxed text-justify mb-4 sm:mb-5 min-[1400px]:mb-6">
+              {/* Deskripsi profesional — text-justify selaras */}
+              <p className="text-xs sm:text-sm lg:text-[0.88rem] min-[1400px]:text-[1.05rem] font-sans text-charcoal-500 max-w-lg min-[1400px]:max-w-2xl leading-relaxed text-justify mb-4 sm:mb-5 min-[1400px]:mb-6">
                 Berfokus pada pengarsipan digital, administrasi data, dan
                 manajemen operasional. Tertarik pada pengembangan sistem
                 informasi yang terstruktur dan solusi digitalisasi dokumen
