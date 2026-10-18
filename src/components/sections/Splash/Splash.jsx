@@ -9,8 +9,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import SplitFlapText from "@/components/reactbits/SplitFlapText";
 
 const SPLASH_TEXT = "Welcome to my portfolio website";
-const SUB_TEXT = "Rahmi Atika · Informatics Engineer";
-const TAGLINE = "Merapikan data, mendigitalkan proses.";
+const SUB_TEXT = "Rahmi Atika · Teknik Informatika";
 const MIN_MS = 3000;
 const MAX_MS = 6000;
 
@@ -135,7 +134,6 @@ export default function Splash({ onDone }) {
           <p className="text-lg sm:text-xl font-display text-maroon-700 font-semibold">
             {SUB_TEXT}
           </p>
-          <p className="text-sm text-charcoal-500 mt-1 italic">{TAGLINE}</p>
         </div>
       </div>
 

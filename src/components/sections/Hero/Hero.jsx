@@ -11,6 +11,7 @@ import FuseButton from "@/components/reactbits/FuseButton";
 import Reveal from "@/components/ui/Reveal";
 import { useCanUse3D } from "@/hooks/useCanUse3D";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useLanyardCard } from "@/hooks/useLanyardCard";
 
 // Lazy-load Lanyard (heavy 3D chunk)
 const Lanyard = lazy(() =>
@@ -44,18 +45,15 @@ function LanyardFallback() {
   );
 }
 
-// Chip bukti
-const CHIPS = [
-  { label: `IPK ${profile.stats.gpa}` },
-  { label: "NFSCC HUB" },
-  { label: "PKL Telkom Indonesia" },
-];
+// Value statement — profesional, dari LinkedIn
 
 export default function Hero() {
   const can3D = useCanUse3D();
   const isMobile = useMediaQuery("(max-width: 767px)");
   const lanyardRef = useRef(null);
   const [lanyardVisible, setLanyardVisible] = useState(false);
+  // Generate professional card canvas with name + S.Kom. + bidang
+  const cardDataUrl = useLanyardCard(profile.photoLanyard);
 
   // IntersectionObserver: mount Lanyard hanya saat terlihat
   useEffect(() => {
@@ -91,8 +89,7 @@ export default function Hero() {
             <Reveal>
               {/* Eyebrow */}
               <p className="text-xs font-sans font-semibold uppercase tracking-[0.2em] text-maroon-700">
-                {/* PRD: "Halo, saya" */}
-                Halo, saya
+                Halo, aku
               </p>
 
               {/* Nama — StrokeText */}
@@ -110,28 +107,13 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Headline LinkedIn */}
-              <p className="text-sm font-sans text-charcoal-500 max-w-md leading-relaxed mt-1">
-                {profile.headline}
+              {/* Value statement — profesional */}
+              <p className="text-base sm:text-lg font-sans text-charcoal-700 max-w-xl leading-relaxed mt-3">
+                Berfokus pada pengarsipan digital, administrasi data, dan
+                manajemen operasional — dengan ketertarikan pada sistem
+                informasi yang terstruktur dan solusi digitalisasi dokumen
+                yang efisien.
               </p>
-
-              {/* Value statement */}
-              <p className="text-base sm:text-lg font-sans text-charcoal-800 max-w-xl leading-relaxed mt-2">
-                Lulusan Teknik Informatika yang terbiasa merapikan data,
-                mendigitalkan dokumen, dan menjaga operasional tetap akurat.
-              </p>
-
-              {/* Chip bukti */}
-              <div className="flex flex-wrap gap-2 mt-3">
-                {CHIPS.map(({ label }) => (
-                  <span
-                    key={label}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-maroon-100 text-maroon-700 border border-maroon-700/20"
-                  >
-                    {label}
-                  </span>
-                ))}
-              </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 mt-5">
@@ -168,12 +150,15 @@ export default function Hero() {
                 {lanyardVisible ? (
                   <div className="w-full h-full" style={{ maxWidth: "480px" }}>
                     <Lanyard
-                      frontImage={profile.photoLanyard}
-                      cardColor="#800000"
-                      strapColor="#4A0000"
+                      frontImage={cardDataUrl || profile.photoLanyard}
+                      cardColor="#6B0000"
+                      strapColor="#3A0000"
+                      strapWidth={0.55}
+                      strapLength={0.62}
                       finish="glossy"
                       size={0.65}
-                      gravity={1.2}
+                      gravity={1.1}
+                      breeze={0.3}
                       className="w-full h-full"
                       style={{ width: "100%", height: "100%" }}
                     />

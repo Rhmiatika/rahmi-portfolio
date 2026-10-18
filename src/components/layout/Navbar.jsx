@@ -43,13 +43,18 @@ export default function Navbar() {
         className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between"
         aria-label="Navigasi utama"
       >
-        {/* Logo */}
+        {/* Logo / Brand */}
         <a
           href="/"
-          className="font-display font-bold text-2xl text-maroon-700 hover:text-maroon-600 transition-colors"
+          className="flex items-baseline gap-[3px] hover:opacity-85 transition-opacity"
           aria-label="Rahmi Atika — Kembali ke halaman utama"
         >
-          RA
+          <span className="font-sans text-sm font-medium tracking-widest uppercase text-charcoal-500/70">
+            Portofolio
+          </span>
+          <span className="font-display font-bold text-xl text-maroon-700 ml-1">
+            Rahmi Atika
+          </span>
         </a>
 
         {/* Desktop links */}
