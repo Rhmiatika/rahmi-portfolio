@@ -40,7 +40,7 @@ export default function Navbar() {
       `}
     >
       <nav
-        className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 min-[1800px]:px-8 h-16 flex items-center justify-between"
         aria-label="Navigasi utama"
       >
         {/* Logo / Brand */}
