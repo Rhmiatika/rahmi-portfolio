@@ -517,7 +517,7 @@ export default function About() {
                 text={profile.bio}
                 as="p"
                 stepMs={45}
-                className="text-xs sm:text-sm lg:text-[0.88rem] min-[1400px]:text-[1.05rem] text-charcoal-800 leading-relaxed text-justify"
+                className="text-sm sm:text-base lg:text-[1.05rem] min-[1400px]:text-[1.2rem] text-charcoal-800 leading-relaxed text-justify"
               />
             </Reveal>
 

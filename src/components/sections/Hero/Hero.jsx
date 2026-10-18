@@ -103,11 +103,11 @@ export default function Hero() {
       aria-label="Hero — Rahmi Atika"
     >
       <div className="portfolio-container w-full pt-2 md:pt-4 pb-10 md:pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[13fr_7fr] min-[1400px]:grid-cols-5 gap-6 min-[1400px]:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[13fr_7fr] min-[1400px]:grid-cols-5 gap-2 lg:gap-2 min-[1400px]:gap-12 items-center">
 
           {/* ── Kolom Kiri: Teks (z-10) — 65% (13fr) di HD laptop, 60% (col-span-3) murni di FHD ── */}
-          <div className="order-2 lg:order-1 lg:col-span-1 min-[1400px]:col-span-3 flex flex-col items-start relative z-10 lg:-mt-2 min-[1400px]:lg:-mt-5">
-            <Reveal>
+          <div className="order-2 lg:order-1 lg:col-span-1 min-[1400px]:col-span-3 flex flex-col items-start w-full relative z-10 lg:-mt-2 min-[1400px]:lg:-mt-5">
+            <Reveal className="w-full">
               {/* Available for work badge */}
               <div className="mb-2.5 min-[1400px]:mb-4">
                 <span className="inline-flex items-center gap-2 min-[1400px]:gap-2.5 px-3 min-[1400px]:px-4 py-1 min-[1400px]:py-1.5 rounded-full border-[1.5px] border-[#9E6700] bg-amber-500/10 text-maroon-900 text-xs min-[1400px]:text-sm font-bold tracking-wide shadow-xs">
@@ -124,11 +124,11 @@ export default function Hero() {
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText: proporsional di HD laptop (3.65rem), skala besar murni di FHD diperbesar sedikit (6.75rem+) */}
+              {/* Nama — StrokeText: proporsional di HD laptop (3.65rem), skala besar murni di FHD diperbesar (7.5rem+) */}
               <StrokeText
                 text={profile.name}
                 as="h1"
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[3.65rem] min-[1400px]:text-[6.75rem] min-[1600px]:text-[7.35rem] leading-[0.98] tracking-[0.035em]"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-[3.65rem] min-[1400px]:text-[7.5rem] min-[1600px]:text-[8.25rem] leading-[0.98] tracking-[0.035em]"
               />
 
               {/* Gelar */}
@@ -148,8 +148,8 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Deskripsi profesional — text-justify selaras */}
-              <p className="text-xs sm:text-sm lg:text-[0.88rem] min-[1400px]:text-[1.05rem] font-sans text-charcoal-500 max-w-lg min-[1400px]:max-w-2xl leading-relaxed text-justify mb-4 sm:mb-5 min-[1400px]:mb-6">
+              {/* Deskripsi profesional — text-justify penuh mengisi lebar kolom, tidak ada padding right */}
+              <p className="text-sm sm:text-base lg:text-[1.05rem] min-[1400px]:text-[1.2rem] font-sans text-charcoal-500 w-full leading-relaxed text-justify mb-4 sm:mb-5 min-[1400px]:mb-6">
                 Berfokus pada pengarsipan digital, administrasi data, dan
                 manajemen operasional. Tertarik pada pengembangan sistem
                 informasi yang terstruktur dan solusi digitalisasi dokumen

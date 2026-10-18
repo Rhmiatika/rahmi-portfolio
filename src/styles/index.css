@@ -75,11 +75,11 @@ body {
   }
 }
 
-/* Laptop HD (1024px s/d 1399px): Padding diperbesar lagi (skala 20-25: 5rem / 80px) */
+/* Laptop HD (1024px s/d 1399px): Padding diperbesar lagi (6.5rem / 104px) */
 @media (min-width: 1024px) and (max-width: 1399px) {
   .portfolio-container {
-    padding-left: 5rem; /* 80px padding */
-    padding-right: 5rem;
+    padding-left: 6.5rem; /* 104px padding */
+    padding-right: 6.5rem;
   }
 }
 

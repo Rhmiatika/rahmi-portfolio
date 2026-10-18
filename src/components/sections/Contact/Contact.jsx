@@ -59,10 +59,10 @@ export default function Contact() {
           </h2>
 
           {/* Deskripsi — diselaraskan dengan Hero dan About */}
-          <p className="text-cream-100/80 max-w-2xl mx-auto leading-relaxed text-xs sm:text-sm lg:text-[0.88rem] min-[1400px]:text-[1.05rem] mb-8 min-[1400px]:mb-10">
+          <p className="text-cream-100/80 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base lg:text-[1.05rem] min-[1400px]:text-[1.2rem] mb-8 min-[1400px]:mb-10">
             Sedang mencari tim administrasi, pengarsipan digital, atau data
             management yang teliti, komunikatif, dan cepat belajar? Aku siap
-            berkontribusi dari merapikan dokumen hingga membangun sistem
+            berkontribusi — dari merapikan dokumen hingga membangun sistem
             kecil yang membuat tim bekerja lebih efisien.
           </p>
 

@@ -47,6 +47,7 @@
 | 2026-10-18 | Mobile UX: Card Pengalaman (NFSCC) diperbaiki agar pill periode (2024–2025) & lokasi (Depok) konsisten berada di sisi kanan pada mobile |
 | 2026-10-18 | Responsive Split: Pemisahan tegas styling FHD (≥1400px: 60:40, font besar 6.25rem+, lanyard 0.46, padding murni 32px) dan Laptop HD (1024–1399px: 65:35, font 3.65rem, lanyard 0.41, padding 60px skala 15 via `.portfolio-container`) |
 | 2026-10-18 | Typography & Padding Harmony: Nama header FHD diperbesar sedikit (6.75rem+), deskripsi diselaraskan identik di semua section (0.88rem di HD laptop, 1.05rem di FHD), dan padding HD laptop dinaikkan ke 80px (5rem, skala 20-25) |
+| 2026-10-18 | Final Revision: Nama FHD diperbesar (7.5rem+), deskripsi diperbesar ke 1.05rem (HD) & 1.2rem (FHD) tanpa ruang kosong, padding HD dinaikkan ke 6.5rem (104px), gap 65:35 dirapatkan tanpa padding-right |
 
 ---
 
