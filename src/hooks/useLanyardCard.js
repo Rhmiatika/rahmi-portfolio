@@ -30,77 +30,123 @@ function buildCardCanvas(photoImg) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
 
-  const cardRadius = 42;
+  const cardRadius = 36;
 
-  // ── 1. Base Card Background (White studio backdrop) ───────────────────
+  // ── 1. Base Badge Card ──────────────────────────────────────────────────
   ctx.save();
   ctx.beginPath();
   roundRect(ctx, 0, 0, W, H, cardRadius);
   ctx.clip();
 
-  ctx.fillStyle = "#FFFFFF";
+  const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+  bgGrad.addColorStop(0, "#FFFFFF");
+  bgGrad.addColorStop(0.12, "#FAFBFD");
+  bgGrad.addColorStop(1, "#EFF1F5");
+  ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, W, H);
 
-  // ── 2. Foto Full Card (Foto utuh 100%, tidak terpotong) ───────────────
+  // ── 2. Inset Photo Frame — LEBIH FRAMELESS (Border ramping 16px) ─────────
+  // Border ramping di sekeliling kartu, slot lanyard tetap memiliki ruang aman di atas
+  const padX = 16;
+  const topPad = 120;
+  const bottomPad = 16;
+  const photoX = padX;
+  const photoY = topPad;
+  const photoW = W - padX * 2; // 1048px (jauh lebih frameless & lapang)
+  const photoH = H - topPad - bottomPad; // 1304px
+  const photoRadius = 18;
+
   if (photoImg && photoImg.width > 0 && photoImg.height > 0) {
-    ctx.drawImage(photoImg, 0, 0, W, H);
+    ctx.save();
+    ctx.beginPath();
+    roundRect(ctx, photoX, photoY, photoW, photoH, photoRadius);
+    ctx.clip();
+
+    // Gambar foto agar mengisi frame secara proporsional dan terpusat (cover)
+    const photoAspect = photoW / photoH;
+    const imgAspect = photoImg.width / photoImg.height;
+    let sw, sh, sx, sy;
+    if (imgAspect > photoAspect) {
+      sh = photoImg.height;
+      sw = photoImg.height * photoAspect;
+      sx = (photoImg.width - sw) / 2;
+      sy = 0;
+    } else {
+      sw = photoImg.width;
+      sh = photoImg.width / photoAspect;
+      sx = 0;
+      sy = 0;
+    }
+
+    ctx.drawImage(photoImg, sx, sy, sw, sh, photoX, photoY, photoW, photoH);
+
+    // Subtle dark gradient vignette di bagian bawah foto agar teks putih sangat kontras dan terbaca jelas
+    const textVignette = ctx.createLinearGradient(0, photoY + photoH - 250, 0, photoY + photoH);
+    textVignette.addColorStop(0, "rgba(0, 0, 0, 0)");
+    textVignette.addColorStop(0.35, "rgba(0, 0, 0, 0.20)");
+    textVignette.addColorStop(1, "rgba(0, 0, 0, 0.65)");
+    ctx.fillStyle = textVignette;
+    ctx.fillRect(photoX, photoY + photoH - 250, photoW, 250);
+
+    // ── 3. Typography Minimalis & Elegan di Kiri Bawah (Tanpa pill badge!) ──
+    const textPadX = photoX + 36;
+    const nameY = photoY + photoH - 86;
+    const titleY = photoY + photoH - 38;
+
+    // Nama Lengkap: "Rahmi Atika, S. Kom."
+    ctx.font = 'bold 44px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillStyle = "#FFFFFF";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+    ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 2;
+    ctx.fillText("Rahmi Atika, S. Kom.", textPadX, nameY);
+
+    // Subtitle: "Fresh Graduate Teknik Informatika"
+    ctx.font = '600 30px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
+    ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
+    ctx.shadowBlur = 6;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 2;
+    ctx.fillText("Fresh Graduate Teknik Informatika", textPadX, titleY);
+
+    ctx.restore(); // Restore photo clip
+
+    // Subtle fine border pada photo frame
+    ctx.save();
+    ctx.strokeStyle = "rgba(0, 0, 0, 0.08)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    roundRect(ctx, photoX, photoY, photoW, photoH, photoRadius);
+    ctx.stroke();
+    ctx.restore();
   }
 
-  // ── 3. Border Marun Mengelilingi Kartu ────────────────────────────────
-  const borderWidth = 22;
-  const borderInset = borderWidth / 2 + 6;
-  ctx.strokeStyle = "#750000";
-  ctx.lineWidth = borderWidth;
-  ctx.beginPath();
-  roundRect(
-    ctx,
-    borderInset,
-    borderInset,
-    W - borderInset * 2,
-    H - borderInset * 2,
-    cardRadius - 4
-  );
-  ctx.stroke();
-
-  // ── 4. Pill Badge di Kiri Bawah: "Rahmi Atika, S. Kom." ───────────────
-  const badgeText = "Rahmi Atika, S. Kom.";
-  ctx.font = 'bold 44px "Inter", system-ui, -apple-system, sans-serif';
-  const textMetrics = ctx.measureText(badgeText);
-  const textWidth = textMetrics.width;
-
-  const pillPadX = 40;
-  const pillW = textWidth + pillPadX * 2;
-  const pillH = 82;
-  const pillR = pillH / 2;
-  const pillX = 64;
-  const pillY = H - 240;
-
-  // Gambar capsule pill marun
+  // ── 4. Subtle Outer Card Rim ───────────────────────────────────────────
   ctx.save();
-  ctx.fillStyle = "#750000";
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.06)";
+  ctx.lineWidth = 1.5;
   ctx.beginPath();
-  roundRect(ctx, pillX, pillY, pillW, pillH, pillR);
-  ctx.fill();
-
-  // Teks putih dalam pill badge
-  ctx.fillStyle = "#FFFFFF";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(badgeText, pillX + pillW / 2, pillY + pillH / 2 + 2);
+  roundRect(ctx, 1, 1, W - 2, H - 2, cardRadius);
+  ctx.stroke();
   ctx.restore();
 
-  // ── 5. Teks di Bawah Pill: "Fresh Graduate Teknik Informatika" ────────
+  // ── 5. Slot Punch Hole Outline Guide ───────────────────────────────────
+  const slotX = (W - 228) / 2;
+  const slotY = 56;
+  const slotW = 228;
+  const slotH = 48;
+  const slotR = 24;
+
   ctx.save();
-  ctx.font = 'bold 36px "Inter", system-ui, -apple-system, sans-serif';
-  ctx.textAlign = "left";
-  ctx.textBaseline = "alphabetic";
-  // Drop shadow halus agar teks putih tampil kontras, tajam, dan elegan di atas blazer hitam
-  ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
-  ctx.shadowBlur = 8;
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 2;
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillText("Fresh Graduate Teknik Informatika", pillX + 6, pillY + pillH + 54);
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.10)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  roundRect(ctx, slotX, slotY, slotW, slotH, slotR);
+  ctx.stroke();
   ctx.restore();
 
   ctx.restore(); // Restore outer clip
@@ -194,3 +240,4 @@ export function useLanyardStrap() {
   }, []);
   return dataUrl;
 }
+

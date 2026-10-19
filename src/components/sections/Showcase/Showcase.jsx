@@ -59,7 +59,7 @@ export default function Showcase() {
   return (
     <section
       id="showcase"
-      className="relative pt-0 sm:pt-2 pb-20 sm:pb-28 overflow-hidden"
+      className="relative pt-0 sm:pt-2 pb-8 sm:pb-12 overflow-hidden"
       aria-label="Portofolio — Rahmi Atika"
     >
       {/* Background decoration — matches About section ambient flow */}

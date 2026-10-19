@@ -26,6 +26,7 @@ const FACE_WIDTH = 1024;
 const FINISHES = {
   glossy: { roughness: 0.42, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, foil: 0, anisotropy: 0 },
   matte: { roughness: 0.85, metalness: 0, clearcoat: 0, clearcoatRoughness: 0.6, foil: 0, anisotropy: 0 },
+  satin: { roughness: 0.52, metalness: 0, clearcoat: 0.35, clearcoatRoughness: 0.28, foil: 0, anisotropy: 0 },
   holographic: { roughness: 0.3, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.04, foil: 1, anisotropy: 0 },
   metallic: { roughness: 0.36, metalness: 0.75, clearcoat: 0.5, clearcoatRoughness: 0.18, foil: 0, anisotropy: 0.7 }
 };
@@ -845,6 +846,38 @@ const Lanyard = ({
     const ring = new THREE.Mesh(new THREE.TorusGeometry(RING_RADIUS, RING_TUBE, 18, 72), metalMaterial);
     ring.rotation.y = Math.PI / 2 - 0.7;
     cardGroup.add(bodyMesh, frontMesh, backMesh, ring);
+
+    // ── Ultra-Soft Subtle Ambient Shadow (Thin, soft diffuse blur, non-solid) ──
+    const shadowCanvas = document.createElement('canvas');
+    shadowCanvas.width = 512;
+    shadowCanvas.height = 680;
+    const sctx = shadowCanvas.getContext('2d');
+    if (sctx) {
+      sctx.clearRect(0, 0, 512, 680);
+      sctx.shadowColor = 'rgba(0, 0, 0, 0.18)';
+      sctx.shadowBlur = 30;
+      sctx.shadowOffsetX = 0;
+      sctx.shadowOffsetY = 6;
+      sctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      sctx.beginPath();
+      const pad = 64;
+      traceRoundedRect(sctx, pad, pad, 512 - pad * 2, 680 - pad * 2, 36);
+      sctx.fill();
+    }
+    const shadowTexture = makeCanvasTexture(shadowCanvas, anisotropy);
+    const shadowMaterial = new THREE.MeshBasicMaterial({
+      map: shadowTexture,
+      transparent: true,
+      opacity: 0.22,
+      depthWrite: false
+    });
+    const shadowMesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(CARD_SIZES.portrait[0] * 1.10, CARD_SIZES.portrait[1] * 1.10),
+      shadowMaterial
+    );
+    shadowMesh.position.set(0.01, -0.018, -(THICKNESS / 2 + BEVEL + 0.012));
+    cardGroup.add(shadowMesh);
+
     scene.add(cardGroup);
 
     const bandGeometry = buildBandGeometry(SAMPLES);
@@ -1096,6 +1129,8 @@ const Lanyard = ({
     const render = () => {
       cardGroup.position.copy(sim.body.position);
       cardGroup.quaternion.copy(sim.body.quaternion);
+      const facingCam = scratch.a.set(0, 0, 1).applyQuaternion(sim.body.quaternion).z;
+      shadowMaterial.opacity = Math.max(0, facingCam) * 0.22;
       updateBand();
       renderer.render(scene, camera);
     };

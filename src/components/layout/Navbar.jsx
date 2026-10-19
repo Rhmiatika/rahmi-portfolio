@@ -3,6 +3,7 @@
 // Logo "RA", anchor links (#about #showcase #contact), slot bell toggle
 
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const NAV_LINKS = [
   { href: "#about", label: "Tentang" },
@@ -10,9 +11,13 @@ const NAV_LINKS = [
   { href: "#contact", label: "Kontak" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ darkHero = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isDarkHero = darkHero || location.pathname.startsWith("/projects/");
+  const isDarkHeader = isDarkHero && !scrolled;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -25,7 +30,11 @@ export default function Navbar() {
     e.preventDefault();
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.location.href = `/${href}`;
+    }
   };
 
   return (
@@ -49,10 +58,18 @@ export default function Navbar() {
           className="flex items-baseline gap-[3px] hover:opacity-85 transition-opacity"
           aria-label="Rahmi Atika — Kembali ke halaman utama"
         >
-          <span className="font-sans text-sm font-medium tracking-widest uppercase text-charcoal-500/70">
+          <span
+            className={`font-sans text-sm font-medium tracking-widest uppercase transition-colors duration-200 ${
+              isDarkHeader ? "text-cream-100/70" : "text-charcoal-500/70"
+            }`}
+          >
             Portofolio
           </span>
-          <span className="font-display font-bold text-xl text-maroon-700 ml-1">
+          <span
+            className={`font-display font-bold text-xl ml-1 transition-colors duration-200 ${
+              isDarkHeader ? "text-cream-100" : "text-maroon-700"
+            }`}
+          >
             Rahmi Atika
           </span>
         </a>
@@ -66,9 +83,13 @@ export default function Navbar() {
                 onClick={(e) => handleAnchor(e, href)}
                 className={`
                   text-sm font-semibold tracking-wide transition-colors duration-200
-                  ${scrolled ? "text-charcoal-800 hover:text-maroon-700" : "text-charcoal-800 hover:text-maroon-700"}
+                  ${
+                    isDarkHeader
+                      ? "text-cream-100/90 hover:text-gold-300 after:bg-gold-300"
+                      : "text-charcoal-800 hover:text-maroon-700 after:bg-gold-500"
+                  }
                   relative after:absolute after:bottom-0 after:left-0 after:right-0
-                  after:h-[2px] after:bg-gold-500 after:scale-x-0
+                  after:h-[2px] after:scale-x-0
                   hover:after:scale-x-100 after:transition-transform after:duration-200
                 `}
               >
@@ -80,9 +101,13 @@ export default function Navbar() {
 
         {/* Right slot: bell toggle placeholder + mobile menu */}
         <div className="flex items-center gap-3">
-          {/* Bell toggle slot — diaktifkan Phase 4 */}
+          {/* Bell toggle slot */}
           <div
-            className="w-9 h-9 hidden md:flex items-center justify-center rounded-full border border-gold-500/30 text-charcoal-500"
+            className={`w-9 h-9 hidden md:flex items-center justify-center rounded-full border transition-colors duration-200 ${
+              isDarkHeader
+                ? "border-cream-100/30 text-cream-100/80 hover:border-gold-300 hover:text-gold-300"
+                : "border-gold-500/30 text-charcoal-500"
+            }`}
             title="Suara UI (segera hadir)"
             aria-hidden="true"
           >
@@ -95,7 +120,11 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             id="navbar-mobile-toggle"
-            className="md:hidden p-2 rounded-lg text-maroon-700 hover:bg-maroon-100/50 transition-colors"
+            className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${
+              isDarkHeader
+                ? "text-cream-100 hover:bg-white/10"
+                : "text-maroon-700 hover:bg-maroon-100/50"
+            }`}
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
             aria-expanded={menuOpen}

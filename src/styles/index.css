@@ -90,3 +90,69 @@ body {
     padding-right: 2rem;
   }
 }
+
+/* ── Hero Name Responsive Typography (Mobile, Laptop HD vs Full HD) ── */
+.hero-title-name {
+  font-size: 3.35rem; /* ~53.6px - Mobile (< 480px) */
+  line-height: 0.98;
+  letter-spacing: 0.035em;
+}
+
+@media (min-width: 480px) {
+  .hero-title-name {
+    font-size: 3.85rem; /* ~61.6px - Large Mobile */
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-title-name {
+    font-size: 4.5rem; /* ~72px - Tablet portrait */
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title-name {
+    font-size: 5rem; /* ~80px - Tablet landscape */
+  }
+}
+
+/* Laptop HD (1024px s/d 1399px): Sedikit diperbesar proporsional (+6px / 4.15rem) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .hero-title-name {
+    font-size: 4.15rem; /* ~66.4px */
+  }
+}
+
+/* Full HD & Desktop (>= 1400px): Pas & proporsional (6.25rem = 100px) */
+@media (min-width: 1400px) {
+  .hero-title-name {
+    font-size: 6.25rem; /* 100px */
+  }
+}
+
+/* ── Hero Typewriter Cursor ── */
+.hero-cursor {
+  display: inline-block;
+  width: 3.5px;
+  height: 0.82em;
+  margin-left: 0.2rem;
+  background-color: #800000;
+  vertical-align: baseline;
+  border-radius: 1px;
+}
+
+@media (min-width: 640px) {
+  .hero-cursor {
+    width: 4.5px;
+    margin-left: 0.25rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero-cursor {
+    width: 5px;
+    margin-left: 0.3rem;
+  }
+}
+
+

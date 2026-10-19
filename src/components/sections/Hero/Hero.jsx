@@ -5,7 +5,7 @@
 
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { profile } from "@/data/profile";
-import StrokeText from "@/components/reactbits/StrokeText";
+import TypewriterText from "@/components/reactbits/TypewriterText";
 import FuseButton from "@/components/reactbits/FuseButton";
 import Reveal from "@/components/ui/Reveal";
 import { useCanUse3D } from "@/hooks/useCanUse3D";
@@ -25,7 +25,7 @@ const SKILLS = [
   "Data Management"
 ];
 
-// Fallback jika WebGL tidak tersedia / mobile
+// Fallback jika WebGL tidak tersedia / mobile — Desain kartu putih ramping & frameless
 function LanyardFallback() {
   const photo =
     profile.photoLanyard ||
@@ -33,29 +33,44 @@ function LanyardFallback() {
     profile.photo;
 
   return (
-    <div className="flex items-center justify-center w-full h-full pt-6">
+    <div className="flex items-center justify-center w-full h-full pt-8 pb-4">
       <div className="relative">
-        {/* Strap simulasi */}
+        {/* Strap simulasi tali marun */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 -top-12 w-7 rounded-t-full border-x border-gold-500/40"
-          style={{ height: "52px", background: "linear-gradient(to bottom, #260000, #4A0000)" }}
+          className="absolute left-1/2 -translate-x-1/2 -top-14 w-7 rounded-t-full border-x border-gold-500/40 z-0"
+          style={{ height: "62px", background: "linear-gradient(to bottom, #260000, #4A0000)" }}
         />
-        {/* Card dengan border marun dan foto full (rasio 3:4) */}
-        <div className="relative w-44 sm:w-52 aspect-[3/4] rounded-[18px] overflow-hidden border-[3px] border-[#750000] shadow-soft bg-white">
-          <img
-            src={photo}
-            alt={profile.name}
-            className="w-full h-full object-cover object-top"
-            loading="eager"
-          />
-          {/* Kiri bawah: pill badge marun + subtitle */}
-          <div className="absolute left-3.5 bottom-3.5 flex flex-col items-start gap-1">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#750000] text-white font-bold text-xs shadow-sm">
-              Rahmi Atika, S. Kom.
-            </span>
-            <span className="text-[10px] font-bold text-white tracking-tight ml-1 [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)]">
-              Fresh Graduate Teknik Informatika
-            </span>
+        {/* Metal ring clip simulasi */}
+        <div className="absolute left-1/2 -translate-x-1/2 -top-2.5 w-4 h-6 rounded-full border-[1.5px] border-slate-300 bg-slate-200/40 z-10 shadow-sm" />
+
+        {/* Card putih frameless elegan dengan shadow tipis & halus */}
+        <div className="relative z-10 w-48 sm:w-56 aspect-[3/4] rounded-[20px] p-1.5 sm:p-2 bg-gradient-to-b from-white via-[#FAFAFC] to-[#F1F3F6] shadow-[0_14px_30px_-6px_rgba(0,0,0,0.18),0_4px_10px_rgba(0,0,0,0.06)] border border-black/5 flex flex-col">
+          {/* Header area ringkas dengan punch slot hole horizontal */}
+          <div className="w-full flex items-center justify-center pt-0.5 pb-1.5">
+            <div className="w-11 h-2 rounded-full bg-[#E2E5EA] border border-black/10 shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.2)]" />
+          </div>
+
+          {/* Inset Photo Frame yang luas (lebih frameless) */}
+          <div className="relative flex-1 rounded-[12px] overflow-hidden border border-black/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] bg-charcoal-900">
+            <img
+              src={photo}
+              alt={profile.name}
+              className="w-full h-full object-cover object-top"
+              loading="eager"
+            />
+
+            {/* Dark vignette gradient di bagian bawah foto agar teks putih kontras tajam */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/75 via-black/30 to-transparent pointer-events-none" />
+
+            {/* Typography elegan di kiri bawah (tanpa pill badge!) */}
+            <div className="absolute left-2.5 bottom-2.5 flex flex-col items-start gap-0.5">
+              <span className="font-bold text-white text-xs sm:text-sm tracking-tight [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)]">
+                Rahmi Atika, S. Kom.
+              </span>
+              <span className="text-[9.5px] sm:text-[10.5px] font-semibold text-white/95 tracking-tight [text-shadow:_0_1px_3px_rgba(0,0,0,0.95)]">
+                Fresh Graduate Teknik Informatika
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -124,11 +139,11 @@ export default function Hero() {
                 Halo, aku
               </p>
 
-              {/* Nama — StrokeText: proporsional di HD laptop (3.65rem), skala besar murni di FHD diperbesar (7.5rem+) */}
-              <StrokeText
+              {/* Nama — TypewriterText: animasi ketikan dinamis dengan reloop & cursor berkedip */}
+              <TypewriterText
                 text={profile.name}
                 as="h1"
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[3.65rem] min-[1400px]:text-[7.5rem] min-[1600px]:text-[8.25rem] leading-[0.98] tracking-[0.035em]"
+                className="hero-title-name"
               />
 
               {/* Gelar */}
@@ -201,12 +216,13 @@ export default function Hero() {
           <Suspense fallback={null}>
             <Lanyard
               frontImage={cardDataUrl || profile.photoLanyard}
+              backImage={cardDataUrl || profile.photoLanyard}
               strapImage={strapDataUrl || undefined}
-              cardColor="#6B0000"
+              cardColor="#FFFFFF"
               strapColor="#3A0000"
               strapWidth={lanyardStrapWidth}
               strapLength={lanyardStrapLength}
-              finish="glossy"
+              finish="satin"
               size={lanyardSize}
               anchor={lanyardAnchor}
               gravity={0.95}

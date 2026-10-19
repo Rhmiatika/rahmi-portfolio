@@ -15,7 +15,7 @@ export const profile = {
   bio: "Fresh Graduate Teknik Informatika dari Sekolah Tinggi Teknologi Terpadu Nurul Fikri dengan keahlian dalam pengarsipan digital, pengelolaan data, serta operasional layanan. Berpengalaman merancang sistem informasi manajemen organisasi (NFSCC HUB) untuk mendigitalisasi dokumen penyuratan, presensi, dan laporan operasional. Memiliki pengalaman praktik kerja lapangan di Telkom Indonesia dalam mengelola administrasi data pelanggan harian dan migrasi data dengan akurasi tinggi. Menguasai Microsoft Office dan Google Workspace, serta memiliki pemahaman dasar dalam pengembangan web dan analisis data.",
   stats: {
     gpa: 3.88,
-    certificates: 11, // dihitung dari certificates.json
+    certificates: 12, // dihitung dari certificates.json
     projects: 5,      // dihitung dari projects.js
     proker: 8,        // program kerja nasional dikawal (NFSCC) — CV
     dataAccuracy: 100, // akurasi migrasi data Telkom — statis, bukan count-up

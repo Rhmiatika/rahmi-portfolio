@@ -118,10 +118,9 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <>
-        <Navbar />
+        <Navbar darkHero />
         <main
           className="min-h-screen flex flex-col items-center justify-center gap-6 px-5"
-          style={{ background: "var(--color-cream-200)" }}
         >
           <h1
             className="font-display font-bold text-5xl"
@@ -153,11 +152,8 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <Navbar />
-      <main
-        className="min-h-screen"
-        style={{ background: "var(--color-cream-200)" }}
-      >
+      <Navbar darkHero />
+      <main className="min-h-screen">
         {/* Hero area */}
         <div
           className="pt-24 pb-12 px-5 sm:px-8"

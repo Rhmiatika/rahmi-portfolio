@@ -130,5 +130,17 @@
     "thumb": "/assets/certificates/thumbs/cert-11.webp",
     "image": "/assets/certificates/cert-11.webp",
     "description": ""
+  },
+  {
+    "id": 12,
+    "title": "Basic Proficiency in KNIME Analytics Platform",
+    "issuer": "KNIME AG, Zurich, Switzerland",
+    "role": "Certified",
+    "date": "2025-06-13",
+    "credentialId": "0aea3da5-f6b1-447d-98d7-18250660d6a1",
+    "category": "Data Analytics",
+    "thumb": "/assets/certificates/thumbs/cert-12.webp",
+    "image": "/assets/certificates/cert-12.webp",
+    "description": "Sertifikasi keahlian dasar dalam manipulasi, visualisasi, dan pengolahan data menggunakan KNIME Analytics Platform."
   }
 ]
