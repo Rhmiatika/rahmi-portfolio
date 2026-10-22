@@ -6,13 +6,14 @@ export const profile = {
   name: "Rahmi Atika",
   title: "Fresh Graduate Teknik Informatika",
   headline:
-    "Fresh Graduate Teknik Informatika | Administrative & Digital Archiving, Data Management",
+    "S.Kom. · Fresh Graduate Teknik Informatika",
   tagline: "Merapikan data, mendigitalkan proses.",
   roles: [
-    "Administrative & Digital Archiving",
+    "Digital Administration",
     "Data Management",
+    "Information System",
   ],
-  bio: "Fresh Graduate Teknik Informatika dari Sekolah Tinggi Teknologi Terpadu Nurul Fikri dengan keahlian dalam pengarsipan digital, pengelolaan data, serta operasional layanan. Berpengalaman merancang sistem informasi manajemen organisasi (NFSCC HUB) untuk mendigitalisasi dokumen penyuratan, presensi, dan laporan operasional. Memiliki pengalaman praktik kerja lapangan di Telkom Indonesia dalam mengelola administrasi data pelanggan harian dan migrasi data dengan akurasi tinggi. Menguasai Microsoft Office dan Google Workspace, serta memiliki pemahaman dasar dalam pengembangan web dan analisis data.",
+  bio: "Lulusan S1 Teknik Informatika dengan keahlian administrasi digital, pengelolaan data, dan sistem informasi. Memiliki pengalaman di Telkom Indonesia dalam pengelolaan data pelanggan dan migrasi data melalui praktik kerja lapangan, serta administrasi korespondensi dan dokumentasi organisasi di NFSCC. Berpengalaman dalam pengembangan front-end NFSCC HUB, sistem informasi manajemen organisasi berbasis React untuk mendukung pengarsipan, pengelolaan keuangan, program kerja, dan penyuratan. Menguasai Microsoft Office dan Google Workspace, serta memiliki kemampuan komunikasi, koordinasi, dan pengelolaan dokumen secara terstruktur.",
   stats: {
     gpa: 3.88,
     certificates: 12, // dihitung dari certificates.json

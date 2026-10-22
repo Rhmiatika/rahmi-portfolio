@@ -21,8 +21,9 @@ const Lanyard = lazy(() =>
 
 // Skill pills — sesuai LinkedIn resmi
 const SKILLS = [
-  "Administrative & Digital Archiving",
-  "Data Management"
+  "Digital Administration",
+  "Data Management",
+  "Information System",
 ];
 
 // Fallback jika WebGL tidak tersedia / mobile — Desain kartu putih ramping & frameless
@@ -146,9 +147,9 @@ export default function Hero() {
                 className="hero-title-name"
               />
 
-              {/* Gelar */}
+              {/* Gelar & Headline Utama */}
               <p className="text-base sm:text-lg lg:text-[1.18rem] min-[1400px]:text-[1.65rem] font-display text-[#8A5306] font-bold mt-2 min-[1400px]:mt-2.5 mb-3 min-[1400px]:mb-5 tracking-tight">
-                S.Kom. · Fresh Graduate Teknik Informatika
+                {profile.headline}
               </p>
 
               {/* Skills pills */}
@@ -176,7 +177,9 @@ export default function Hero() {
                 <FuseButton
                   as="a"
                   href={profile.contact.cv}
-                  download
+                  download="CV_Rahmi_Atika_adm.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="primary"
                   size={isFHD ? "lg" : "md"}
                   aria-label="Unduh CV Rahmi Atika (PDF)"
